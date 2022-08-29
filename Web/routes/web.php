@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MainController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +32,8 @@ Route::get('/Customer/Wishlist',[CustomerController::class,'wishlist']) ->name('
 
 
 Route::get('/Customer/CreateProduct',[CustomerController::class,'create']) ->name('CreateProd');
+
+
+Route::get('/Admin/Dashboard',[AdminController::class,'index']) ->name('AdminDashboard');
+Route::get('/Admin/Market',[AdminController::class,'markets']) ->name('AdminMarket');
+Route::get('/Admin/AccountApproval',[AdminController::class,'approve']) ->name('AdminApproval');
