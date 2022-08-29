@@ -155,6 +155,22 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-lg-5 col-xl-4" style="width: 563.656px;">
+                    <div class="card shadow mb-4" data-bss-hover-animate="pulse" style="height: 300px;">
+                        <div class="card-header d-flex align-items-center" style="padding-top: 15px;padding-bottom: 15px;">
+                            <h6 class="text-primary fw-bold m-0">Account Status</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-start small mt-4">
+                                <p class="text-start">Username<span style="margin-left: 200px;">MichaelM</span></p>
+                                <p>Status<span class="border rounded-pill border-success shadow-sm" data-bs-toggle="tooltip" data-bss-tooltip="" style="padding-left: 9px;margin-left: 225px;background: rgba(0,255,56,0.36);padding-right: 10px;" title="Account successfully verified">Verified</span></p>
+                                <p>Member Since<span style="margin-left: 172px;">December 30, 2021</span></p><span style="margin-top: 10px;"><a class="btn btn-outline-danger border rounded-pill border-danger shadow-sm" role="button" style="padding-left: 30px;padding-right: 30px;">Deactivate Account</a></span><span style="margin-top: 10px;padding-left: 50px;"><a class="btn btn-outline-info border rounded-pill border-info shadow-sm" role="button" style="padding-left: 30px;padding-right: 30px;">Signout</a></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="container">
