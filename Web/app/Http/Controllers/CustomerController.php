@@ -46,6 +46,16 @@ class CustomerController extends Controller
         return view('Customer.wishlist');
     }
 
+    public function bankDetails()
+    {
+        return view('Customer.bankingDetails');
+    }
+
+    public function payment()
+    {
+        return view('Customer.confirmPayment');
+    }
+
    
 
     /**

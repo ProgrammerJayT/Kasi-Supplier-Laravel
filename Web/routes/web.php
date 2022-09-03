@@ -29,6 +29,9 @@ Route::get('/Customer/ProductView',[CustomerController::class,'product']) ->name
 Route::get('/Customer/UserProfile',[CustomerController::class,'profile']) ->name('UserProfile');
 Route::get('/Customer/Wishlist',[CustomerController::class,'wishlist']) ->name('Wishlist');
 
+Route::get('/Customer/BankingInformation',[CustomerController::class,'bankDetails']) ->name('BankingDetails');
+Route::get('/Customer/ConfirmPayment',[CustomerController::class,'payment']) ->name('Payment');
+
 
 
 Route::get('/Customer/CreateProduct',[CustomerController::class,'create']) ->name('CreateProd');
