@@ -40,3 +40,10 @@ Route::get('/Customer/CreateProduct',[CustomerController::class,'create']) ->nam
 Route::get('/Admin/Dashboard',[AdminController::class,'index']) ->name('AdminDashboard');
 Route::get('/Admin/Market',[AdminController::class,'markets']) ->name('AdminMarket');
 Route::get('/Admin/AccountApproval',[AdminController::class,'approve']) ->name('AdminApproval');
+
+
+//User Login
+Route::POST('/Login', [MainController::class, 'validateUser']) -> name('Login');
+
+//Add User
+Route::POST('/Register', [MainController::class, 'addUser']) -> name('Register');
