@@ -81,11 +81,14 @@
                 <div class="col-md-6 col-xl-4">
                     <div class="card shadow mb-5" style="margin: 0px -100px 48px;background: var(--bs-gray-dark);">
                         <div class="card-body d-flex flex-column align-items-center">
-                            <form class="text-center" method="post">
+
+
+                            <form class="text-center" method="POST">
+                                @csrf
                                 <div class="mb-3" style="width: 360px;margin: 0px;padding-top: 40px;padding-bottom: 0px;">
                                     <div class="input-group" style="margin: 0px 0px 16px;"><span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-bank2">
                                                 <path d="M8.277.084a.5.5 0 0 0-.554 0l-7.5 5A.5.5 0 0 0 .5 6h1.875v7H1.5a.5.5 0 0 0 0 1h13a.5.5 0 1 0 0-1h-.875V6H15.5a.5.5 0 0 0 .277-.916l-7.5-5zM12.375 6v7h-1.25V6h1.25zm-2.5 0v7h-1.25V6h1.25zm-2.5 0v7h-1.25V6h1.25zm-2.5 0v7h-1.25V6h1.25zM8 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2zM.5 15a.5.5 0 0 0 0 1h15a.5.5 0 1 0 0-1H.5z"></path>
-                                            </svg></span><select class="form-select form-select-lg" required="">
+                                            </svg></span><select class="form-select form-select-lg" name="bank_type" >
                                             <option value="" selected="">Select Bank </option>
                                             <option value="FNB">ABSA</option>
                                             <option value="">Bidvest</option>
@@ -98,10 +101,27 @@
                                             <option value="Tymebank">Tymebank</option>
                                         </select></div>
                                 </div>
-                                <div style="margin: 0px;width: 360px;padding-bottom: 20px;padding-top: 10px;"><input class="form-control form-control-lg" type="text" name="branchCode" placeholder="Branch Code" required=""></div>
-                                <div style="margin: 0px;padding-bottom: 20px;width: 360px;padding-top: 10px;"><input class="form-control form-control-lg" type="text" name="accountNumber" placeholder="Account Number" required="" maxlength="20" inputmode="numeric"></div>
+
+                                <div style="margin: 0px;width: 360px;padding-bottom: 20px;padding-top: 10px;"><input class="form-control form-control-lg" type="text" name="branchCode" placeholder="Branch Code"></div>
+                                
+                                    @error('branchCode')
+                                        <div>
+                                            <p class="text-danger border rounded border-2 border-danger shadow-sm pulse animated">Email Is Required</p>
+                                        </div>
+                                    @enderror
+
+                                <div style="margin: 0px;padding-bottom: 20px;width: 360px;padding-top: 10px;"><input class="form-control form-control-lg" type="text" name="accountNumber" placeholder="Account Number" maxlength="20" inputmode="numeric"></div>
+                                
+                                    @error('accountNumber')
+                                        <div>
+                                            <p class="text-danger border rounded border-2 border-danger shadow-sm pulse animated">Email Is Required</p>
+                                        </div>
+                                    @enderror
+                                
                                 <div class="mb-3" style="margin: 0px 0px;padding-right: 10px;padding-left: 10px;"><button class="btn btn-outline-primary fs-5 border rounded-pill border-primary shadow-sm d-block w-100" type="submit" style="margin: 60px 0px 16px;margin-bottom: 0px;">Submit</button></div>
                             </form>
+
+
                             <div class="mb-3" style="margin: 0px 0px 50px;"><a class="btn btn-outline-secondary fs-5 border rounded-pill border-secondary shadow-sm d-block w-100" role="button" href="{{route('Market')}}" style="margin: 60px 0px 16px;margin-bottom: 0px;margin-top: 10px;padding-right: 140px;padding-left: 140px;">Cancel</a></div>
                         </div>
                     </div>

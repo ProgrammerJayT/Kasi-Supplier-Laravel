@@ -4,57 +4,41 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class CustomerController extends Controller
+class PaymentController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    
-
     public function index()
     {
-        return view('Customer.dashboard');
+        return view('Customer.confirmPayment');
     }
-
-    public function cart()
-    {
-        return view('Customer.cart');
-    }
-
-    public function profile()
-    {
-        return view('Customer.profile');
-    }
-
-    public function report()
-    {
-       
-    }
-
-    public function wishlist()
-    {
-        return view('Customer.wishlist');
-    }
-
-    public function bankDetails()
-    {
-        return view('Customer.bankingDetails');
-    }
-
-    
 
    
-
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('Customer.createProduct');
+
+        // Validation
+
+        $this->validate($request,[
+            'payment_Proof' => 'required',
+        ]);
+
+        dd([
+            $request->payment_Proof,
+        ]);
+
+       
+
+        //Remove DieDump first
+        //return redirect('');
     }
 
     /**
@@ -65,7 +49,17 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'branchCode' => 'required',
+            'accountNumber' => 'required',
+        ]);
+
+        dd([
+            $request->bank_type,
+            $request->branchCode,
+            $request->accountNumber,
+        ]);
+
     }
 
     /**

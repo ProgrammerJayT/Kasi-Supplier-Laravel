@@ -104,7 +104,7 @@
     <div class="container" style="padding-top: 40px;">
         <div>
             <div class="row">
-                <div class="col text-start" style="padding-bottom: 50px;"><a href="#">
+                <div class="col text-start" style="padding-bottom: 50px;"><a href="{{route('ProductView')}}">
                         <div class="card" data-bss-hover-animate="pulse" style="width: 300px;">
                             <div class="card-body">
                                 <div><img class="rounded img-fluid bg-dark border border-dark shadow" data-bs-toggle="tooltip" data-bss-tooltip="" style="width: 270px;height: 237px;" src="../assets/img/223-2238298_4k-wallpaper-for-ps4.jpg" title="$Product_Title"></div>
@@ -116,7 +116,7 @@
                             </div>
                         </div>
                     </a></div>
-                <div class="col text-start" style="padding-bottom: 50px;"><a href="#">
+                    <div class="col text-start" style="padding-bottom: 50px;"><a href="{{route('ProductView')}}">
                         <div class="card" data-bss-hover-animate="pulse" style="width: 300px;">
                             <div class="card-body">
                                 <div><img class="rounded img-fluid bg-dark border border-dark shadow" data-bs-toggle="tooltip" data-bss-tooltip="" style="width: 270px;height: 237px;" src="../assets/img/223-2238298_4k-wallpaper-for-ps4.jpg" title="$Product_Title"></div>
@@ -128,7 +128,7 @@
                             </div>
                         </div>
                     </a></div>
-                <div class="col text-start" style="padding-bottom: 50px;"><a href="#">
+                    <div class="col text-start" style="padding-bottom: 50px;"><a href="{{route('ProductView')}}">
                         <div class="card" data-bss-hover-animate="pulse" style="width: 300px;">
                             <div class="card-body">
                                 <div><img class="rounded img-fluid bg-dark border border-dark shadow" data-bs-toggle="tooltip" data-bss-tooltip="" style="width: 270px;height: 237px;" src="../assets/img/223-2238298_4k-wallpaper-for-ps4.jpg" title="$Product_Title"></div>
@@ -140,57 +140,7 @@
                             </div>
                         </div>
                     </a></div>
-                <div class="col text-start" style="padding-bottom: 50px;"><a href="#">
-                        <div class="card" data-bss-hover-animate="pulse" style="width: 300px;">
-                            <div class="card-body">
-                                <div><img class="rounded img-fluid bg-dark border border-dark shadow" data-bs-toggle="tooltip" data-bss-tooltip="" style="width: 270px;height: 237px;" src="../assets/img/223-2238298_4k-wallpaper-for-ps4.jpg" title="$Product_Title"></div>
-                                <div>
-                                    <h3 class="fw-lighter text-start" style="width: 201px;height: 58px;margin: 0px 0px 10px;padding: 2px 0px 0px;">Black-Belt</h3>
-                                    <p class="text-start text-muted">Gaming Skills Book</p><span class="fw-bolder">R 20.00</span>
-                                    <div><button class="btn btn-outline-success border rounded-pill border-success shadow" type="button" style="margin-top: 6px;">Add To Cart</button><button class="btn btn-outline-danger border rounded-pill border-danger shadow" type="button" style="margin-top: 6px;margin-right: 0px;margin-left: 20px;">Add To Wishlist</button></div>
-                                </div>
-                            </div>
-                        </div>
-                    </a></div>
-            </div>
-            <div class="row">
-                <div class="col text-start" style="padding-bottom: 50px;"><a href="#">
-                        <div class="card" data-bss-hover-animate="pulse" style="width: 300px;">
-                            <div class="card-body">
-                                <div><img class="rounded img-fluid bg-dark border border-dark shadow" data-bs-toggle="tooltip" data-bss-tooltip="" style="width: 270px;height: 237px;" src="../assets/img/223-2238298_4k-wallpaper-for-ps4.jpg" title="$Product_Title"></div>
-                                <div>
-                                    <h3 class="fw-lighter text-start" style="width: 201px;height: 58px;margin: 0px 0px 10px;padding: 2px 0px 0px;">Black-Belt</h3>
-                                    <p class="text-start text-muted">Gaming Skills Book</p><span class="fw-bolder">R 20.00</span>
-                                    <div><button class="btn btn-outline-success border rounded-pill border-success shadow" type="button" style="margin-top: 6px;">Add To Cart</button><button class="btn btn-outline-danger border rounded-pill border-danger shadow" type="button" style="margin-top: 6px;margin-right: 0px;margin-left: 20px;">Add To Wishlist</button></div>
-                                </div>
-                            </div>
-                        </div>
-                    </a></div>
-                <div class="col text-start" style="padding-bottom: 50px;"><a href="#">
-                        <div class="card" data-bss-hover-animate="pulse" style="width: 300px;">
-                            <div class="card-body">
-                                <div><img class="rounded img-fluid bg-dark border border-dark shadow" data-bs-toggle="tooltip" data-bss-tooltip="" style="width: 270px;height: 237px;" src="../assets/img/223-2238298_4k-wallpaper-for-ps4.jpg" title="$Product_Title"></div>
-                                <div>
-                                    <h3 class="fw-lighter text-start" style="width: 201px;height: 58px;margin: 0px 0px 10px;padding: 2px 0px 0px;">Black-Belt</h3>
-                                    <p class="text-start text-muted">Gaming Skills Book</p><span class="fw-bolder">R 20.00</span>
-                                    <div><button class="btn btn-outline-success border rounded-pill border-success shadow" type="button" style="margin-top: 6px;">Add To Cart</button><button class="btn btn-outline-danger border rounded-pill border-danger shadow" type="button" style="margin-top: 6px;margin-right: 0px;margin-left: 20px;">Add To Wishlist</button></div>
-                                </div>
-                            </div>
-                        </div>
-                    </a></div>
-                <div class="col text-start" style="padding-bottom: 50px;"><a href="#">
-                        <div class="card" data-bss-hover-animate="pulse" style="width: 300px;">
-                            <div class="card-body">
-                                <div><img class="rounded img-fluid bg-dark border border-dark shadow" data-bs-toggle="tooltip" data-bss-tooltip="" style="width: 270px;height: 237px;" src="../assets/img/223-2238298_4k-wallpaper-for-ps4.jpg" title="$Product_Title"></div>
-                                <div>
-                                    <h3 class="fw-lighter text-start" style="width: 201px;height: 58px;margin: 0px 0px 10px;padding: 2px 0px 0px;">Black-Belt</h3>
-                                    <p class="text-start text-muted">Gaming Skills Book</p><span class="fw-bolder">R 20.00</span>
-                                    <div><button class="btn btn-outline-success border rounded-pill border-success shadow" type="button" style="margin-top: 6px;">Add To Cart</button><button class="btn btn-outline-danger border rounded-pill border-danger shadow" type="button" style="margin-top: 6px;margin-right: 0px;margin-left: 20px;">Add To Wishlist</button></div>
-                                </div>
-                            </div>
-                        </div>
-                    </a></div>
-                <div class="col text-start" style="padding-bottom: 50px;"><a href="#">
+                    <div class="col text-start" style="padding-bottom: 50px;"><a href="{{route('ProductView')}}">
                         <div class="card" data-bss-hover-animate="pulse" style="width: 300px;">
                             <div class="card-body">
                                 <div><img class="rounded img-fluid bg-dark border border-dark shadow" data-bs-toggle="tooltip" data-bss-tooltip="" style="width: 270px;height: 237px;" src="../assets/img/223-2238298_4k-wallpaper-for-ps4.jpg" title="$Product_Title"></div>
@@ -204,7 +154,19 @@
                     </a></div>
             </div>
             <div class="row">
-                <div class="col text-start" style="padding-bottom: 50px;"><a href="#">
+                <div class="col text-start" style="padding-bottom: 50px;"><a href="{{route('ProductView')}}">
+                    <div class="card" data-bss-hover-animate="pulse" style="width: 300px;">
+                            <div class="card-body">
+                                <div><img class="rounded img-fluid bg-dark border border-dark shadow" data-bs-toggle="tooltip" data-bss-tooltip="" style="width: 270px;height: 237px;" src="../assets/img/223-2238298_4k-wallpaper-for-ps4.jpg" title="$Product_Title"></div>
+                                <div>
+                                    <h3 class="fw-lighter text-start" style="width: 201px;height: 58px;margin: 0px 0px 10px;padding: 2px 0px 0px;">Black-Belt</h3>
+                                    <p class="text-start text-muted">Gaming Skills Book</p><span class="fw-bolder">R 20.00</span>
+                                    <div><button class="btn btn-outline-success border rounded-pill border-success shadow" type="button" style="margin-top: 6px;">Add To Cart</button><button class="btn btn-outline-danger border rounded-pill border-danger shadow" type="button" style="margin-top: 6px;margin-right: 0px;margin-left: 20px;">Add To Wishlist</button></div>
+                                </div>
+                            </div>
+                        </div>
+                    </a></div>
+                    <div class="col text-start" style="padding-bottom: 50px;"><a href="{{route('ProductView')}}">
                         <div class="card" data-bss-hover-animate="pulse" style="width: 300px;">
                             <div class="card-body">
                                 <div><img class="rounded img-fluid bg-dark border border-dark shadow" data-bs-toggle="tooltip" data-bss-tooltip="" style="width: 270px;height: 237px;" src="../assets/img/223-2238298_4k-wallpaper-for-ps4.jpg" title="$Product_Title"></div>
@@ -216,7 +178,7 @@
                             </div>
                         </div>
                     </a></div>
-                <div class="col text-start" style="padding-bottom: 50px;"><a href="#">
+                    <div class="col text-start" style="padding-bottom: 50px;"><a href="{{route('ProductView')}}">
                         <div class="card" data-bss-hover-animate="pulse" style="width: 300px;">
                             <div class="card-body">
                                 <div><img class="rounded img-fluid bg-dark border border-dark shadow" data-bs-toggle="tooltip" data-bss-tooltip="" style="width: 270px;height: 237px;" src="../assets/img/223-2238298_4k-wallpaper-for-ps4.jpg" title="$Product_Title"></div>
@@ -228,19 +190,7 @@
                             </div>
                         </div>
                     </a></div>
-                <div class="col text-start" style="padding-bottom: 50px;"><a href="#">
-                        <div class="card" data-bss-hover-animate="pulse" style="width: 300px;">
-                            <div class="card-body">
-                                <div><img class="rounded img-fluid bg-dark border border-dark shadow" data-bs-toggle="tooltip" data-bss-tooltip="" style="width: 270px;height: 237px;" src="../assets/img/223-2238298_4k-wallpaper-for-ps4.jpg" title="$Product_Title"></div>
-                                <div>
-                                    <h3 class="fw-lighter text-start" style="width: 201px;height: 58px;margin: 0px 0px 10px;padding: 2px 0px 0px;">Black-Belt</h3>
-                                    <p class="text-start text-muted">Gaming Skills Book</p><span class="fw-bolder">R 20.00</span>
-                                    <div><button class="btn btn-outline-success border rounded-pill border-success shadow" type="button" style="margin-top: 6px;">Add To Cart</button><button class="btn btn-outline-danger border rounded-pill border-danger shadow" type="button" style="margin-top: 6px;margin-right: 0px;margin-left: 20px;">Add To Wishlist</button></div>
-                                </div>
-                            </div>
-                        </div>
-                    </a></div>
-                <div class="col text-start" style="padding-bottom: 50px;"><a href="#">
+                    <div class="col text-start" style="padding-bottom: 50px;"><a href="{{route('ProductView')}}">
                         <div class="card" data-bss-hover-animate="pulse" style="width: 300px;">
                             <div class="card-body">
                                 <div><img class="rounded img-fluid bg-dark border border-dark shadow" data-bs-toggle="tooltip" data-bss-tooltip="" style="width: 270px;height: 237px;" src="../assets/img/223-2238298_4k-wallpaper-for-ps4.jpg" title="$Product_Title"></div>
@@ -254,7 +204,19 @@
                     </a></div>
             </div>
             <div class="row">
-                <div class="col text-start" style="padding-bottom: 50px;"><a href="#">
+                <div class="col text-start" style="padding-bottom: 50px;"><a href="{{route('ProductView')}}">
+                    <div class="card" data-bss-hover-animate="pulse" style="width: 300px;">
+                            <div class="card-body">
+                                <div><img class="rounded img-fluid bg-dark border border-dark shadow" data-bs-toggle="tooltip" data-bss-tooltip="" style="width: 270px;height: 237px;" src="../assets/img/223-2238298_4k-wallpaper-for-ps4.jpg" title="$Product_Title"></div>
+                                <div>
+                                    <h3 class="fw-lighter text-start" style="width: 201px;height: 58px;margin: 0px 0px 10px;padding: 2px 0px 0px;">Black-Belt</h3>
+                                    <p class="text-start text-muted">Gaming Skills Book</p><span class="fw-bolder">R 20.00</span>
+                                    <div><button class="btn btn-outline-success border rounded-pill border-success shadow" type="button" style="margin-top: 6px;">Add To Cart</button><button class="btn btn-outline-danger border rounded-pill border-danger shadow" type="button" style="margin-top: 6px;margin-right: 0px;margin-left: 20px;">Add To Wishlist</button></div>
+                                </div>
+                            </div>
+                        </div>
+                    </a></div>
+                    <div class="col text-start" style="padding-bottom: 50px;"><a href="{{route('ProductView')}}">
                         <div class="card" data-bss-hover-animate="pulse" style="width: 300px;">
                             <div class="card-body">
                                 <div><img class="rounded img-fluid bg-dark border border-dark shadow" data-bs-toggle="tooltip" data-bss-tooltip="" style="width: 270px;height: 237px;" src="../assets/img/223-2238298_4k-wallpaper-for-ps4.jpg" title="$Product_Title"></div>
@@ -266,7 +228,7 @@
                             </div>
                         </div>
                     </a></div>
-                <div class="col text-start" style="padding-bottom: 50px;"><a href="#">
+                    <div class="col text-start" style="padding-bottom: 50px;"><a href="{{route('ProductView')}}">
                         <div class="card" data-bss-hover-animate="pulse" style="width: 300px;">
                             <div class="card-body">
                                 <div><img class="rounded img-fluid bg-dark border border-dark shadow" data-bs-toggle="tooltip" data-bss-tooltip="" style="width: 270px;height: 237px;" src="../assets/img/223-2238298_4k-wallpaper-for-ps4.jpg" title="$Product_Title"></div>
@@ -278,7 +240,7 @@
                             </div>
                         </div>
                     </a></div>
-                <div class="col text-start" style="padding-bottom: 50px;"><a href="#">
+                    <div class="col text-start" style="padding-bottom: 50px;"><a href="{{route('ProductView')}}">
                         <div class="card" data-bss-hover-animate="pulse" style="width: 300px;">
                             <div class="card-body">
                                 <div><img class="rounded img-fluid bg-dark border border-dark shadow" data-bs-toggle="tooltip" data-bss-tooltip="" style="width: 270px;height: 237px;" src="../assets/img/223-2238298_4k-wallpaper-for-ps4.jpg" title="$Product_Title"></div>
@@ -290,7 +252,45 @@
                             </div>
                         </div>
                     </a></div>
-                <div class="col text-start" style="padding-bottom: 50px;"><a href="#">
+            </div>
+            <div class="row">
+                <div class="col text-start" style="padding-bottom: 50px;"><a href="{{route('ProductView')}}">
+                    <div class="card" data-bss-hover-animate="pulse" style="width: 300px;">
+                            <div class="card-body">
+                                <div><img class="rounded img-fluid bg-dark border border-dark shadow" data-bs-toggle="tooltip" data-bss-tooltip="" style="width: 270px;height: 237px;" src="../assets/img/223-2238298_4k-wallpaper-for-ps4.jpg" title="$Product_Title"></div>
+                                <div>
+                                    <h3 class="fw-lighter text-start" style="width: 201px;height: 58px;margin: 0px 0px 10px;padding: 2px 0px 0px;">Black-Belt</h3>
+                                    <p class="text-start text-muted">Gaming Skills Book</p><span class="fw-bolder">R 20.00</span>
+                                    <div><button class="btn btn-outline-success border rounded-pill border-success shadow" type="button" style="margin-top: 6px;">Add To Cart</button><button class="btn btn-outline-danger border rounded-pill border-danger shadow" type="button" style="margin-top: 6px;margin-right: 0px;margin-left: 20px;">Add To Wishlist</button></div>
+                                </div>
+                            </div>
+                        </div>
+                    </a></div>
+                    <div class="col text-start" style="padding-bottom: 50px;"><a href="{{route('ProductView')}}">
+                        <div class="card" data-bss-hover-animate="pulse" style="width: 300px;">
+                            <div class="card-body">
+                                <div><img class="rounded img-fluid bg-dark border border-dark shadow" data-bs-toggle="tooltip" data-bss-tooltip="" style="width: 270px;height: 237px;" src="../assets/img/223-2238298_4k-wallpaper-for-ps4.jpg" title="$Product_Title"></div>
+                                <div>
+                                    <h3 class="fw-lighter text-start" style="width: 201px;height: 58px;margin: 0px 0px 10px;padding: 2px 0px 0px;">Black-Belt</h3>
+                                    <p class="text-start text-muted">Gaming Skills Book</p><span class="fw-bolder">R 20.00</span>
+                                    <div><button class="btn btn-outline-success border rounded-pill border-success shadow" type="button" style="margin-top: 6px;">Add To Cart</button><button class="btn btn-outline-danger border rounded-pill border-danger shadow" type="button" style="margin-top: 6px;margin-right: 0px;margin-left: 20px;">Add To Wishlist</button></div>
+                                </div>
+                            </div>
+                        </div>
+                    </a></div>
+                    <div class="col text-start" style="padding-bottom: 50px;"><a href="{{route('ProductView')}}">
+                        <div class="card" data-bss-hover-animate="pulse" style="width: 300px;">
+                            <div class="card-body">
+                                <div><img class="rounded img-fluid bg-dark border border-dark shadow" data-bs-toggle="tooltip" data-bss-tooltip="" style="width: 270px;height: 237px;" src="../assets/img/223-2238298_4k-wallpaper-for-ps4.jpg" title="$Product_Title"></div>
+                                <div>
+                                    <h3 class="fw-lighter text-start" style="width: 201px;height: 58px;margin: 0px 0px 10px;padding: 2px 0px 0px;">Black-Belt</h3>
+                                    <p class="text-start text-muted">Gaming Skills Book</p><span class="fw-bolder">R 20.00</span>
+                                    <div><button class="btn btn-outline-success border rounded-pill border-success shadow" type="button" style="margin-top: 6px;">Add To Cart</button><button class="btn btn-outline-danger border rounded-pill border-danger shadow" type="button" style="margin-top: 6px;margin-right: 0px;margin-left: 20px;">Add To Wishlist</button></div>
+                                </div>
+                            </div>
+                        </div>
+                    </a></div>
+                    <div class="col text-start" style="padding-bottom: 50px;"><a href="{{route('ProductView')}}">
                         <div class="card" data-bss-hover-animate="pulse" style="width: 300px;">
                             <div class="card-body">
                                 <div><img class="rounded img-fluid bg-dark border border-dark shadow" data-bs-toggle="tooltip" data-bss-tooltip="" style="width: 270px;height: 237px;" src="../assets/img/223-2238298_4k-wallpaper-for-ps4.jpg" title="$Product_Title"></div>

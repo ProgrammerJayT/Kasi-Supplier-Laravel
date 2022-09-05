@@ -4,57 +4,51 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class CustomerController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    
-
     public function index()
     {
-        return view('Customer.dashboard');
+        return view('Customer.market');
     }
 
-    public function cart()
+    public function product()
     {
-        return view('Customer.cart');
+        return view('Customer.product');
     }
-
-    public function profile()
-    {
-        return view('Customer.profile');
-    }
-
-    public function report()
-    {
-       
-    }
-
-    public function wishlist()
-    {
-        return view('Customer.wishlist');
-    }
-
-    public function bankDetails()
-    {
-        return view('Customer.bankingDetails');
-    }
-
-    
-
-   
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+
+    public function create(Request $request)
     {
-        return view('Customer.createProduct');
+       
+    //    Validation
+        $this->validate($request,[
+        'product_name' => 'required',
+        'product_description' => 'required | max:100',
+        'product_price' => 'required | numeric',
+        'product_image' => 'required',
+        ]);
+
+        dd([
+            $request->product_name,
+            $request->product_description,
+            $request->product_price,
+            $request->department_Type,
+            $request->product_image,
+            
+        ]);
+
+        //Remove DieDump first
+        //return redirect('');
     }
 
     /**

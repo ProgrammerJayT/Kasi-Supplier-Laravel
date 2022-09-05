@@ -87,15 +87,27 @@
                             <p style="padding-left: 0px;">Account Number:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="margin-right: 3px;">000000000000</span></p>
                             <p style="padding-left: 0px;">Account Holder:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="margin-right: 3px;">Programmer JayT</span></p>
                             <h5 style="padding-top: 20px;">After Paying</h5>
-                            <form class="text-center" method="post" style="height: 300px;">
+                           
+                            <form class="text-center" method="POST" style="height: 300px;">
+                                @csrf
                                 <div class="mb-3" style="width: 360px;margin: 0px;padding-top: 30px;padding-bottom: 0px;">
                                     <p style="height: 17.9062px;">Upload Proof Of Payment</p>
-                                    <div class="input-group" style="margin: 0px 0px 16px;"><input class="form-control form-control-lg" type="file"><span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-paperclip">
+                                    <div class="input-group" style="margin: 0px 0px 16px;"><input class="form-control form-control-lg" type="file" name="payment_Proof"><span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-paperclip">
                                                 <path d="M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0V3z"></path>
                                             </svg></span></div>
+
+                                        @error('payment_Proof')
+                                            <div>
+                                                <p class="text-danger border rounded border-2 border-danger shadow-sm pulse animated">Email Is Required</p>
+                                            </div>
+                                         @enderror
+
                                 </div>
                                 <div style="margin: 0px;width: 360px;padding-bottom: 20px;padding-top: 10px;"><textarea class="form-control form-control-lg" name="commentSection" placeholder="Add A Comment (Optional)"></textarea></div><button class="btn btn-outline-primary btn-lg border rounded-pill border-primary" type="submit" style="margin-top: 10px;padding-left: 30px;padding-right: 30px;">Confirm Payment</button>
-                            </form><a class="btn btn-outline-secondary border rounded-pill border-secondary" role="button" style="margin-top: 20px;padding-right: 50px;padding-left: 50px;" href="{{route('Cart')}}">Cancel</a>                        </div>
+                            </form>
+                            
+                            
+                            <a class="btn btn-outline-secondary border rounded-pill border-secondary" role="button" style="margin-top: 20px;padding-right: 50px;padding-left: 50px;" href="{{route('Cart')}}">Cancel</a>                        </div>
                     </div>
                 </div>
             </div>

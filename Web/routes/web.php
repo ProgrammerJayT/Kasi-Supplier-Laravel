@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,13 +26,16 @@ Route::get('/Register',[MainController::class,'register']) -> name('Register');
 Route::get('/Customer/Dashboard',[CustomerController::class,'index']) ->name('Dashboard');
 
 Route::get('/Customer/Cart',[CustomerController::class,'cart']) ->name('Cart');
-Route::get('/Customer/Market',[CustomerController::class,'market']) ->name('Market');
-Route::get('/Customer/ProductView',[CustomerController::class,'product']) ->name('ProductView');
+
+//Products
+Route::get('/Customer/Market',[ProductController::class,'index']) ->name('Market');
+Route::get('/Customer/ProductView',[ProductController::class,'product']) ->name('ProductView');
+
 Route::get('/Customer/UserProfile',[CustomerController::class,'profile']) ->name('UserProfile');
 Route::get('/Customer/Wishlist',[CustomerController::class,'wishlist']) ->name('Wishlist');
 
 Route::get('/Customer/BankingInformation',[CustomerController::class,'bankDetails']) ->name('BankingDetails');
-Route::get('/Customer/ConfirmPayment',[CustomerController::class,'payment']) ->name('Payment');
+Route::get('/Customer/ConfirmPayment',[PaymentController::class,'index']) ->name('Payment');
 
 
 
@@ -47,3 +52,13 @@ Route::POST('/Login', [MainController::class, 'validateUser']) -> name('Login');
 
 //Add User
 Route::POST('/Register', [MainController::class, 'addUser']) -> name('Register');
+
+
+//Create Product
+Route::POST('/Customer/CreateProduct',[ProductController::class,'create']) ->name('CreateProd');
+
+//Payment Create
+Route::POST('/Customer/ConfirmPayment',[PaymentController::class,'create']) ->name('Payment');
+
+//Store Banking Details
+Route::POST('/Customer/BankingInformation',[PaymentController::class,'store']) ->name('BankingDetails');
