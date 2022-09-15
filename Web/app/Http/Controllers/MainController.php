@@ -28,12 +28,12 @@ class MainController extends Controller
     {
         //Validation
         $this->validate($request,[
-            'emal' => 'required',
+            'email' => 'required',
             'password' => 'required',
         ]);
 
         dd([
-            $request->emal,
+            $request->email,
             $request->password,
             
         ]);
