@@ -54,8 +54,8 @@ class MainController extends Controller
             'email' => 'required',
             'address' => 'required',
             'userType' => 'required',
-            'password' => 'required | confirmed',
-            'password_confirmation' => 'required',
+            'password' => 'required',
+            'password_confirmation' => 'required|same:password',
             
         ]);
 
