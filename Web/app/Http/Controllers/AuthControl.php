@@ -7,16 +7,28 @@ use Illuminate\Http\Request;
 class AuthControl extends Controller
 {
     //
+    public function register(Request $req)
+    {
+        $req->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:6|max:12'
+        ]);
 
-    public function register(Request $req) {
-        return "Registration Page";
+        return $req->input();
     }
 
-    public function login(Request $req) {
-        return "Login Page";
+    public function login(Request $req)
+    {
+        $req->validate([
+            'email' => 'required|email',
+            'password' => 'required|min:6|max:12'
+        ]);
+
+        return $req->input();
     }
 
-    public function logout() {
-        
+    public function logout()
+    {
     }
 }
