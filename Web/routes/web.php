@@ -26,10 +26,10 @@ Route::get('/register', function () {
     return view('auth.register');
 });
 
-Route::post('/registrationRequest', [
-    AuthControl::class, 'registrationRequest'
+Route::post('/registration-request', [
+    AuthControl::class, 'register'
 ])->name('registrationRequest');
 
-Route::post('/loginRequest', [
-    AuthControl::class, 'loginRequest'
+Route::post('/login-request', [
+    AuthControl::class, 'login'
 ])->name('loginRequest');
