@@ -18,13 +18,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', [
-    AuthControl::class, 'login'
-])->name('login');
+Route::get('/login', function () {
+    return view('auth.login');
+});
 
-Route::get('/register', [
-    AuthControl::class, 'register'
-])->name('register');
+Route::get('/register', function () {
+    return view('auth.register');
+});
 
 Route::post('/registrationRequest', [
     AuthControl::class, 'registrationRequest'
