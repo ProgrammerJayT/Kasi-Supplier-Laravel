@@ -8,20 +8,12 @@ class AuthControl extends Controller
 {
     //
 
-    public function register() {
-
+    public function register(Request $req) {
+        return "Registration Page";
     }
 
-    public function registrationRequest(Request $req) {
-
-        $req->validate([
-            'name' => 'required',
-            'email' => 'unique:account'
-        ]);
-    }
-
-    public function login() {
-
+    public function login(Request $req) {
+        return "Login Page";
     }
 
     public function logout() {
