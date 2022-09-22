@@ -18,8 +18,16 @@
                         <div class="card shadow-sm mb-5" style="margin: 0px 0px 50px;background: var(--bs-gray-dark);">
                             <div class="card-body d-flex flex-column align-items-center"
                                 style="background: var(--bs-gray-dark);border-style: none;">
+
                                 <form class="text-center" action="login-request" method="POST">
                                     @csrf
+
+                                    @if (Session::get('fail'))
+                                        <div class="alert alert-danger">
+                                            {{ Session::get('fail') }}
+                                        </div>
+                                    @endif
+
                                     <div class="mb-3">
                                         <div class="input-group" style="margin: 50px 0px 15px;margin-bottom: 0px;">
                                             <span class="input-group-text"><i class="far fa-envelope"></i></span>

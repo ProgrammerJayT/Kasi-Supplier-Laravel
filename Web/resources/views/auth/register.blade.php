@@ -17,15 +17,15 @@
                         <div class="card shadow mb-5" style="margin: 0px -100px 48px;background: var(--bs-gray-dark);">
                             <div class="card-body d-flex flex-column align-items-center">
 
-                                @if (Session::get('fail'))
-                                    <div class="alert alert-danger">
-                                        {{ Session::get('fail') }}
-                                    </div>
-                                @endif
-
                                 <form class="text-center" style="margin-top: 20px;" action="registration-request"
                                     method="POST">
                                     @csrf
+
+                                    @if (Session::get('fail'))
+                                        <div class="alert alert-danger">
+                                            {{ Session::get('fail') }}
+                                        </div>
+                                    @endif
 
                                     {{-- Prompt for user's name --}}
                                     <div class="mb-3">
