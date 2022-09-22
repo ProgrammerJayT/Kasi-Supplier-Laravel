@@ -28,8 +28,8 @@ Route::get('/register', function () {
 
 Route::post('/registration-request', [
     AuthControl::class, 'register'
-])->name('registrationRequest');
+])->name('registration-request');
 
 Route::post('/login-request', [
     AuthControl::class, 'login'
-])->name('loginRequest');
+])->name('login-request');
