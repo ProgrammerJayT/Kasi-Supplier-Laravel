@@ -60,7 +60,16 @@ class AuthControl extends Controller
             'password' => 'required|min:6|max:12'
         ]);
 
-        return $req->input();
+        $user = Account::where('email', $req->input('email'))->first();
+        if ($user) {
+            if (Hash::check($req->input('password'), $user->password)) {
+                return redirect($user->type . '-dashboard');
+            } else {
+                return back()->with('fail', 'Incorrect credentials');
+            }
+        } else {
+            return back()->with('fail', 'Incorrect credentials');
+        }
     }
 
     public function logout()
