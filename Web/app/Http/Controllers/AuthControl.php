@@ -24,16 +24,10 @@ class AuthControl extends Controller
         ]);
 
         if ($req->type == '') {
-
             $model = new Admin;
             $active = true;
         } else {
-            if ($req->type == 'customer') {
-                $model = new Customer;
-            } else {
-                $model = new Vendor;
-            }
-
+            $req->input('type') == 'customer' ? $model = new Customer : $model = new Vendor;
             $active = false;
         }
 
@@ -51,9 +45,9 @@ class AuthControl extends Controller
         $account->active = $active;
 
         if ($model->save() && $account->save()) {
-            //Success action
+            return redirect($req->input('type').'-dashboard');
         } else {
-            //Exception
+            return back()->with('fail', 'Your account could not be created');
         }
     }
 
