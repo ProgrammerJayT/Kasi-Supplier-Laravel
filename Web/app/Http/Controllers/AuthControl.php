@@ -63,6 +63,7 @@ class AuthControl extends Controller
         $user = Account::where('email', $req->input('email'))->first();
         if ($user) {
             if (Hash::check($req->input('password'), $user->password)) {
+                $req->session()->put('user', $user->id);
                 return redirect($user->type . '-dashboard');
             } else {
                 return back()->with('fail', 'Incorrect credentials');
