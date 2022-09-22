@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminControl;
 use App\Http\Controllers\AuthControl;
 use Illuminate\Support\Facades\Route;
 
@@ -33,3 +34,15 @@ Route::post('/registration-request', [
 Route::post('/login-request', [
     AuthControl::class, 'login'
 ])->name('login-request');
+
+Route::get('/admin-dashboard', function () {
+    return view('dashboard.admin');
+})->name('admin-dashboard');
+
+Route::get('/vendor-dashboard', function () {
+    return view('dashboard.vendor');
+})->name('vendor-dashboard');
+
+Route::get('/customer-dashboard', function () {
+    return view('dashboard.customer');
+})->name('customer-dashboard');
