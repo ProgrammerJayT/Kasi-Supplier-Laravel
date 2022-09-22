@@ -19,6 +19,7 @@
                             <div class="card-body d-flex flex-column align-items-center"
                                 style="background: var(--bs-gray-dark);border-style: none;">
                                 <form class="text-center" action="login-request" method="POST">
+                                    @csrf
                                     <div class="mb-3">
                                         <div class="input-group" style="margin: 50px 0px 15px;margin-bottom: 0px;">
                                             <span class="input-group-text"><i class="far fa-envelope"></i></span>
@@ -26,24 +27,45 @@
                                                 placeholder="Email Address">
                                         </div>
                                     </div>
-                                
-                                    <div>
-                                        <p
-                                            class="text-danger border rounded border-2 border-danger shadow-sm pulse animated">{{$message}}</p>
-                                    </div>
+
+                                    @error('email')
+                                        <div>
+                                            <p
+                                                class="text-danger border rounded border-2 border-danger shadow-sm pulse animated">
+                                                {{ $message }}</p>
+                                        </div>
+                                    @enderror
+
+
+
                                     <div class="mb-3">
-                                        <div class="input-group"><span class="input-group-text"><i
-                                                    class="fas fa-lock"></i></span><input
-                                                class="form-control form-control-lg" type="password" name="password"
-                                                placeholder="Password"><span class="input-group-text"
-                                                style="background: rgb(255,255,255);"><i class="far fa-eye"></i></span>
+                                        <div class="input-group">
+                                            <span class="input-group-text">
+                                                <i class="fas fa-lock"></i>
+                                            </span>
+                                            <input class="form-control form-control-lg" type="password" name="password"
+                                                placeholder="Password">
+                                            <span class="input-group-text" style="background: rgb(255,255,255);">
+                                                <i class="far fa-eye"></i>
+                                            </span>
                                         </div>
                                     </div>
-                                    <div class="mb-3" style="margin: 0px 0px 50px;"><button
+
+                                    @error('password')
+                                        <div>
+                                            <p
+                                                class="text-danger border rounded border-2 border-danger shadow-sm pulse animated">
+                                                {{ $message }}</p>
+                                        </div>
+                                    @enderror
+
+                                    <div class="mb-3" style="margin: 0px 0px 50px;">
+                                        <button
                                             class="btn btn-outline-primary fs-5 border rounded-pill border-primary d-block w-100"
-                                            type="submit" style="margin: 60px 0px 16px;">Sign In</button></div>
-                                    <p class="text-muted">Don't have an account?&nbsp;<a href="register">Register
-                                            Now</a></p>
+                                            type="submit" style="margin: 60px 0px 16px;">Sign In</button>
+                                    </div>
+                                    <p class="text-muted">Don't have an account?&nbsp;<a href="register">Register Now</a>
+                                    </p>
                                 </form>
                             </div>
                         </div>
