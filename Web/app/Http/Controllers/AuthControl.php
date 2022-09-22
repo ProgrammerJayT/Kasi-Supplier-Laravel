@@ -23,11 +23,13 @@ class AuthControl extends Controller
             'password_confirmation' => 'required|same:password'
         ]);
 
-        if ($req->type == '') {
+        if ($req->type == null) {
             $model = new Admin;
             $active = true;
+            $role = 'admin';
         } else {
-            $req->input('type') == 'customer' ? $model = new Customer : $model = new Vendor;
+            $req->input('type') == 'customer' ? [$model = new Customer, $role = $req->input('type')]
+                : [$model = new Vendor, $role = $req->input('type')];
             $active = false;
         }
 
@@ -41,11 +43,11 @@ class AuthControl extends Controller
         $account = new Account;
         $account->email = $req->input('email');
         $account->password = Hash::make($req->input('password'));
-        $account->type = $req->input('type');
+        $account->type = $role;
         $account->active = $active;
 
         if ($model->save() && $account->save()) {
-            return redirect($req->input('type').'-dashboard');
+            return redirect($role . '-dashboard');
         } else {
             return back()->with('fail', 'Your account could not be created');
         }
