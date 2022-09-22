@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Account;
 use Illuminate\Http\Request;
+use App\Models\Customer;
+use App\Models\Vendor;
+use App\Models\Admin;
+use Illuminate\Support\Facades\Hash;
 
 class AuthControl extends Controller
 {
@@ -12,13 +17,44 @@ class AuthControl extends Controller
         $req->validate([
             'name' => 'required|alpha',
             'surname' => 'required|alpha',
-            'address' => 'required',
+            'location' => 'required',
             'email' => 'required|email|unique:account',
             'password' => 'required|min:8',
             'password_confirmation' => 'required|same:password'
         ]);
 
-        return $req->input();
+        if ($req->type == '') {
+
+            $model = new Admin;
+            $active = true;
+        } else {
+            if ($req->type == 'customer') {
+                $model = new Customer;
+            } else {
+                $model = new Vendor;
+            }
+
+            $active = false;
+        }
+
+        //Store user's details
+        $model->name = $req->input('name');
+        $model->surname = $req->input('surname');
+        $model->email = $req->input('email');
+        $model->location = $req->input('location');
+
+        //Create user's account
+        $account = new Account;
+        $account->email = $req->input('email');
+        $account->password = Hash::make($req->input('password'));
+        $account->type = $req->input('type');
+        $account->active = $active;
+
+        if ($model->save() && $account->save()) {
+            //Success action
+        } else {
+            //Exception
+        }
     }
 
     public function login(Request $req)
