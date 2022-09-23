@@ -3,9 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,10 +49,27 @@ Route::get('/Admin/AccountApproval',[AdminController::class,'approve']) ->name('
 
 
 //User Login
-Route::POST('/Login', [MainController::class, 'validateUser']) -> name('Login');
+// Route::POST('/Login', [MainController::class, 'validateUser']) -> name('Login');
 
 //Add User
-Route::POST('/Register', [MainController::class, 'addUser']) -> name('Register');
+// Route::POST('/Register', [MainController::class, 'addUser']) -> name('Register');
+
+
+Route::POST('/Register', [RegisterController::class, 'create_user']) -> name('Register');
+
+Route::POST('/Login', [RegisterController::class, 'user_login']) -> name('Login');
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //Create Product

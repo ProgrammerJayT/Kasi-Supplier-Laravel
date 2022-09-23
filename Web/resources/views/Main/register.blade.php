@@ -90,10 +90,10 @@
                                 <div class="mb-3">
                                     <div class="input-group" style="margin: 0px 0px 16px;"><span
                                             class="input-group-text"><i class="far fa-envelope"></i></span><input
-                                            class="form-control form-control-lg" type="email" name="email"
+                                            class="form-control form-control-lg" type="email" name="emal"
                                             placeholder="User@example.com" value="{{ old('emal') }}"></div>
 
-                                    @error('email')
+                                    @error('emal')
                                         <div>
                                             <p
                                                 class="text-danger border rounded border-2 border-danger shadow-sm pulse animated">

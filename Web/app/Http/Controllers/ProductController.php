@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Vendor;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -29,7 +30,7 @@ class ProductController extends Controller
 
     public function create(Request $request)
     {
-       
+
     //    Validation
         $this->validate($request,[
         'product_name' => 'required',
@@ -38,14 +39,22 @@ class ProductController extends Controller
         'product_image' => 'required',
         ]);
 
-        dd([
-            $request->product_name,
-            $request->product_description,
-            $request->product_price,
-            $request->department_Type,
-            $request->product_image,
-            
-        ]);
+
+        //Store banking Details
+
+        //Store based on loginId!!!!
+        Vendor::create([
+            'Bank_Name' => $request->bank_type,
+            'Branch_Code'=> $request->branchCode,
+            'Account_Number'=> $request->accountNumber,
+
+            'Product_Name' => $request->product_name,
+            'Product_Description' => $request->product_description,
+            'Product_Price' => $request->product_price,
+            'Product_Department' => $request->department_Type,
+            'Product_Image' => $request->product_image,
+
+            ]);
 
         //Remove DieDump first
         //return redirect('');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -11,10 +12,13 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
+
 
     public function index()
     {
+
+
+
         return view('Customer.dashboard');
     }
 
@@ -30,7 +34,7 @@ class CustomerController extends Controller
 
     public function report()
     {
-       
+
     }
 
     public function wishlist()
@@ -43,9 +47,9 @@ class CustomerController extends Controller
         return view('Customer.bankingDetails');
     }
 
-    
 
-   
+
+
 
     /**
      * Show the form for creating a new resource.

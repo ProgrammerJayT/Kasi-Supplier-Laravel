@@ -43,22 +43,22 @@
                 <div class="col-md-6 col-xl-4">
                     <div class="card shadow-sm mb-5" style="margin: 0px -100px 48px;background: var(--bs-gray-dark);">
                         <div class="card-body d-flex flex-column align-items-center" style="background: var(--bs-gray-dark);border-style: none;">
-                           
+
                             <form class="text-center" method="POST">
                                 @csrf
                                 <div class="mb-3">
                                     <div class="input-group " style="margin: 50px 0px 15px;margin-bottom: 15px;"><span class="input-group-text"><i class="far fa-envelope"></i></span><input class="form-control form-control-lg " type="email" name="emal" placeholder="User@example.com" value="{{ old('emal') }}"></div>
-                                    
+
                                     @error('emal')
                                         <div>
                                             <p class="text-danger border rounded border-2 border-danger shadow-sm pulse animated">Email Is Required</p>
                                         </div>
                                     @enderror
-                                
+
                                 </div>
                                 <div class="mb-3">
                                     <div class="input-group" style="margin: 0 0px 15px;margin-bottom: 15px;"><span class="input-group-text"><i class="fas fa-lock"></i></span><input class="form-control form-control-lg" type="password" name="password" placeholder="Password" value="{{ old('password') }}"><span class="input-group-text" style="background: rgb(255,255,255);"><i class="far fa-eye"></i></span></div>
-                                
+
                                     @error('password')
                                         <div>
                                             <p class="text-danger border rounded border-2 border-danger shadow-sm pulse animated">Password Is Required</p>

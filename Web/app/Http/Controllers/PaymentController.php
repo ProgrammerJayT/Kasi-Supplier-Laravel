@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Vendor;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
@@ -16,7 +17,7 @@ class PaymentController extends Controller
         return view('Customer.confirmPayment');
     }
 
-   
+
     /**
      * Show the form for creating a new resource.
      *
@@ -35,7 +36,7 @@ class PaymentController extends Controller
             $request->payment_Proof,
         ]);
 
-       
+
 
         //Remove DieDump first
         //return redirect('');
@@ -54,10 +55,13 @@ class PaymentController extends Controller
             'accountNumber' => 'required',
         ]);
 
-        dd([
-            $request->bank_type,
-            $request->branchCode,
-            $request->accountNumber,
+        //Store banking Details
+
+        //Store based on loginId!!!!
+        Vendor::create([
+        'Bank_Name' => $request->bank_type,
+        'Branch_Code'=> $request->branchCode,
+        'Account_Number'=> $request->accountNumber,
         ]);
 
     }
