@@ -57,7 +57,7 @@ class AuthControl extends Controller
     {
         $req->validate([
             'email' => 'required|email',
-            'password' => 'required|min:6|max:12'
+            'password' => 'required|min:8'
         ]);
 
         $user = Account::where('email', $req->input('email'))->first();
