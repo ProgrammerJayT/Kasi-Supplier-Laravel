@@ -1,0 +1,18 @@
+*Changes on Register & Login pages
+
+
+* Added database info retrival on
+1. Confirm Payment
+1. Dashboard UserAccount Info
+
+* Added Alerts on Register.Blade.php
+1. Fail
+
+* Added Alerts on Login.Blade.php
+1. Fail
+2. Success_Logout
+
+
+* Added Alerts on Dashboard.Blade.php
+1.success_registration
+2.fail_registration
