@@ -36,9 +36,14 @@
             <div class="row mb-5">
                 <div class="col-md-8 col-xl-6 text-center mx-auto">
                     <h1 class="display-2 text-muted">Create Account</h1>
-                    <p class="w-lg-50">Curae hendrerit donec commodo hendrerit egestas tempus, turpis facilisis nostra
-                        nunc. Vestibulum dui eget ultrices.</p>
                 </div>
+
+                @if (Session::has('fail'))
+                    <div class="d-flex justify-content-center align-items-center align-content-center" style="padding-top: 10px;">
+                        <div class="alert alert-danger border rounded alert-dismissible" role="alert" style="padding-right: 50px;padding-left: 51px;"><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button><span>{{Session::get('fail')}}<br></span></div>
+                    </div>
+                @endif
+
             </div>
             <div class="row d-flex justify-content-center">
                 <div class="col-md-6 col-xl-4">

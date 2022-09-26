@@ -16,10 +16,14 @@ class CustomerController extends Controller
 
     public function index()
     {
+        $DB_Data = array();
 
+        if(session()->has('LoginID')) //LoginID generated from login attempt
+        {
+            $DB_Data = User::where('User_ID','=',Session()->get('LoginID'))->first();
+        }
 
-
-        return view('Customer.dashboard');
+        return view('Customer.dashboard',compact('UserData'));
     }
 
     public function cart()

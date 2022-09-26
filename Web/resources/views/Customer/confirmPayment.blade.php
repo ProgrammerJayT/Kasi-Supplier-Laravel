@@ -83,11 +83,11 @@
                         <div class="card-body d-flex flex-column align-items-center" style="height: 700.516px;">
                             <h1 class="display-6 text-muted">Subtotal: R<span class="fs-3">50.00</span></h1>
                             <h4>Payment Details</h4>
-                            <p style="padding-left: 0px;">Bank Name:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="margin-right: 3px;">Standard</span></p>
-                            <p style="padding-left: 0px;">Account Number:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="margin-right: 3px;">000000000000</span></p>
-                            <p style="padding-left: 0px;">Account Holder:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="margin-right: 3px;">Programmer JayT</span></p>
+                            <p style="padding-left: 0px;">Bank Name:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="margin-right: 3px;">{{$Payment_Data->Bank_Name}}</span></p>
+                            <p style="padding-left: 0px;">Account Number:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="margin-right: 3px;">{{$Payment_Data->Account_Number}}</span></p>
+                            <p style="padding-left: 0px;">Account Holder:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="margin-right: 3px;">{{$Payment_Data->Account_Holder}}</span></p>
                             <h5 style="padding-top: 20px;">After Paying</h5>
-                           
+
                             <form class="text-center" method="POST" style="height: 300px;">
                                 @csrf
                                 <div class="mb-3" style="width: 360px;margin: 0px;padding-top: 30px;padding-bottom: 0px;">
@@ -98,15 +98,15 @@
 
                                         @error('payment_Proof')
                                             <div>
-                                                <p class="text-danger border rounded border-2 border-danger shadow-sm pulse animated">Email Is Required</p>
+                                                <p class="text-danger border rounded border-2 border-danger shadow-sm pulse animated">This Field Is Required</p>
                                             </div>
                                          @enderror
 
                                 </div>
                                 <div style="margin: 0px;width: 360px;padding-bottom: 20px;padding-top: 10px;"><textarea class="form-control form-control-lg" name="commentSection" placeholder="Add A Comment (Optional)"></textarea></div><button class="btn btn-outline-primary btn-lg border rounded-pill border-primary" type="submit" style="margin-top: 10px;padding-left: 30px;padding-right: 30px;">Confirm Payment</button>
                             </form>
-                            
-                            
+
+
                             <a class="btn btn-outline-secondary border rounded-pill border-secondary" role="button" style="margin-top: 20px;padding-right: 50px;padding-left: 50px;" href="{{route('Cart')}}">Cancel</a>                        </div>
                     </div>
                 </div>

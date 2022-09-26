@@ -20,11 +20,6 @@ class RegisterController extends Controller
             'password' => 'required',
         ]);
 
-        // dd([
-        //     $request->emal,
-        //     $request->password,
-
-        // ]);
 
 
 

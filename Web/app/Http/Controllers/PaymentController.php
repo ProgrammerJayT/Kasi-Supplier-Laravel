@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Vendor;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,15 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        return view('Customer.confirmPayment');
+        $DB_Data = array();
+
+        if(session()->has('LoginID')) //LoginID generated from login attempt
+        {
+            $DB_Data = User::where('User_ID','=',Session()->get('LoginID'))->first();
+        }
+
+
+        return view('Customer.confirmPayment',compact('Payment_Data'));
     }
 
 

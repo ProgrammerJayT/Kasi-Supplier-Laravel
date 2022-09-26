@@ -70,6 +70,20 @@
         <div class="d-sm-flex justify-content-between align-items-center mb-4" style="padding: 20px;">
             <h2 class="text-light mb-0" style="color: var(--white-color);font-size: 32px;font-family: 'Alegreya Sans', sans-serif;">Dashboard</h2><a class="btn btn-outline-primary btn-lg border rounded-pill border-primary d-none d-sm-inline-block" role="button" href="#"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report</a>
         </div>
+
+        @if (Session::has('success_registration'))
+            <div class="d-flex justify-content-center align-items-center align-content-center" style="padding-top: 10px;">
+                <div class="alert alert-danger border rounded alert-dismissible" role="alert" style="padding-right: 50px;padding-left: 51px;"><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button><span>{{Session::get('success_registration')}}<br></span></div>
+            </div>
+        @endif
+
+
+        @if (Session::has('fail_registration'))
+            <div class="d-flex justify-content-center align-items-center align-content-center" style="padding-top: 10px;">
+                <div class="alert alert-danger border rounded alert-dismissible" role="alert" style="padding-right: 50px;padding-left: 51px;"><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button><span>{{Session::get('fail_registration')}}<br></span></div>
+            </div>
+        @endif
+
     </div>
     <div class="container" style="padding-top: 50px;">
         <div>
@@ -166,9 +180,10 @@
                         </div>
                         <div class="card-body">
                             <div class="text-start small mt-4">
-                                <p class="text-start">Username<span style="margin-left: 200px;">MichaelM</span></p>
+                                <p class="text-start">Username<span style="margin-left: 200px;">{{$UserData->Username}}</span></p>
                                 <p>Status<span class="border rounded-pill border-success shadow-sm" data-bs-toggle="tooltip" data-bss-tooltip="" style="padding-left: 9px;margin-left: 225px;background: rgba(0,255,56,0.36);padding-right: 10px;" title="Account successfully verified">Verified</span></p>
-                                <p>Member Since<span style="margin-left: 172px;">December 30, 2021</span></p><span style="margin-top: 10px;"><a class="btn btn-outline-danger border rounded-pill border-danger shadow-sm" role="button" style="padding-left: 30px;padding-right: 30px;">Deactivate Account</a></span><span style="margin-top: 10px;padding-left: 50px;"><a class="btn btn-outline-info border rounded-pill border-info shadow-sm" role="button" style="padding-left: 30px;padding-right: 30px;">Signout</a></span>
+                                <p>Member Since<span style="margin-left: 172px;">{{$UserData->Date}}</span></p><span style="margin-top: 10px;"><a class="btn btn-outline-danger border rounded-pill border-danger shadow-sm" role="button" style="padding-left: 30px;padding-right: 30px;">Deactivate Account</a></span><span style="margin-top: 10px;padding-left: 50px;"><a class="btn btn-outline-info border rounded-pill border-info shadow-sm" role="button" style="padding-left: 30px;padding-right: 30px;">Signout</a></span>
+                                {{-- Date field on datadase --}}
                             </div>
                         </div>
                     </div>
