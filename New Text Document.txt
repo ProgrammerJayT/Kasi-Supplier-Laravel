@@ -16,3 +16,7 @@
 * Added Alerts on Dashboard.Blade.php
 1.success_registration
 2.fail_registration
+
+
+*Data on dashboard overview cards,PieChart
+*logout route for nav_bars and account status

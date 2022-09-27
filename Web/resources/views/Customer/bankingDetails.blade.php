@@ -59,7 +59,7 @@
                             </svg><span class="nav_name">Stats</span></a><a class="nav_link" href="{{route('UserProfile') }}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-32 0 512 512" width="1em" height="1em" fill="currentColor" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="right" class="bx bx-bar-chart-alt nav_icon" title="Edit Profile">
                                 <!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. -->
                                 <path d="M224 256c70.7 0 128-57.31 128-128s-57.3-128-128-128C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3C77.61 304 0 381.6 0 477.3c0 19.14 15.52 34.67 34.66 34.67h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304z"></path>
-                            </svg><span class="nav_name">Stats</span></a></div><a class="nav_link signout" title="Signout"><i class="fa fa-star bx bx-log-out nav_icon" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="right" title="Signout"></i><span class="nav_name">Signout</span></a>
+                            </svg><span class="nav_name">Stats</span></a></div><a class="nav_link signout" href="{{route('Logout')}}" title="Signout"><i class="fa fa-star bx bx-log-out nav_icon" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="right" title="Signout"></i><span class="nav_name">Signout</span></a>
                 </div>
             </nav>
         </div>
@@ -103,7 +103,7 @@
                                 </div>
 
                                 <div style="margin: 0px;width: 360px;padding-bottom: 20px;padding-top: 10px;"><input class="form-control form-control-lg" type="text" name="branchCode" placeholder="Branch Code"></div>
-                                
+
                                     @error('branchCode')
                                         <div>
                                             <p class="text-danger border rounded border-2 border-danger shadow-sm pulse animated">Email Is Required</p>
@@ -111,13 +111,13 @@
                                     @enderror
 
                                 <div style="margin: 0px;padding-bottom: 20px;width: 360px;padding-top: 10px;"><input class="form-control form-control-lg" type="text" name="accountNumber" placeholder="Account Number" maxlength="20" inputmode="numeric"></div>
-                                
+
                                     @error('accountNumber')
                                         <div>
                                             <p class="text-danger border rounded border-2 border-danger shadow-sm pulse animated">Email Is Required</p>
                                         </div>
                                     @enderror
-                                
+
                                 <div class="mb-3" style="margin: 0px 0px;padding-right: 10px;padding-left: 10px;"><button class="btn btn-outline-primary fs-5 border rounded-pill border-primary shadow-sm d-block w-100" type="submit" style="margin: 60px 0px 16px;margin-bottom: 0px;">Submit</button></div>
                             </form>
 

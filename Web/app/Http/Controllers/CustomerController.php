@@ -51,6 +51,15 @@ class CustomerController extends Controller
         return view('Customer.bankingDetails');
     }
 
+    public function Logout_user()
+    {
+        if(Session()->has('LoginID'))
+        {
+            Session()->pull('LoginID');
+            return redirect(route('Login'))->with('Logout_Success','Signed Out Successfully');
+        }
+    }
+
 
 
 

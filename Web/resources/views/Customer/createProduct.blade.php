@@ -61,7 +61,7 @@
                             </svg><span class="nav_name">Stats</span></a><a class="nav_link" href="{{route('UserProfile') }}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-32 0 512 512" width="1em" height="1em" fill="currentColor" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="right" class="bx bx-bar-chart-alt nav_icon" title="Edit Profile">
                                 <!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. -->
                                 <path d="M224 256c70.7 0 128-57.31 128-128s-57.3-128-128-128C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3C77.61 304 0 381.6 0 477.3c0 19.14 15.52 34.67 34.66 34.67h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304z"></path>
-                            </svg><span class="nav_name">Stats</span></a></div><a class="nav_link signout" title="Signout"><i class="fa fa-star bx bx-log-out nav_icon" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="right" title="Signout"></i><span class="nav_name">Signout</span></a>
+                            </svg><span class="nav_name">Stats</span></a></div><a class="nav_link signout" href="{{route('Logout')}}" title="Signout"><i class="fa fa-star bx bx-log-out nav_icon" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="right" title="Signout"></i><span class="nav_name">Signout</span></a>
                 </div>
             </nav>
         </div>
@@ -83,10 +83,10 @@
                 <div class="col-md-6 col-xl-4">
                     <div class="card shadow mb-5" style="margin: 0px -100px 48px;background: var(--bs-gray-dark);">
                         <div class="card-body d-flex flex-column align-items-center">
-                            
+
                             <form class="text-center" method="POST">
                                @csrf
-                                
+
                                 <div style="margin: 0px;width: 360px;padding-bottom: 20px;padding-top: 40px;"><input class="form-control form-control-lg" type="text" name="product_name" placeholder="Name Of Product" value="{{ old('product_name') }}"></div>
 
                                 @error('product_name')
@@ -96,21 +96,21 @@
                                 @enderror
 
                                 <div style="padding-bottom: 20px;width: 360px;margin: 0px;padding-top: 10px;"><textarea class="form-control form-control-lg" name="product_description" placeholder="Brief Description of Product" value="{{ old('product_description') }}" maxlength="100"></textarea></div>
-                                
+
                                 @error('product_description')
                                 <div>
                                     <p class="text-danger border rounded border-2 border-danger shadow-sm pulse animated">Product Description Is Required</p>
                                 </div>
                                 @enderror
-                                
+
                                 <div style="margin: 0px;padding-bottom: 20px;width: 360px;padding-top: 10px;"><input class="form-control form-control-lg" type="text" name="product_price" placeholder="R00.00" value="{{ old('product_price') }}"  inputmode="numeric"></div>
-                                
+
                                 @error('product_price')
                                 <div>
                                     <p class="text-danger border rounded border-2 border-danger shadow-sm pulse animated">Product Price Is Required</p>
                                 </div>
                                 @enderror
-                                
+
                                 <div class="mb-3" style="width: 360px;margin: 0px;padding-top: 10px;">
                                     <div class="input-group" style="margin: 0px 0px 16px;"><span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-exclamation-square">
                                                 <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"></path>
@@ -138,7 +138,7 @@
                                         </select></div>
                                 </div>
                                 <div style="margin: 0px;padding-bottom: 0px;width: 360px;padding-top: 10px;"><input class="form-control form-control-lg" name="product_image" type="file" value="{{ old('product_image') }}" accept="image/*"></div>
-                                
+
                                 @error('product_image')
                                 <div>
                                     <p class="text-danger border rounded border-2 border-danger shadow-sm pulse animated">Product Image Is Required</p>
@@ -146,7 +146,7 @@
                                 @enderror
 
                                 <div class="mb-3" style="margin: 0px 0px ;"><button class="btn btn-outline-primary fs-5 border rounded-pill border-primary shadow-sm d-block w-100" type="submit" style="margin: 60px 0px 16px;margin-bottom: 0px;">Post</button></div>
-                            
+
                             </form>
 
                             <div class="mb-3" style="margin: 0px 0px 50px;"><a class="btn btn-outline-secondary fs-5 border rounded-pill border-secondary shadow-sm d-block w-100" role="button" href="{{route('Market')}}" style="margin: 60px 0px 16px;margin-bottom: 0px;margin-top: 10px;padding-right: 140px;padding-left: 140px;">Cancel</a></div>

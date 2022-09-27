@@ -61,7 +61,7 @@
                             </svg><span class="nav_name">Stats</span></a><a class="nav_link" href="{{route('UserProfile') }}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-32 0 512 512" width="1em" height="1em" fill="currentColor" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="right" class="bx bx-bar-chart-alt nav_icon" title="Edit Profile">
                                 <!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. -->
                                 <path d="M224 256c70.7 0 128-57.31 128-128s-57.3-128-128-128C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3C77.61 304 0 381.6 0 477.3c0 19.14 15.52 34.67 34.66 34.67h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304z"></path>
-                            </svg><span class="nav_name">Stats</span></a></div><a class="nav_link signout" title="Signout"><i class="fa fa-star bx bx-log-out nav_icon" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="right" title="Signout"></i><span class="nav_name">Signout</span></a>
+                            </svg><span class="nav_name">Stats</span></a></div><a class="nav_link signout" href="{{route('Logout') }}" title="Signout"><i class="fa fa-star bx bx-log-out nav_icon" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="right" title="Signout"></i><span class="nav_name">Signout</span></a>
                 </div>
             </nav>
         </div>
@@ -94,7 +94,8 @@
                             <div class="row align-items-center no-gutters">
                                 <div class="col me-2">
                                     <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>Total Orders</span></div>
-                                    <div class="text-dark fw-bold h5 mb-0"><span>25</span></div>
+                                    <div class="text-dark fw-bold h5 mb-0"><span>{{$UserData->Sum_Orders}}</span></div>
+                                    {{-- Function to calculat all total orders under UserID --}}
                                 </div>
                                 <div class="col-auto"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -32 576 576" width="1em" height="1em" fill="currentColor" class="text-primary fa-2x text-gray-300">
                                         <!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. -->
@@ -110,7 +111,8 @@
                             <div class="row align-items-center no-gutters">
                                 <div class="col me-2">
                                     <div class="text-uppercase text-success fw-bold text-xs mb-1"><span>Successful Orders</span></div>
-                                    <div class="text-dark fw-bold h5 mb-0"><span>23</span></div>
+                                    <div class="text-dark fw-bold h5 mb-0"><span>{{$UserData->Successful_Orders}}</span></div>
+                                    {{-- Function to calculat all total orders under UserID --}}
                                 </div>
                                 <div class="col-auto"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -64 640 640" width="1em" height="1em" fill="currentColor" class="text-success fa-2x text-gray-300">
                                         <!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. -->
@@ -126,7 +128,8 @@
                             <div class="row align-items-center no-gutters">
                                 <div class="col me-2">
                                     <div class="text-uppercase text-info fw-bold text-xs mb-1"><span class="text-danger">Cancelled orders</span></div>
-                                    <div class="text-dark fw-bold h5 mb-0"><span>1</span></div>
+                                    <div class="text-dark fw-bold h5 mb-0"><span>{{$UserData->Cancelled_Orders}}</span></div>
+                                    {{-- Function to calculat all total orders under UserID --}}
                                 </div>
                                 <div class="col-auto"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-exclamation-circle-fill text-danger fa-2x text-gray-300">
                                         <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"></path>
@@ -141,7 +144,8 @@
                             <div class="row align-items-center no-gutters">
                                 <div class="col me-2">
                                     <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span class="text-secondary" style="font-family: 'Nunito Sans', sans-serif;">Pending Orders</span></div>
-                                    <div class="text-dark fw-bold h5 mb-0"><span>1</span></div>
+                                    <div class="text-dark fw-bold h5 mb-0"><span>{{$UserData->Pending_Orders}}</span></div>
+                                    {{-- Function to calculat all total orders under UserID --}}
                                 </div>
                                 <div class="col-auto"><i class="fas fa-comments text-secondary fa-2x text-gray-300"></i></div>
                             </div>
@@ -167,7 +171,7 @@
                         </div>
                         <div class="card-body">
                             <div class="text-end small mt-4"><span class="fs-5 me-2" style="font-family: 'Nunito Sans', sans-serif;"><i class="fas fa-circle text-primary"></i>&nbsp;Total Orders</span><span class="fs-5 me-2"><i class="fas fa-circle text-success"></i>&nbsp;Successful Orders</span><span class="fs-5 me-2"><i class="fas fa-circle text-danger text-info"></i>&nbsp;Cancelled Orders</span><span class="fs-5 me-2"><i class="fas fa-circle text-muted text-info"></i>&nbsp;Pending Orders</span></div>
-                            <div class="chart-area me-xxl-0 pe-xxl-0" style="padding-top: 50px;"><canvas data-bss-chart="{&quot;type&quot;:&quot;doughnut&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Total Orders&quot;,&quot;Successful Orders&quot;,&quot;Cancelled Orders&quot;,&quot;Pending Orders&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;&quot;,&quot;backgroundColor&quot;:[&quot;#0d6efd&quot;,&quot;#198754&quot;,&quot;#dc3545&quot;,&quot;rgb(108,117,125)&quot;],&quot;borderColor&quot;:[&quot;#ffffff&quot;,&quot;#ffffff&quot;,&quot;#ffffff&quot;,&quot;#ffffff&quot;],&quot;data&quot;:[&quot;25&quot;,&quot;23&quot;,&quot;1&quot;,&quot;1&quot;]}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:false,&quot;legend&quot;:{&quot;display&quot;:false,&quot;labels&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;}},&quot;title&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;}}}"></canvas></div>
+                            <div class="chart-area me-xxl-0 pe-xxl-0" style="padding-top: 50px;"><canvas data-bss-chart="{&quot;type&quot;:&quot;doughnut&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Total Orders&quot;,&quot;Successful Orders&quot;,&quot;Cancelled Orders&quot;,&quot;Pending Orders&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;&quot;,&quot;backgroundColor&quot;:[&quot;#0d6efd&quot;,&quot;#198754&quot;,&quot;#dc3545&quot;,&quot;rgb(108,117,125)&quot;],&quot;borderColor&quot;:[&quot;#ffffff&quot;,&quot;#ffffff&quot;,&quot;#ffffff&quot;,&quot;#ffffff&quot;],&quot;data&quot;:[&quot;{{$UserData->Sum_Orders}}&quot;,&quot;{{$UserData->Successful_Orders}}&quot;,&quot;{{$UserData->Cancelled_Orders}}&quot;,&quot;{{$UserData->Pending_Orders}}&quot;]}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:false,&quot;legend&quot;:{&quot;display&quot;:false,&quot;labels&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;}},&quot;title&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;}}}"></canvas></div>
                         </div>
                     </div>
                 </div>
@@ -182,7 +186,7 @@
                             <div class="text-start small mt-4">
                                 <p class="text-start">Username<span style="margin-left: 200px;">{{$UserData->Username}}</span></p>
                                 <p>Status<span class="border rounded-pill border-success shadow-sm" data-bs-toggle="tooltip" data-bss-tooltip="" style="padding-left: 9px;margin-left: 225px;background: rgba(0,255,56,0.36);padding-right: 10px;" title="Account successfully verified">Verified</span></p>
-                                <p>Member Since<span style="margin-left: 172px;">{{$UserData->Date}}</span></p><span style="margin-top: 10px;"><a class="btn btn-outline-danger border rounded-pill border-danger shadow-sm" role="button" style="padding-left: 30px;padding-right: 30px;">Deactivate Account</a></span><span style="margin-top: 10px;padding-left: 50px;"><a class="btn btn-outline-info border rounded-pill border-info shadow-sm" role="button" style="padding-left: 30px;padding-right: 30px;">Signout</a></span>
+                                <p>Member Since<span style="margin-left: 172px;">{{$UserData->Date}}</span></p><span style="margin-top: 10px;"><a class="btn btn-outline-danger border rounded-pill border-danger shadow-sm" role="button" style="padding-left: 30px;padding-right: 30px;">Deactivate Account</a></span><span style="margin-top: 10px;padding-left: 50px;"><a class="btn btn-outline-info border rounded-pill border-info shadow-sm" role="button" href="{{route('Logout')}}" style="padding-left: 30px;padding-right: 30px;">Signout</a></span>
                                 {{-- Date field on datadase --}}
                             </div>
                         </div>

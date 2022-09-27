@@ -61,17 +61,6 @@ Route::POST('/Login', [RegisterController::class, 'user_login']) -> name('Login'
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 //Create Product
 Route::POST('/Customer/CreateProduct',[ProductController::class,'create']) ->name('CreateProd');
 
@@ -80,3 +69,5 @@ Route::POST('/Customer/ConfirmPayment',[PaymentController::class,'create']) ->na
 
 //Store Banking Details
 Route::POST('/Customer/BankingInformation',[PaymentController::class,'store']) ->name('BankingDetails');
+
+Route::get('/Logout',[CustomerController::class,'Logout_user']) ->name('Logout');
