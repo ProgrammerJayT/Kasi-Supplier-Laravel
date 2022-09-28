@@ -53,9 +53,6 @@
                                             </span>
                                             <input class="form-control form-control-lg" type="password" name="password"
                                                 placeholder="Password">
-                                            <span class="input-group-text" style="background: rgb(255,255,255);">
-                                                <i class="far fa-eye"></i>
-                                            </span>
                                         </div>
                                     </div>
 
