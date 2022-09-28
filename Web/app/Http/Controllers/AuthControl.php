@@ -22,15 +22,16 @@ class AuthControl extends Controller
             'password_confirmation' => 'required|same:password',
         ]);
 
-        if ($req->type == null) {
-            $model = new Admin;
-            $active = true;
-            $role = 'admin';
-        } else {
-            $req->input('type') == 'customer' ? [$model = new Customer, $role = $req->input('type')]
-                : [$model = new Vendor, $role = $req->input('type')];
-            $active = false;
-        }
+
+        $req->input('type') == 'customer' ? [$model = new Customer, $role = $req->input('type')]
+            : [$model = new Vendor, $role = $req->input('type')];
+        $active = false;
+
+        // if ($req->type == null) {
+        //     $model = new Admin;
+        //     $active = true;
+        //     $role = 'admin';
+        // }
 
         //Store user's details
         $model->name = ucfirst(strtolower($req->input('name')));
@@ -75,7 +76,7 @@ class AuthControl extends Controller
     {
         if (session()->has('user')) {
             session()->pull('user');
-            
+
             return redirect('/');
         }
     }
