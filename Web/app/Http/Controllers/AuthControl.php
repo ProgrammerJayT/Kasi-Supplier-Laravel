@@ -17,10 +17,9 @@ class AuthControl extends Controller
         $req->validate([
             'name' => 'required|alpha',
             'surname' => 'required|alpha',
-            'location' => 'required',
             'email' => 'required|email|unique:account',
             'password' => 'required|min:8',
-            'password_confirmation' => 'required|same:password'
+            'password_confirmation' => 'required|same:password',
         ]);
 
         if ($req->type == null) {
@@ -34,14 +33,13 @@ class AuthControl extends Controller
         }
 
         //Store user's details
-        $model->name = $req->input('name');
-        $model->surname = $req->input('surname');
-        $model->email = $req->input('email');
-        $model->location = $req->input('location');
+        $model->name = ucfirst(strtolower($req->input('name')));
+        $model->surname = ucfirst(strtolower($req->input('surname')));
+        $model->email = strtolower($req->input('email'));
 
         //Create user's account
         $account = new Account;
-        $account->email = $req->input('email');
+        $account->email = strtolower($req->input('email'));
         $account->password = Hash::make($req->input('password'));
         $account->type = $role;
         $account->active = $active;
@@ -75,5 +73,10 @@ class AuthControl extends Controller
 
     public function logout()
     {
+        if (session()->has('user')) {
+            session()->pull('user');
+            
+            return redirect('/');
+        }
     }
 }
