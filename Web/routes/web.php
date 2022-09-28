@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminControl;
 use App\Http\Controllers\AuthControl;
+use App\Http\Controllers\TestAPIs;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,3 +47,7 @@ Route::get('/vendor-dashboard', function () {
 Route::get('/customer-dashboard', function () {
     return view('dashboard.customer');
 })->name('customer-dashboard');
+
+Route::get('/testAPI', [
+    TestAPIs::class, 'test'
+]);
