@@ -18,7 +18,6 @@ class CreateAdminTable extends Migration
             $table->string('name');
             $table->string('surname');
             $table->string('email')->unique();
-            $table->string('location');
             $table->timestamps();
         });
     }
