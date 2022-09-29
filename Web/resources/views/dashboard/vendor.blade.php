@@ -65,7 +65,7 @@
                 <h2 class="text-light mb-0"
                     style="color: var(--white-color);font-size: 32px;font-family: 'Alegreya Sans', sans-serif;">Markets
                 </h2><a class="btn btn-outline-info border rounded-pill border-info shadow-lg" role="button"
-                    href="createProduct.html">Add A Product</a>
+                    href="/create-product">Add A Product</a>
             </div>
         </div>
         <div class="container">
