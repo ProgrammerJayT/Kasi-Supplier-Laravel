@@ -42,6 +42,10 @@ class AuthControl extends Controller
         $account->active = $active;
 
         if ($model->save() && $account->save()) {
+            
+            $getUser = $model::where('email', $req->email)->first();
+            $req->session()->put('user', $getUser->id);
+
             return redirect($role . '-dashboard');
         } else {
             return back()->with('fail', 'Your account could not be created');
