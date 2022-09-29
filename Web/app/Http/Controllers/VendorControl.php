@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Models\Vendor;
+use App\Models\Item;
+use Illuminate\Support\Facades\Session;
 
 class VendorControl extends Controller
 {
@@ -30,22 +34,11 @@ class VendorControl extends Controller
             'department_Type' => 'required'
         ]);
 
-        $supportedExtension = array('jpg', 'jpeg', 'png');
+        $vendor = new Vendor;
+        $item = new Item;
+        $category = new Category;
+        
+        
 
-        $imageExtension = explode('/', $_FILES['image']['type']);
-        $imageExtension = $imageExtension[1];
-
-        $path = $_FILES['image']['tmp_name'];
-
-        if (!in_array($imageExtension, $supportedExtension)) {
-            echo '<script>alert("File type not supported");</script>';
-        } else {
-            // if (!file_exists('items')) {
-            //     mkdir('removed-bg', 0777, true);
-            // }
-            // $fp = fopen("removed-bg/removed-bg.png", "wb");
-            // fwrite($fp, $res->getBody());
-            // fclose($fp);
-        }
     }
 }
