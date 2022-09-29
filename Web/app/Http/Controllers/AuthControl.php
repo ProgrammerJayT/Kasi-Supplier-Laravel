@@ -29,12 +29,6 @@ class AuthControl extends Controller
             : [$model = new Vendor, $role = $req->input('type')];
         $active = false;
 
-        // if ($req->type == null) {
-        //     $model = new Admin;
-        //     $active = true;
-        //     $role = 'admin';
-        // }
-
         //Store user's details
         $model->name = ucfirst(strtolower($req->input('name')));
         $model->surname = ucfirst(strtolower($req->input('surname')));
