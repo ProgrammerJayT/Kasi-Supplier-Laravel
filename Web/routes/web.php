@@ -48,6 +48,38 @@ Route::get('/customer-dashboard', function () {
     return view('dashboard.customer');
 })->name('customer-dashboard');
 
+Route::get('/create-administrator', function () {
+    return view('admin-ops.create-administrator');
+});
+
+Route::get('/create-customer', function () {
+    return view('admin-ops.create-customer');
+});
+
+Route::get('/create-vendor', function () {
+    return view('admin-ops.create-vendor');
+});
+
+Route::post('/add-user-request', [
+    AdminControl::class, 'createUser'
+])->name('add-user');
+
+Route::get('/logout', function () {
+    return redirect('/');
+})->name('logout');
+
+// Route::post('/create-customer', [
+//     AdminControl::class, 'createUser'
+// ])->name('create-customer');
+
+// Route::post('/create-vendor', [
+//     AdminControl::class, 'createUser'
+// ])->name('create-vendor');
+
+// Route::post('/create-administrator', [
+//     AdminControl::class, 'createUser'
+// ])->name('create-administrator');
+
 Route::get('/testAPI', [
     TestAPIs::class, 'test'
 ]);
