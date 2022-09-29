@@ -26,4 +26,24 @@ class TestAPIs extends Controller
         echo '<br>';
         print_r($latlng);
     }
+
+    
+
+    // $supportedExtension = array('jpg', 'jpeg', 'png');
+
+    // $imageExtension = explode('/', $_FILES['image']['type']);
+    // $imageExtension = $imageExtension[1];
+
+    // $path = $_FILES['image']['tmp_name'];
+
+    // if (!in_array($imageExtension, $supportedExtension)) {
+    //     echo '<script>alert("File type not supported");</script>';
+    // } else {
+    //     // if (!file_exists('items')) {
+    //     //     mkdir('removed-bg', 0777, true);
+    //     // }
+    //     // $fp = fopen("removed-bg/removed-bg.png", "wb");
+    //     // fwrite($fp, $res->getBody());
+    //     // fclose($fp);
+    // }
 }
