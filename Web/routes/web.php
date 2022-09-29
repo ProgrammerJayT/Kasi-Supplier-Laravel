@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminControl;
 use App\Http\Controllers\AuthControl;
 use App\Http\Controllers\TestAPIs;
+use App\Http\Controllers\VendorControl;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -68,17 +69,13 @@ Route::get('/logout', function () {
     return redirect('/');
 })->name('logout');
 
-// Route::post('/create-customer', [
-//     AdminControl::class, 'createUser'
-// ])->name('create-customer');
+Route::get('/create-product', [
+    VendorControl::class, 'addProduct'
+])->name('create-product');
 
-// Route::post('/create-vendor', [
-//     AdminControl::class, 'createUser'
-// ])->name('create-vendor');
-
-// Route::post('/create-administrator', [
-//     AdminControl::class, 'createUser'
-// ])->name('create-administrator');
+Route::post('/create-product-request', [
+    VendorControl::class, 'addProductRequest'
+])->name('create-product-request');
 
 Route::get('/testAPI', [
     TestAPIs::class, 'test'
