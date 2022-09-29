@@ -14,10 +14,12 @@ class AuthControl extends Controller
     //
     public function register(Request $req)
     {
+
         $req->validate([
             'name' => 'required|alpha',
             'surname' => 'required|alpha',
             'email' => 'required|email|unique:account',
+            'type' => 'required',
             'password' => 'required|min:8',
             'password_confirmation' => 'required|same:password',
         ]);
