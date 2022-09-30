@@ -18,3 +18,29 @@ INSERT INTO `category`(`name`, `value`) VALUES ('Baby','baby'),
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+INSERT INTO `banks`(`name`, `value`, `branch`) 
+VALUES 
+('Absa','absa', `632005`),
+('Bidvest','Bidvest', `462005`),
+('Capitec','capitec', `470010`),
+('Discovery','discovery', `679000`),
+('FNB','fnb', `25065`),
+('Investec','investec', `580105`),
+('Nedbank','nedbank', `198765`),
+('Standard Bank','standard', `051001`),
+('Tymebank','tymebank', `678910`),
+
+
+
+

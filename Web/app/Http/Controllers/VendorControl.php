@@ -16,7 +16,8 @@ class VendorControl extends Controller
         $category = Category::all();
 
         return view('vendor-ops.create-product', [
-            'categories' => $category
+            'categories' => $category,
+
         ]);
     }
 
@@ -62,5 +63,48 @@ class VendorControl extends Controller
 
         return back()->with($type, $message);
     }
+
+
 >>>>>>> Stashed changes
+
+        // public function addBank()
+        // {
+        //     $bank = Bank::all();
+
+        //     $req->validate([
+        //         'bank_type' => 'required', //Sorted
+        //         'accountNumber' => 'required', //Sorted
+        //     ]);
+
+        //     return view('BankingDetails', [
+        //         'banks' => $bank,
+        //     ]);
+        // }
+
+        // public function addBankRequest(Request $request)
+        // {
+
+        //     $req->validate([
+        //         'bank_type' => 'required', //Sorted
+        //         'accountNumber' => 'required', //Sorted
+        //     ]);
+
+        //     $Store_Bank = new BankingDetails();
+
+        //     $Store_Bank->account = $request->accountNumber;
+        //    //$Store_Bank->name =
+
+        //    //$Store_Results = $Store_Bank->save();
+
+        //     if($Store_Results)
+        //     {
+        //         return redirect(route('Dashboard'))->with('success','You Have Successfully Registered');
+        //     }
+        //     else
+        //     {
+        //         return back() ->with('fail','An Error Has Occured');
+        //     }
+
+        // }
+
 }
