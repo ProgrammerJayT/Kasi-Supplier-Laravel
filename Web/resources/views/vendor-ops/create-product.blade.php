@@ -85,7 +85,31 @@
                         <div class="card shadow mb-5" style="margin: 0px -100px 48px;background: var(--bs-gray-dark);">
                             <div class="card-body d-flex flex-column align-items-center">
 
-                                <form class="text-center" method="POST" action="{{ route('create-product-request') }}" enctype="multipart/form-data">
+                                <form class="text-center" method="POST" action="{{ route('create-product-request') }}"
+                                    enctype="multipart/form-data">
+
+                                    @if (Session::has('fail'))
+                                        <div class="d-flex justify-content-center align-items-center align-content-center"
+                                            style="padding-top: 10px;">
+                                            <div class="alert alert-danger border rounded alert-dismissible"
+                                                role="alert" style="padding-right: 50px;padding-left: 51px;"><button
+                                                    type="button" class="btn-close" data-bs-dismiss="alert"
+                                                    aria-label="Close"></button><span>{{ Session::get('fail') }}<br></span>
+                                            </div>
+                                        </div>
+                                    @endif
+
+                                    @if (Session::has('success'))
+                                        <div class="d-flex justify-content-center align-items-center align-content-center"
+                                            style="padding-top: 10px;">
+                                            <div class="alert alert-success border rounded alert-dismissible"
+                                                role="alert" style="padding-right: 50px;padding-left: 51px;"><button
+                                                    type="button" class="btn-close" data-bs-dismiss="alert"
+                                                    aria-label="Close"></button><span>{{ Session::get('success') }}<br></span>
+                                            </div>
+                                        </div>
+                                    @endif
+
                                     @csrf
 
                                     <div style="margin: 0px;width: 360px;padding-bottom: 20px;padding-top: 40px;">
@@ -140,25 +164,13 @@
                                                     </path>
                                                 </svg></span><select class="form-select form-select-lg"
                                                 name="department_Type" value="{{ old('department_Type') }}">
+
                                                 <option value="" selected="">All Departments</option>
-                                                <option value="Baby">Baby &amp; Toddler</option>
-                                                <option value="Beauty">Beauty</option>
-                                                <option value="">Books</option>
-                                                <option value="Electronics">Electronics</option>
-                                                <option value="Camping">Camping &amp; Outdoors</option>
-                                                <option value="">Cellphones</option>
-                                                <option value="">Fashion</option>
-                                                <option value="Food ">Food &amp; Bevarages</option>
-                                                <option value="Garden">Garden, Pool &amp; Patio</option>
-                                                <option value="Health">Health &amp; Fitness</option>
-                                                <option value="Home">Home &amp; kitchen</option>
-                                                <option value="Luggage">Luggage &amp; Travel</option>
-                                                <option value="Movies">Movies &amp; Series</option>
-                                                <option value="Music">Music</option>
-                                                <option value="Office">Office &amp; Stationery</option>
-                                                <option value="">Pets</option>
-                                                <option value="Sports">Sports</option>
-                                                <option value="">Toys</option>
+
+                                                @foreach ($categories as $category)
+                                                    <option value="{{ $category->value }}">{{ $category->name }}</option>
+                                                @endforeach
+
                                             </select></div>
                                     </div>
 
@@ -174,7 +186,8 @@
                                     <div
                                         style="margin: 0px;padding-bottom: 0px;width: 360px;padding-top: 10px;margin-bottom:20px">
                                         <input class="form-control form-control-lg" name="product_image" type="file"
-                                            value="{{ old('product_image') }}" accept="image/*"></div>
+                                            value="{{ old('product_image') }}" accept="image/*">
+                                    </div>
 
                                     @error('product_image')
                                         <div>
