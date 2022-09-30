@@ -1,21 +1,20 @@
-INSERT INTO `category`(`name`, `value`) VALUES ('Baby','baby')
-INSERT INTO `category`(`name`, `value`) VALUES ('Beauty','beauty')
-INSERT INTO `category`(`name`, `value`) VALUES ('Books','books')
-INSERT INTO `category`(`name`, `value`) VALUES ('Camping','camping')
-INSERT INTO `category`(`name`, `value`) VALUES ('Cellphones','cellphones')
-INSERT INTO `category`(`name`, `value`) VALUES ('Electronics','electronics')
-INSERT INTO `category`(`name`, `value`) VALUES ('Fashion','fashion')
-INSERT INTO `category`(`name`, `value`) VALUES ('Food&Bevarages','food')
-INSERT INTO `category`(`name`, `value`) VALUES ('Garden','Garden')
-INSERT INTO `category`(`name`, `value`) VALUES ('Health&Fitness','health')
-INSERT INTO `category`(`name`, `value`) VALUES ('Home&kitchen','home')
-INSERT INTO `category`(`name`, `value`) VALUES ('Luggage','luggage')
-INSERT INTO `category`(`name`, `value`) VALUES ('Movies&Series','movies')
-INSERT INTO `category`(`name`, `value`) VALUES ('Music','music')
-INSERT INTO `category`(`name`, `value`) VALUES ('Office&Stationery','office')
-INSERT INTO `category`(`name`, `value`) VALUES ('Pets','pets')
-INSERT INTO `category`(`name`, `value`) VALUES ('Sports','sports')
-INSERT INTO `category`(`name`, `value`) VALUES ('Toys','toys')
+INSERT INTO `category`(`name`, `value`) VALUES ('Baby','baby'),
+('Beauty','Beauty'),('Books','books'),
+('Electronics','electronics'),
+('Camping','camping'),
+('Cellphones','cellphones'),
+('Fashion','fashion'),
+('Food & Bevarages','food'),
+('Garden','garden'),
+('Health & Fitness','health'),
+('Home&kitchen','home'),
+('Luggage','luggage'),
+('Movies & Series','movies'),
+('Music',',music'),
+('Office & Stationery','office'),
+('Pets','pets'),
+('Sports','sports'),
+('Toys','toys')
 
 
 
