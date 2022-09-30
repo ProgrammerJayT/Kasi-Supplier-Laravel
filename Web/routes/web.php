@@ -4,6 +4,8 @@ use App\Http\Controllers\AdminControl;
 use App\Http\Controllers\AuthControl;
 use App\Http\Controllers\TestAPIs;
 use App\Http\Controllers\VendorControl;
+use App\Models\Category;
+use App\Models\Item;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,11 +44,21 @@ Route::get('/admin-dashboard', function () {
 })->name('admin-dashboard');
 
 Route::get('/vendor-dashboard', function () {
-    return view('dashboard.vendor');
+    $item = Item::all();
+    $category = Category::all();
+
+    return view('dashboard.vendor', [
+        'items' => $item, 'categories' => $category
+    ]);
 })->name('vendor-dashboard');
 
 Route::get('/customer-dashboard', function () {
-    return view('dashboard.customer');
+    $item = Item::all();
+    $category = Category::all();
+
+    return view('dashboard.customer', [
+        'items' => $item, 'categories' => $category
+    ]);
 })->name('customer-dashboard');
 
 Route::get('/create-administrator', function () {
