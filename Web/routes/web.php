@@ -52,6 +52,48 @@ Route::get('/customer-dashboard', function () {
     return view('dashboard.customer');
 })->name('customer-dashboard');
 
+<<<<<<< Updated upstream
+=======
+
+
+Route::get('/create-administrator', function () {
+    return view('admin-ops.create-administrator');
+});
+
+Route::get('/create-customer', function () {
+    return view('admin-ops.create-customer');
+});
+
+Route::get('/create-vendor', function () {
+    return view('admin-ops.create-vendor');
+});
+
+Route::post('/add-user-request', [
+    AdminControl::class, 'createUser'
+])->name('add-user');
+
+Route::get('/logout', function () {
+    return redirect('/');
+})->name('logout');
+
+Route::get('/create-product', [
+    VendorControl::class, 'addProduct'
+])->name('create-product');
+
+Route::post('/create-product-request', [
+    VendorControl::class, 'addProductRequest'
+])->name('create-product-request');
+
+>>>>>>> Stashed changes
 Route::get('/testAPI', [
     TestAPIs::class, 'test'
 ]);
+
+
+//Product View
+Route::get('/market/product/{id}',function ($id){
+
+    $product = Item::where('id','=',$id)->first();
+
+return view('productView',['prod_data'=>$product]);
+});
