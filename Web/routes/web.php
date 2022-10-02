@@ -17,16 +17,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('openingP');
 });
 
 Route::get('/login', function () {
     return view('auth.login');
-});
+}) -> name('Login');
 
 Route::get('/register', function () {
     return view('auth.register');
-});
+}) -> name('Register');
 
 Route::post('/registration-request', [
     AuthControl::class, 'register'
@@ -52,8 +52,6 @@ Route::get('/customer-dashboard', function () {
     return view('dashboard.customer');
 })->name('customer-dashboard');
 
-<<<<<<< Updated upstream
-=======
 
 
 Route::get('/create-administrator', function () {
@@ -84,16 +82,18 @@ Route::post('/create-product-request', [
     VendorControl::class, 'addProductRequest'
 ])->name('create-product-request');
 
->>>>>>> Stashed changes
 Route::get('/testAPI', [
     TestAPIs::class, 'test'
 ]);
 
 
 //Product View
-Route::get('/market/product/{id}',function ($id){
+// Route::get('/market/product/{id}',function ($id){
 
-    $product = Item::where('id','=',$id)->first();
+//     $product = Item::where('id','=',$id)->first();
 
-return view('productView',['prod_data'=>$product]);
-});
+// return view('productView',['prod_data'=>$product]);
+// });
+
+
+
