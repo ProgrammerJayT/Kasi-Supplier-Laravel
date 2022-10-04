@@ -103,9 +103,9 @@ Route::post('/create-product-request', [
 
 
 //Market handlers
-Route::get('view-market', [
+Route::get('customer-market', [
     MarketControl::class, 'customerMarket'
-])->name('view-market');
+])->name('customer-market');
 
 
 
