@@ -1,4 +1,4 @@
-@extends('components.layout')
+@extends('components.auth-layout')
 
 @section('title', 'Register your new account here')
 
