@@ -21,8 +21,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+// Authentication routes
 Route::get('/', function () {
-    return view('auth.login');
+    return redirect('/login');
 });
 
 Route::get('/login', function () {
@@ -41,23 +43,32 @@ Route::post('/login-request', [
     AuthControl::class, 'login'
 ])->name('login-request');
 
-Route::get('/admin-dashboard', function () {
-    return view('dashboard.admin');
-})->name('admin-dashboard');
+Route::get('/logout', [
+    AuthControl::class, 'logout'
+])->name('logout');
 
-Route::get('/vendor-dashboard', function () {
-    $item = Item::all();
-    $category = Category::all();
 
-    return view('dashboard.vendor', [
-        'items' => $item, 'categories' => $category
-    ]);
-})->name('vendor-dashboard');
+
+
+
+//Users dashboards
+Route::get('/admin-dashboard', [
+    AdminControl::class, 'dashboard'
+])->name('admin-dashboard');
+
+Route::get('/vendor-dashboard', [
+    VendorControl::class, 'dashboard'
+])->name('vendor-dashboard');
 
 Route::get('/customer-dashboard', [
     CustomerControl::class, 'dashboard'
 ])->name('customer-dashboard');
 
+
+
+
+
+//Administrator operations
 Route::get('/create-administrator', function () {
     return view('admin-ops.create-administrator');
 });
@@ -74,10 +85,11 @@ Route::post('/add-user-request', [
     AdminControl::class, 'createUser'
 ])->name('add-user');
 
-Route::get('/logout', function () {
-    return redirect('/');
-})->name('logout');
 
+
+
+
+//Vendor operations
 Route::get('/create-product', [
     VendorControl::class, 'addProduct'
 ])->name('create-product');
@@ -86,10 +98,20 @@ Route::post('/create-product-request', [
     VendorControl::class, 'addProductRequest'
 ])->name('create-product-request');
 
+
+
+
+
+//Market handlers
 Route::get('view-market', [
     MarketControl::class, 'customerMarket'
 ])->name('view-market');
 
+
+
+
+
+//Test routes
 Route::get('/testAPI', [
     TestAPIs::class, 'test'
 ]);
