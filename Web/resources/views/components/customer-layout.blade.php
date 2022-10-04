@@ -36,13 +36,13 @@
             <nav class="nav">
                 <div>
                     <div class="nav_list">
-                        <a class="nav_link active" href="dashboard.html" title="Dashboard">
+                        <a class="nav_link active" href="customer-dashboard" title="Dashboard">
                             <i class="fa fa-star bx bx-grid-alt nav_icon" data-bs-toggle="tooltip" data-bss-tooltip=""
                                 data-bs-placement="right" title="Dashboard"></i>
                             <span class="nav_name">Main Menu</span>
                         </a>
 
-                        <a class="nav_link" href="markets.html" style="border-style: none;border-bottom-style: none;">
+                        <a class="nav_link" href="view" style="border-style: none;border-bottom-style: none;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
                                 viewBox="0 0 16 16" class="bi bi-shop bx bx-folder nav_icon" data-bs-toggle="tooltip"
                                 data-bss-tooltip="" data-bs-placement="right" title="Markets">
