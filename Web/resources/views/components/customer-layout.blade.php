@@ -28,6 +28,9 @@
     <link rel="stylesheet" href="assets/css/sidebar-style4.css">
     <link rel="stylesheet" href="assets/css/sidebar.css">
     <link rel="stylesheet" href="assets/css/zectStudio---Sidebar-Menu-by-bbbootstrap.css">
+
+    @livewireStyles
+
 </head>
 
 <body style="background: var(--bs-gray-dark);">
@@ -42,7 +45,7 @@
                             <span class="nav_name">Main Menu</span>
                         </a>
 
-                        <a class="nav_link" href="view" style="border-style: none;border-bottom-style: none;">
+                        <a class="nav_link" href="customer-market" style="border-style: none;border-bottom-style: none;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
                                 viewBox="0 0 16 16" class="bi bi-shop bx bx-folder nav_icon" data-bs-toggle="tooltip"
                                 data-bss-tooltip="" data-bs-placement="right" title="Markets">
@@ -107,6 +110,8 @@
         </div>
     </div>
     @yield('body')
+
+    @livewireScripts
 
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
