@@ -2,10 +2,13 @@
 
 use App\Http\Controllers\AdminControl;
 use App\Http\Controllers\AuthControl;
+use App\Http\Controllers\CartControl;
 use App\Http\Controllers\CustomerControl;
 use App\Http\Controllers\MarketControl;
+use App\Http\Controllers\ProfileControl;
 use App\Http\Controllers\TestAPIs;
 use App\Http\Controllers\VendorControl;
+use App\Http\Controllers\WishlistControl;
 use App\Models\Category;
 use App\Models\Item;
 use Illuminate\Support\Facades\Route;
@@ -107,6 +110,45 @@ Route::get('customer-market', [
     MarketControl::class, 'customerMarket'
 ])->name('customer-market');
 
+Route::get('vendor-market', [
+    MarketControl::class, 'vendorMarket'
+])->name('vendor-market');
+
+
+
+
+//Cart handlers
+Route::get('customer-cart', [
+    CartControl::class, 'customerCart'
+])->name('vendor-cart');
+
+Route::get('vendor-cart', [
+    CartControl::class, 'vendorCart'
+])->name('vendor-cart');
+
+
+
+
+//User profiles
+Route::get('customer-profile', [
+    ProfileControl::class, 'customerProfile'
+])->name('customer-profile');
+
+Route::get('vendor-profile', [
+    ProfileControl::class, 'vendorProfile'
+])->name('vendor-profile');
+
+
+
+
+//Wishlist handlers
+Route::get('customer-wishlist', [
+    WishlistControl::class, 'customerWishlist'
+])->name('customer-wishlist');
+
+Route::get('vendor-wishlist', [
+    WishlistControl::class, 'vendorWishlist'
+])->name('vendor-wishlist');
 
 
 
