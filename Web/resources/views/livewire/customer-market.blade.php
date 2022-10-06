@@ -16,7 +16,7 @@
                         <option value="" selected="">All Departments</option>
 
                         @foreach ($categoryList as $list)
-                            <option value="{{$list->value}}">{{$list->name}}</option>
+                            <option value="{{ $list->value }}">{{ $list->name }}</option>
                         @endforeach
 
                     </select>
@@ -52,21 +52,23 @@
                                                     data-bs-toggle="tooltip" data-bss-tooltip=""
                                                     style="width: 270px;height: 237px;"
                                                     src="assets/img/223-2238298_4k-wallpaper-for-ps4.jpg"
-                                                    title="$Product_Title">
+                                                    title="{{ $item->name }}">
                                             </div>
+
                                             <div>
-                                                <h3 class="fw-lighter text-start"
-                                                    style="width: 201px;height: 58px;margin: 0px 0px 10px;padding: 2px 0px 0px;">
-                                                    Black-Belt</h3>
-                                                <p class="text-start text-muted">Gaming Skills Book</p><span
-                                                    class="fw-bolder">R
-                                                    20.00</span>
+                                                <h3 class="fw-lighter text-start" style="width: 201px;">
+                                                    {{ $item->name }}
+                                                </h3>
+                                                <p class="text-start text-muted">{{ $category->name }}</p>
+                                                <p style="font-size: 10px;" class="text-start text-muted">
+                                                    {{ $item->desc }}</p>
+                                                <span class="fw-bolder">R{{ $item->price }}</span>
                                                 <div>
-                                                    <button
+                                                    <button wire:click="addToCart({{ $item->id }})"
                                                         class="btn btn-outline-success border rounded-pill border-success shadow"
                                                         type="button" style="margin-top: 6px;">Add To Cart
                                                     </button>
-                                                    <button
+                                                    <button wire:click="addToWishlist({{ $item->id }})"
                                                         class="btn btn-outline-danger border rounded-pill border-danger shadow"
                                                         type="button"
                                                         style="margin-top: 6px;margin-right: 0px;margin-left: 20px;">Add
