@@ -14,10 +14,7 @@ class MarketControl extends Controller
         $items = Item::all();
         $categories = Category::all();
 
-        return view('customer-ops.view-markets', [
-            'items' => $items,
-            'categories' => $categories,
-        ]);
+        return view('customer-ops.view-markets');
     }
     
     public function vendorMarket() {
