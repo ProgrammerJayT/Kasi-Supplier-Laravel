@@ -45,7 +45,8 @@
                             <span class="nav_name">Main Menu</span>
                         </a>
 
-                        <a class="nav_link" href="customer-market" style="border-style: none;border-bottom-style: none;">
+                        <a class="nav_link" href="customer-market"
+                            style="border-style: none;border-bottom-style: none;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
                                 viewBox="0 0 16 16" class="bi bi-shop bx bx-folder nav_icon" data-bs-toggle="tooltip"
                                 data-bss-tooltip="" data-bs-placement="right" title="Markets">
@@ -56,7 +57,7 @@
                             <span class="nav_name">Folders</span>
                         </a>
 
-                        <a class="nav_link" href="Wishlist.html">
+                        <a class="nav_link" href="customer-wishlist">
                             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
                                 viewBox="0 0 16 16" class="bi bi-heart bx bx-folder nav_icon" data-bs-toggle="tooltip"
                                 data-bss-tooltip="" data-bs-placement="right" title="Wishlist">
@@ -67,7 +68,7 @@
                             <span class="nav_name">Folders</span>
                         </a>
 
-                        <a class="nav_link" href="cart.html">
+                        <a class="nav_link" href="customer-cart">
                             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
                                 fill="none" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="right"
                                 class="bx bx-bar-chart-alt nav_icon" title="Cart">
@@ -87,7 +88,7 @@
                             <span class="nav_name">Stats</span>
                         </a>
 
-                        <a class="nav_link" href="Profile.html">
+                        <a class="nav_link" href="customer-profile">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="-32 0 512 512" width="1em"
                                 height="1em" fill="currentColor" data-bs-toggle="tooltip" data-bss-tooltip=""
                                 data-bs-placement="right" class="bx bx-bar-chart-alt nav_icon" title="Edit Profile">
@@ -100,7 +101,7 @@
                         </a>
                     </div>
 
-                    <a class="nav_link signout" title="Signout" href="/">
+                    <a class="nav_link signout" title="Signout" href="logout">
                         <i class="fa fa-star bx bx-log-out nav_icon" data-bs-toggle="tooltip" data-bss-tooltip=""
                             data-bs-placement="right" title="Signout"></i>
                         <span class="nav_name">Signout</span>
