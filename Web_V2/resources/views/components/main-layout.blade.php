@@ -22,11 +22,15 @@
     <link rel="stylesheet" href="assets/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="assets/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+
+    @livewireStyles
 </head>
 
 <body>
 
     @yield('body')
+
+    @livewireScripts
 
     <!-- Js Plugins -->
     <script src="assets/js/jquery-3.3.1.min.js"></script>
