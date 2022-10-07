@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginControl;
+use App\Http\Controllers\Auth\RegistrationControl;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +16,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
 });
+
+// Authentication
+// Login
+Route::get('/login', [
+    LoginControl::class, 'login'
+]);
+
+Route::post('/login-request', [
+    LoginControl::class, 'loginRequest'
+])->name('login-request');
+
+// Registration
+Route::get('/register', [
+    RegistrationControl::class, 'register'
+]);
+
+Route::post('/register-request', [
+    RegistrationControl::class, 'registerRequest'
+])->name('register-request');
