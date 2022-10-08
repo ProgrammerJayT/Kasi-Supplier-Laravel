@@ -1,42 +1,8 @@
-@extends('components.main-layout')
+@extends('components.auth-layout')
 
-@section('title', 'Welcome')
+@section('title', 'Register')
 
 @section('body')
-
-    <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
-
-    <!-- Header Section Begin -->
-    <header class="header">
-        <div class="header__top">
-        </div>
-        <div class="container">
-            <div class="row">
-            </div>
-        </div>
-    </header>
-    <!-- Header Section End -->
-
-    <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-option">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="breadcrumb__text">
-                        <h3>Kasi Suppliers</h3>
-                        <div class="breadcrumb__links">
-                            <a>Auth</a>
-                            <span>Register</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Breadcrumb Section End -->
 
     <!-- Checkout Section Begin -->
     <section class="checkout spad">
@@ -104,7 +70,7 @@
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Account Password<span>*</span></p>
-                                        <input type="text" name="password">
+                                        <input type="password" name="password">
 
                                         @error('password')
                                             <p style="color: red;">{{ $message }}</p>
@@ -116,7 +82,7 @@
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Confirm Password<span>*</span></p>
-                                        <input type="text" name="password_confirmation">
+                                        <input type="password" name="password_confirmation">
 
                                         @error('password_confirmation')
                                             <p style="color: red;">{{ $message }}</p>
