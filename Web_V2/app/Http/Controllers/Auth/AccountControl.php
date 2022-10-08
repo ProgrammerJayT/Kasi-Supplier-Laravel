@@ -36,6 +36,45 @@ class AccountControl extends Controller
             [$id = $model::where('email', strtolower($email))->first()->id, $status = true]
             : [$id = null, $status = false];
 
-        return ([$id, $status]);
+        return ([
+            $id, $status
+        ]);
+    }
+
+    public static function read($email, $password)
+    {
+
+        $account = Account::where('email', $email)->first();
+
+        if ($account) {
+            if (Hash::check($password, $account->password)) {
+                $message = 'Successfully logged in';
+                $status = 1;
+
+                if ($account->type == 'admin') {
+                    $id = Admin::where('email', $email)->first()->id;
+                } else {
+                    $account->type == 'vendor' ? $id = Vendor::where('email', $email)->first()->id
+                        : $id = Customer::where('email', $email)->first()->id;
+                }
+
+                $type = $account->type;
+
+            } else {
+                $message = 'Incorrect password';
+                $status = 0;
+                $id = null;
+                $type = null;
+            }
+        } else {
+            $message = 'Your email address is not recognized';
+            $status = 0;
+            $id = null;
+            $type = null;
+        }
+
+        return ([
+            $status, $message, $id, $type
+        ]);
     }
 }

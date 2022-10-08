@@ -25,7 +25,7 @@ class RegistrationControl extends Controller
             'password_confirmation' => 'required|same:password',
         ]);
 
-        $id = AccountControl::create(
+        $attempt = AccountControl::create(
             $request->name,
             $request->surname,
             $request->email,
@@ -33,9 +33,9 @@ class RegistrationControl extends Controller
             $request->type
         );
 
-        if ($id[1] == true) {
+        if ($attempt[1] == true) {
 
-            session()->put('user', $id[0]);
+            session()->put('user', $attempt[0]);
             return redirect('/' . $request->type . '-dashboard');
         } else {
             return back()->with('fail', 'Failed to create your account');
