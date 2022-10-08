@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminControl;
 use App\Http\Controllers\Auth\LoginControl;
 use App\Http\Controllers\Auth\RegistrationControl;
 use App\Http\Controllers\CustomerControl;
+use App\Http\Controllers\ProfileControl;
 use App\Http\Controllers\VendorControl;
 use Illuminate\Support\Facades\Route;
 
@@ -55,3 +56,32 @@ Route::get('/vendor-dashboard', [
 Route::get('/customer-dashboard', [
     CustomerControl::class, 'dashboard'
 ]);
+
+
+
+//User profiles
+Route::get('/admin-profile', [
+    AdminControl::class, 'profile'
+]);
+
+Route::get('/vendor-profile', [
+    VendorControl::class, 'profile'
+]);
+
+Route::get('/customer-profile', [
+    CustomerControl::class, 'profile'
+]);
+
+
+
+//Update profile picture
+Route::post('/update-profile-picture', [
+    ProfileControl::class, 'updateProfilePicture'
+])->name('update-profile-picture');
+
+
+
+//Remove profile picture
+Route::get('/remove-profile-picture', [
+    ProfileControl::class, 'removeProfilePicture'
+])->name('remove-profile-picture');
