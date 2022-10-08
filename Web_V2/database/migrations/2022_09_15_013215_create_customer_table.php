@@ -18,6 +18,7 @@ class CreateCustomerTable extends Migration
             $table->string('name');
             $table->string('surname');
             $table->string('email')->unique();
+            $table->string('image')->default('images/profile-pictures/default/default.png');
             $table->timestamps();
         });
     }
