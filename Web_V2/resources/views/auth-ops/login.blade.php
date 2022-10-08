@@ -1,59 +1,43 @@
-@extends('components.main-layout')
+@extends('components.auth-layout')
 
-@section('title', 'Welcome')
+@section('title', 'Login')
 
 @section('body')
-
-    <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
-
-    <!-- Header Section Begin -->
-    <header class="header">
-        <div class="header__top">
-        </div>
-        <div class="container">
-            <div class="row">
-            </div>
-        </div>
-    </header>
-    <!-- Header Section End -->
-
-    <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-option">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="breadcrumb__text">
-                        <h3>Kasi Suppliers</h3>
-                        <div class="breadcrumb__links">
-                            <a>Auth</a>
-                            <span>Login</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Breadcrumb Section End -->
 
     <!-- Checkout Section Begin -->
     <section class="checkout spad">
         <div class="container">
             <div class="checkout__form">
-                <form action="{{ route('login-request') }}">
+                <form action="{{ route('login-request') }}" method="POST">
+                    @csrf
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
                             <h5 class="checkout__title">Login Form</h5>
+
+                            @if(Session::has('fail'))
+                                <div class="alert alert-danger">
+                                    {{ Session::get('fail') }}
+                                </div>
+                            @endif
+
                             <div class="checkout__input">
                                 <p>Email<span>*</span></p>
-                                <input type="text">
+                                <input type="text" name="email" value="{{old('email')}}">
+
+                                @error('email')
+                                    <p style="color: red">{{ $message }}</p>
+                                @enderror
+
                             </div>
 
                             <div class="checkout__input">
                                 <p>Account Password<span>*</span></p>
-                                <input type="text">
+                                <input type="password" name="password">
+
+                                @error('password')
+                                    <p style="color: red">{{ $message }}</p>
+                                @enderror
+
                             </div>
 
                         </div>
