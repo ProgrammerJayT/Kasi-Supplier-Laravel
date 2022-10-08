@@ -1,6 +1,7 @@
 @extends('components.customer-layout')
 
 @section('title', 'Customer Dashboard')
+@section('image-path', $image)
 
 @section('body')
 
