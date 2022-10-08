@@ -15,4 +15,8 @@ class VendorControl extends Controller
             'name' => $user->name
         ]);
     }
+
+    public function profile() {
+        return view('profile.vendor-profile');
+    }
 }
