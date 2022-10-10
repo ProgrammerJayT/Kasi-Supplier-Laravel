@@ -77,4 +77,10 @@ class AccountControl extends Controller
             $status, $message, $id, $type
         ]);
     }
+
+    public function logout(){
+        session()->flush();
+        return redirect('/'); 
+    }
+
 }
