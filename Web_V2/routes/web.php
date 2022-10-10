@@ -3,9 +3,14 @@
 use App\Http\Controllers\AdminControl;
 use App\Http\Controllers\Auth\LoginControl;
 use App\Http\Controllers\Auth\RegistrationControl;
+use App\Http\Controllers\CartControl;
 use App\Http\Controllers\CustomerControl;
+use App\Http\Controllers\MarketControl;
 use App\Http\Controllers\ProfileControl;
+use App\Http\Controllers\ShoppingControl;
 use App\Http\Controllers\VendorControl;
+use App\Http\Controllers\WishlistControl;
+use App\Http\Livewire\Shopping;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -85,3 +90,43 @@ Route::post('/update-profile-picture', [
 Route::get('/remove-profile-picture', [
     ProfileControl::class, 'removeProfilePicture'
 ])->name('remove-profile-picture');
+
+
+
+//Market
+Route::get('/vendor-items', [
+    MarketControl::class, 'vendorItems'
+])->name('vendor-items');
+
+Route::post('/add-item', [
+    MarketControl::class, 'addItem'
+])->name('add-item');
+
+
+
+//Wishlist
+Route::get('/vendor-wishlist', [
+    WishlistControl::class, 'show'
+])->name('vendor-wishlist');
+
+Route::get('/customer-wishlist', [
+    WishlistControl::class, 'show'
+])->name('customer-wishlist');
+
+
+//Shopping
+Route::get('/shopping', [
+    ShoppingControl::class, 'show'
+    //Shopping::class, 'render'
+])->name('shopping');
+
+
+
+//Cart
+Route::get('/add-to-cart', [
+    CartControl::class, 'add'
+])->name('add-to-cart');
+
+Route::get('/view-cart', [
+    CartControl::class, 'show'
+])->name('view-cart');
