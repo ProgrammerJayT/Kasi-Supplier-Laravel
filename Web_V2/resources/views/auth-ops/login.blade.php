@@ -22,7 +22,7 @@
 
                             <div class="checkout__input">
                                 <p>Email<span>*</span></p>
-                                <input type="text" name="email" value="{{old('email')}}">
+                                <input type="email" name="email" value="{{old('email')}}">
 
                                 @error('email')
                                     <p style="color: red">{{ $message }}</p>
