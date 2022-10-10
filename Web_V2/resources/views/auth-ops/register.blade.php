@@ -17,7 +17,7 @@
                                 <div class="col-lg-6 ">
                                     <div class="checkout__input">
                                         <p>First Name<span>*</span></p>
-                                        <input type="text" name="name">
+                                        <input type="text" name="name" value="{{old('name')}}">
 
                                         @error('name')
                                             <p style="color: red;">{{ $message }}</p>
@@ -28,7 +28,7 @@
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Last Name<span>*</span></p>
-                                        <input type="text" name="surname">
+                                        <input type="text" name="surname" value="{{old('surname')}}">
 
                                         @error('surname')
                                             <p style="color: red;">{{ $message }}</p>
@@ -41,7 +41,7 @@
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Email<span>*</span></p>
-                                        <input type="email" name="email">
+                                        <input type="email" name="email" value="{{old('email')}}">
 
                                         @error('email')
                                             <p style="color: red;">{{ $message }}</p>
@@ -52,7 +52,7 @@
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Account Type<span>*</span></p>
-                                        <select name="type" id="type">
+                                        <select name="type" id="type"  value="{{old('type')}}">
                                             <option value="">Choose account type</option>
                                             <option value="vendor">Vendor</option>
                                             <option value="customer">Customer</option>
