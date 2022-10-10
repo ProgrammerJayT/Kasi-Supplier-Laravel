@@ -45,6 +45,7 @@
         <div class="loader"></div>
     </div>
 
+
     <!-- Header Section Begin -->
     <header class="header">
         <div class="header__top">
@@ -56,11 +57,91 @@
     </header>
     <!-- Header Section End -->
 
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <!-- Container wrapper -->
+        <div class="container-fluid">
+            <!-- Toggle button -->
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Collapsible wrapper -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <!-- Left links -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="vendor-dashboard">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                            href="{{ route('vendor-wishlist', [
+                                'user' => 'vendor',
+                            ]) }}">My
+                            wishlist</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link"
+                            href="{{ route('shopping', [
+                                'user' => 'vendor',
+                            ]) }}">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="vendor-items">My products</a>
+                    </li>
+                </ul>
+                <!-- Left links -->
+            </div>
+            <!-- Collapsible wrapper -->
+
+            <!-- Right elements -->
+            <div class="d-flex align-items-center">
+                <!-- Icon -->
+                <a class="link-secondary me-3"
+                    href="{{ route('view-cart', [
+                        'user' => 'vendor',
+                    ]) }}">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+
+                <a class="link-secondary me-3">
+                    <p style="margin-bottom:0px;">@yield('username')</p>
+                </a>
+
+                <!-- Avatar -->
+                <div class="dropdown">
+                    <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#"
+                        id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+
+                        <img src="@yield('image-path')" class="rounded-circle" height="25" loading="lazy" />
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                        <li>
+                            <a class="dropdown-item" href="vendor-profile">My profile</a>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item" href="/">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Right elements -->
+        </div>
+        <!-- Container wrapper -->
+    </nav>
+    <!-- Navbar -->
+
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-option">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-md-6">
+                <div class="col-lg-12">
                     <div class="breadcrumb__text">
                         <h3>Kasi Suppliers</h3>
                         <div class="breadcrumb__links">
@@ -88,7 +169,8 @@
     <script src="assets/js/jquery.slicknav.js"></script>
     <script src="assets/js/mixitup.min.js"></script>
     <script src="assets/js/owl.carousel.min.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/main.js"></script><!-- MDB -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.js"></script>
 </body>
 
 </html>
