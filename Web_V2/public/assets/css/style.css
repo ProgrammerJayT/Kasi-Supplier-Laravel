@@ -938,6 +938,8 @@ ol {
 .product__item {
 	overflow: hidden;
 	margin-bottom: 40px;
+	border-width: 1px;
+	border-color: #888888;
 }
 
 .product__item.sale .product__item__pic .label {
@@ -973,9 +975,10 @@ ol {
 }
 
 .product__item__pic {
-	height: 260px;
+	height: 250px;
 	position: relative;
 	background-position: center center;
+	object-fit: contain;
 }
 
 .product__item__pic .label {
