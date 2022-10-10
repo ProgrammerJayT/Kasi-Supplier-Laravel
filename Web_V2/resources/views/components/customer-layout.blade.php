@@ -78,7 +78,18 @@
                         <a class="nav-link" href="customer-dashboard">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="customer-wishlist">My wishlist</a>
+                        <a class="nav-link"
+                            href="{{ route('customer-wishlist', [
+                                'user' => 'customer',
+                            ]) }}">My
+                            wishlist</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link"
+                            href="{{ route('shopping', [
+                                'user' => 'customer',
+                            ]) }}">Shop</a>
                     </li>
                 </ul>
                 <!-- Left links -->
@@ -88,25 +99,31 @@
             <!-- Right elements -->
             <div class="d-flex align-items-center">
                 <!-- Icon -->
-                <a class="link-secondary me-3" href="#">
+                <a class="link-secondary me-3"
+                    href="{{ route('customer-cart', [
+                        'user' => 'customer',
+                    ]) }}">
                     <i class="fas fa-shopping-cart"></i>
+                </a>
+
+                <a class="link-secondary me-3">
+                    <p style="margin-bottom:0px;">@yield('username')</p>
                 </a>
 
                 <!-- Avatar -->
                 <div class="dropdown">
                     <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#"
                         id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+
                         <img src="@yield('image-path')" class="rounded-circle" height="25" loading="lazy" />
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
                         <li>
                             <a class="dropdown-item" href="customer-profile">My profile</a>
                         </li>
+
                         <li>
-                            <a class="dropdown-item" href="#">Settings</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#">Logout</a>
+                            <a class="dropdown-item" href="/">Logout</a>
                         </li>
                     </ul>
                 </div>
@@ -151,6 +168,7 @@
     <script src="assets/js/owl.carousel.min.js"></script>
     <script src="assets/js/main.js"></script><!-- MDB -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.js"></script>
+    
 </body>
 
 </html>
