@@ -1,4 +1,6 @@
 @extends('components.vendor-layout')
+@section('username', $name)
+@section('image-path', $image)
 
 @section('title', 'My products')
 
@@ -20,15 +22,21 @@
                             @foreach ($items as $item)
                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                     <div class="product__item">
+
                                         <div class="product__item__pic set-bg" data-setbg=" {{ asset($item->image) }}">
-                                            <ul class="product__hover">
+                                            {{-- <ul class="product__hover">
                                                 <li><a href="#"><img src="assets/img/icon/heart.png" alt=""></a>
                                                 </li>
-                                            </ul>
+                                            </ul> --}}
                                         </div>
+
                                         <div class="product__item__text" style="border-width: 5px;border-color:black;">
                                             <h6 style="color: blue;"><b>{{ $item->name }}</b></h6>
-                                            <a href="#" class="add-cart">+ Edit item</a>
+                                            <a href="{{ route('edit-item', [
+                                                'id' => $item->id,
+                                                'user' => 'vendor',
+                                            ]) }}"
+                                                class="add-cart">+ Edit item</a>
                                             <h5>R{{ $item->price }}</h5>
                                             <h6 style="color: rgb(89, 89, 89);">{{ $item->desc }}</h6>
                                         </div>
@@ -42,13 +50,20 @@
                     </div>
                 </div>
 
-                
+
                 <div class="col-lg-4">
                     <div class="card mb-3" style="border-radius:10px;border-color:rgb(186, 186, 186);border-width:1px;">
 
                         @if (Session::has('add-product-success'))
                             <div class="alert alert-success" role="alert">
                                 <p style="color: white; margin-bottom:0px;">{{ Session::get('add-product-success') }}
+                                </p>
+                            </div>
+                        @endif
+
+                        @if (Session::has('delete-item-success'))
+                            <div class="alert alert-success" role="alert">
+                                <p style="color: white; margin-bottom:0px;">{{ Session::get('delete-item-success') }}
                                 </p>
                             </div>
                         @endif
