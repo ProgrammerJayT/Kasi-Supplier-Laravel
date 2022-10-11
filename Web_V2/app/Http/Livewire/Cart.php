@@ -15,6 +15,16 @@ class Cart extends Component
     public $enterQty;
     public $user;
 
+    public function removeItem($id)
+    {
+        $newCart = array_diff($this->cartItems, [$id]);
+        session()->put('cartItems', array_values($newCart));
+        $this->cartItems = session()->get('cartItems');
+
+        //Set session message
+        session()->flash('item-remove', 'Item removed from cart');
+    }
+
     public function clear()
     {
         $this->cartItems = array();
