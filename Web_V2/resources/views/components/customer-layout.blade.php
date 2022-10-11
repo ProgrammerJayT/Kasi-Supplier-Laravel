@@ -123,7 +123,7 @@
                         </li>
 
                         <li>
-                            <a class="dropdown-item" href="/">Logout</a>
+                            <a class="dropdown-item" href="{{ route('/logout') }}">Logout</a>
                         </li>
                     </ul>
                 </div>
@@ -168,7 +168,7 @@
     <script src="assets/js/owl.carousel.min.js"></script>
     <script src="assets/js/main.js"></script><!-- MDB -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.js"></script>
-    
+
 </body>
 
 </html>
