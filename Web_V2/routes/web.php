@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\AdminControl;
+use App\Http\Controllers\Auth\AccountControl;
 use App\Http\Controllers\Auth\LoginControl;
 use App\Http\Controllers\Auth\RegistrationControl;
+use App\Http\Controllers\AuthControl;
 use App\Http\Controllers\CartControl;
 use App\Http\Controllers\CustomerControl;
 use App\Http\Controllers\MarketControl;
@@ -46,6 +48,10 @@ Route::get('/register', [
 Route::post('/register-request', [
     RegistrationControl::class, 'registerRequest'
 ])->name('register-request');
+
+Route::get('/logout', [
+    AccountControl::class, 'logout'
+])->name('/logout');
 
 
 
@@ -95,12 +101,20 @@ Route::get('/remove-profile-picture', [
 
 //Market
 Route::get('/vendor-items', [
-    MarketControl::class, 'vendorItems'
+    MarketControl::class, 'show'
 ])->name('vendor-items');
 
 Route::post('/add-item', [
     MarketControl::class, 'addItem'
 ])->name('add-item');
+
+Route::get('/edit-item', [
+    ShoppingControl::class, 'editItem'
+])->name('edit-item');
+
+Route::post('/update-item', [
+    MarketControl::class, 'updateItem'
+])->name('update-item');
 
 
 
@@ -117,7 +131,6 @@ Route::get('/customer-wishlist', [
 //Shopping
 Route::get('/shopping', [
     ShoppingControl::class, 'show'
-    //Shopping::class, 'render'
 ])->name('shopping');
 
 
