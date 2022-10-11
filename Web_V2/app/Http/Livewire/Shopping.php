@@ -13,7 +13,6 @@ use Livewire\Component;
 
 class Shopping extends Component
 {
-    protected $listeners = ['refreshComponent' => '$refresh'];
     public $search = '';
     public $cartItems = array();
     public $prevCartItems = array();
@@ -53,16 +52,20 @@ class Shopping extends Component
         $this->cartItems = array();
     }
 
+    public function mount(Request $request){
+        $this->user = $request->user;
+    }
+
     public function render(Request $request)
     {
         $categories = ShoppingCategories::index()->original;
-        $this->user = $request->user;
+        
 
         return view('livewire.shopping', [
             'items' => Item::where('name', 'like', '%' . $this->search . '%')
                 ->where('ven_id', '!=', session()->get('user'))->get(),
             'categories' => $categories,
-            'user' => $request->user,
+            'user' => $this->user,
             'cartItems' => $this->cartItems,
             'results' => $this->results,
         ]);
