@@ -10,11 +10,15 @@ class MarketControl extends Controller
 {
     //
 
-    public function vendorItems()
+    public function show()
     {
+        $user = User::show('vendor', session()->get('user'));
+
         return view('vendor-ops.view-items', [
             'items' => Item::where('ven_id', session()->get('user'))->get(),
             'categories' => Category::all()->sortBy('name'),
+            'name' => $user->name,
+            'image' => $user->image,
         ]);
     }
 
@@ -55,6 +59,56 @@ class MarketControl extends Controller
         ] : [
             $status = 'add-item-failure',
             $message = 'Item could not be added',
+        ];
+
+        return redirect()->back()->with($status, $message);
+    }
+
+    public function editItem(Request $request)
+    {
+    }
+
+    public function deleteItem(Request $request)
+    {
+        $item = Item::find($request->id);
+
+        $item->delete() ? redirect(
+            route('vendor-ops.view-items')
+        )->with('item-delete-success', 'Item deleted successfully') : redirect(
+            route('vendor.view-items')
+        )->with('item-delete-failure', 'Item could not be deleted');
+    }
+
+    public function updateItem(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'price' => 'required|numeric',
+            'category' => 'required',
+            'description' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $item = Item::find($request->id);
+
+        $item->cat_id = (int)substr($request->category, 0, 1);
+        $item->desc = $request->description;
+        $item->name = $request->name;
+        $item->price = $request->price;
+
+        if ($request->image) {
+            $imageName = preg_replace('/\s+/', '', $request->name) . '.' . $request->image->extension();
+            $request->image->move(public_path('images/vendor-stock/items/' . session()->get('user')), $imageName);
+
+            $item->image = 'images/vendor-stock/items/' . session()->get('user') . '/' . $imageName;
+        }
+
+        $item->save() ? [
+            $status = 'update-item-success',
+            $message = 'Item updated successfully',
+        ] : [
+            $status = 'update-item-failure',
+            $message = 'Item could not be updated',
         ];
 
         return redirect()->back()->with($status, $message);
