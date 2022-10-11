@@ -92,7 +92,9 @@
                             ]) }}">Shop</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="vendor-items">My products</a>
+                        <a class="nav-link" href="{{route('vendor-items', [
+                            'user' => 'vendor',
+                        ])}}">My products</a>
                     </li>
                 </ul>
                 <!-- Left links -->
@@ -126,7 +128,7 @@
                         </li>
 
                         <li>
-                            <a class="dropdown-item" href="/">Logout</a>
+                            <a class="dropdown-item" href="{{route('/logout')}}">Logout</a>
                         </li>
                     </ul>
                 </div>
