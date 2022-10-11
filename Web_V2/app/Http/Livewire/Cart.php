@@ -9,22 +9,56 @@ use Illuminate\Http\Request;
 
 class Cart extends Component
 {
-    public $totalPrice = array();
-    public $quantity = 0;
+    public $totalPrice = 0;
+    public $quantity = array();
+    public $cartItems;
+    public $enterQty;
+    public $user;
 
-    public function setQuantity($id)
+    public function clear()
     {
+        $this->cartItems = array();
+        $this->totalPrice = 0;
+        $this->quantity = array();
+        $this->enterQty = null;
+
+        session()->pull('cartItems');
     }
+
+    public function mount(Request $request)
+    {
+        $this->user = $request->user;
+
+        session()->has('cartItems') ? $this->cartItems = session()->get('cartItems') : $this->cartItems = array();
+
+        for ($i = 0; $i < count($this->cartItems); $i++) {
+            $this->quantity[$this->cartItems[$i]] = 1;
+        }
+    }
+
     public function render(Request $request)
     {
         $items = ShoppingItems::index()->original;
 
-        session()->has('cartItems') ? $cartItems = session()->get('cartItems') : $cartItems = array();
+        //Get sum of all items in cart
+        $this->totalPrice = 0;
+
+        foreach ($items as $item) {
+            if (in_array($item->id, $this->cartItems)) {
+                if ($this->quantity[$item->id] == '' || $this->quantity[$item->id] <= 0) {
+                    $this->quantity[$item->id] = 1;
+                }
+                $this->totalPrice += (int)$item->price * (int)$this->quantity[$item->id];
+            }
+        }
 
         return view('livewire.cart', [
             'items' => $items,
-            'cartItems' => $cartItems,
-            'user' => $request->user,
+            'cartItems' => $this->cartItems,
+            'user' => $this->user,
+            'quantity' => (int)$this->quantity,
+            'totalPrice' => $this->totalPrice,
+
         ]);
     }
 }
