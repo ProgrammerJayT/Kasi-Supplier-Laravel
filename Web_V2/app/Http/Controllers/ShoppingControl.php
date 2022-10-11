@@ -22,4 +22,14 @@ class ShoppingControl extends Controller
             'image' => $user->image,
         ]);
     }
+
+    public function editItem(Request $request)
+    {
+        $user = User::show($request->user, session()->get('user'));
+
+        return view('vendor-ops.edit-item', [
+            'name' => $user->name,
+            'image' => $user->image,
+        ]);
+    }
 }
