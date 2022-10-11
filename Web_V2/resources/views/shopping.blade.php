@@ -5,7 +5,5 @@
 @section('image-path', $image)
 
 @section('body')
-    @livewire('shopping', [
-        'user' => $user,
-    ])
+    @livewire('shopping')
 @endsection
