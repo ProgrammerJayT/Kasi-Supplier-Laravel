@@ -6,6 +6,8 @@
             <div class="row">
                 <div class="col-lg-8">
 
+                    <h1 style="color:red;">Debugging mode</h1>
+
                     @if (Session::has('item-remove') && count($cartItems) > 0)
                         <div class="alert alert-success" role="alert">
                             {{ Session::get('item-remove') }}
@@ -22,6 +24,9 @@
                                 to go back to the shop.</p>
                         </div>
                     @else
+                        @php
+                            print_r($quantity);
+                        @endphp
                         @foreach ($items as $key => $item)
                             @for ($i = 0; $i < count($cartItems); $i++)
                                 @if ($item->id == $cartItems[$i])
@@ -108,7 +113,12 @@
                         <ul>
                             <li>Total <span>R{{ $totalPrice }}</span></li>
                         </ul>
-                        <a href="#" class="primary-btn">Proceed to checkout</a>
+                        <a href="{{ route('checkout', [
+                            'user' => $user,
+                            'total' => $totalPrice,
+                            'quantity' => $quantity,
+                        ]) }}"
+                            class="primary-btn">Proceed to checkout</a>
                     </div>
                 </div>
             </div>
