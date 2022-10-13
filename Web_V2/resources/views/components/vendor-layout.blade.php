@@ -92,9 +92,11 @@
                             ]) }}">Shop</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('vendor-items', [
-                            'user' => 'vendor',
-                        ])}}">My products</a>
+                        <a class="nav-link"
+                            href="{{ route('vendor-items', [
+                                'user' => 'vendor',
+                            ]) }}">My
+                            products</a>
                     </li>
                 </ul>
                 <!-- Left links -->
@@ -128,7 +130,7 @@
                         </li>
 
                         <li>
-                            <a class="dropdown-item" href="{{route('/logout')}}">Logout</a>
+                            <a class="dropdown-item" href="{{ route('/logout') }}">Logout</a>
                         </li>
                     </ul>
                 </div>
@@ -173,6 +175,60 @@
     <script src="assets/js/owl.carousel.min.js"></script>
     <script src="assets/js/main.js"></script><!-- MDB -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyColBQqGsiDgBrMtcp3GSVbVQWOW9TNe_0&libraries=places"
+        defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var autocomplete;
+            var id = 'location';
+
+            autocomplete = new google.maps.places.Autocomplete((document.getElementById(id)), {
+                types: [
+                    'geocode',
+                ],
+                componentRestrictions: {
+                    country: "ZA"
+                },
+                fields: [
+                    'place_id',
+                    'geometry',
+                    'name',
+                ]
+            });
+
+            autocomplete.addListener('place_changed', function() {
+                var place = autocomplete.getPlace();
+
+                if (!place.geometry) {
+                    window.alert("Autocomplete's returned place contains no geometry");
+                    document.getElementById(id).value = '';
+                    return;
+                } else {
+                    var lat = place.geometry.location.lat();
+                    var lng = place.geometry.location.lng();
+                    var place_id = place.place_id;
+                    var name = place.name;
+                    var address = place.formatted_address;
+                    var location = {
+                        lat: lat,
+                        lng: lng,
+                        place_id: place_id,
+                        name: name,
+                        address: address
+                    };
+
+                    document.getElementById('lat').value = lat;
+                    document.getElementById('lng').value = lng;
+                }
+            });
+        });
+    </script>
+    <script>
+        $('#acc').change(function() {
+            $('#location').attr('disabled', !this.checked)
+        });
+    </script>
 </body>
 
 </html>
