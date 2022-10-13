@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\AccountControl;
 use App\Http\Controllers\Auth\LoginControl;
 use App\Http\Controllers\Auth\RegistrationControl;
 use App\Http\Controllers\AuthControl;
+use App\Http\Controllers\CartCheckout;
 use App\Http\Controllers\CartControl;
 use App\Http\Controllers\CustomerControl;
 use App\Http\Controllers\MarketControl;
@@ -143,3 +144,14 @@ Route::get('/add-to-cart', [
 Route::get('/view-cart', [
     CartControl::class, 'show'
 ])->name('view-cart');
+
+
+
+//Checkout
+Route::get('/checkout', [
+    CartCheckout::class, 'show'
+])->name('checkout');
+
+// Route::post('/checkout-request', [
+//     CartCheckout::class, 'checkout'
+// ])->name('checkout-request');
