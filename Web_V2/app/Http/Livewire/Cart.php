@@ -9,11 +9,7 @@ use Illuminate\Http\Request;
 
 class Cart extends Component
 {
-    public $totalPrice = 0;
-    public $quantity = array();
-    public $cartItems;
-    public $enterQty;
-    public $user;
+    public $totalPrice = 0, $quantity = array(), $cartItems, $enterQty, $user;
 
     public function removeItem($id)
     {
@@ -33,6 +29,7 @@ class Cart extends Component
         $this->enterQty = null;
 
         session()->pull('cartItems');
+        session()->pull('itemQuantity');
     }
 
     public function mount(Request $request)
@@ -44,6 +41,14 @@ class Cart extends Component
         for ($i = 0; $i < count($this->cartItems); $i++) {
             $this->quantity[$this->cartItems[$i]] = 1;
         }
+
+        // if (session()->has('itemQuantity')) {
+        //     $this->quantity = session()->get('itemQuantity');
+        // } else {
+        //     session()->put('itemQuantity', $this->quantity);
+        // }
+
+        print_r($this->totalPrice);
     }
 
     public function render(Request $request)
@@ -54,7 +59,7 @@ class Cart extends Component
         $this->totalPrice = 0;
 
         foreach ($items as $item) {
-            if (in_array($item->id, $this->cartItems)) {
+            if (in_array($item->id, $this->cartItems) && count($this->cartItems) > 0) {
                 if ($this->quantity[$item->id] == '' || $this->quantity[$item->id] <= 0) {
                     $this->quantity[$item->id] = 1;
                 }
