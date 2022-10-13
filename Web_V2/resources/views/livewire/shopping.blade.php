@@ -6,7 +6,7 @@
                 <div class="col-lg-8">
                     <div class="checkout__input">
 
-                        <h1 style="color:red;">Development mode</h1>
+                        <h1 style="color:red;">Debugging mode</h1>
 
                         <input wire:model="search" type="text" placeholder="Search for items here. E.g Tomatoes"
                             name="surname" value="{{ old('surname') }}">
