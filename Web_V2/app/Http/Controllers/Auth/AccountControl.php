@@ -33,11 +33,11 @@ class AccountControl extends Controller
         $model->email = strtolower($email);
 
         $account->save() && $model->save() ?
-            [$id = $model::where('email', strtolower($email))->first()->id, $status = true]
-            : [$id = null, $status = false];
+            [$id = $model::where('email', strtolower($email))->first()->id, $status = true, $message = 'Account created successfully'] :
+            [$id = null, $status = false, $message = 'Account creation failed'];
 
         return ([
-            $id, $status
+            $status, $message, $id, $type
         ]);
     }
 
@@ -59,7 +59,6 @@ class AccountControl extends Controller
                 }
 
                 $type = $account->type;
-
             } else {
                 $message = 'Incorrect password';
                 $status = 0;
@@ -78,9 +77,9 @@ class AccountControl extends Controller
         ]);
     }
 
-    public function logout(){
+    public function logout()
+    {
         session()->flush();
-        return redirect('/'); 
+        return redirect('/');
     }
-
 }
