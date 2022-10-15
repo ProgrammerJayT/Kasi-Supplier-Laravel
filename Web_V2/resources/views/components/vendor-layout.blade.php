@@ -75,28 +75,19 @@
                 <!-- Left links -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="vendor-dashboard">Dashboard</a>
+                        <a class="nav-link" href="{{ route('dashboard') }}"><b>Dashboard</b></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link"
-                            href="{{ route('vendor-wishlist', [
-                                'user' => 'vendor',
-                            ]) }}">My
-                            wishlist</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link"
-                            href="{{ route('shopping', [
-                                'user' => 'vendor',
-                            ]) }}">Shop</a>
+                        <a class="nav-link" href="{{ route('vendor-wishlist') }}"><b>Wishlist</b></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link"
-                            href="{{ route('vendor-items', [
-                                'user' => 'vendor',
-                            ]) }}">My
-                            products</a>
+                        <a class="nav-link" href="{{ route('shopping') }}"><b>Shop</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('items') }}"><b>Stock</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('orders') }}"><b>Orders</b></a>
                     </li>
                 </ul>
                 <!-- Left links -->
@@ -106,10 +97,7 @@
             <!-- Right elements -->
             <div class="d-flex align-items-center">
                 <!-- Icon -->
-                <a class="link-secondary me-3"
-                    href="{{ route('view-cart', [
-                        'user' => 'vendor',
-                    ]) }}">
+                <a class="link-secondary me-3" href="{{ route('view-cart') }}">
                     <i class="fas fa-shopping-cart"></i>
                 </a>
 
@@ -175,8 +163,7 @@
     <script src="assets/js/owl.carousel.min.js"></script>
     <script src="assets/js/main.js"></script><!-- MDB -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyColBQqGsiDgBrMtcp3GSVbVQWOW9TNe_0&libraries=places"
-        defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_API_KEY') }}&libraries=places" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
@@ -205,21 +192,18 @@
                     document.getElementById(id).value = '';
                     return;
                 } else {
+
+                    console.log(JSON.stringify(place.address_components));
+
                     var lat = place.geometry.location.lat();
                     var lng = place.geometry.location.lng();
-                    var place_id = place.place_id;
-                    var name = place.name;
-                    var address = place.formatted_address;
                     var location = {
                         lat: lat,
                         lng: lng,
-                        place_id: place_id,
-                        name: name,
-                        address: address
                     };
 
-                    document.getElementById('lat').value = lat;
-                    document.getElementById('lng').value = lng;
+                    console.log(JSON.stringify(location));
+                    document.getElementById('set-address').value = JSON.stringify(location);
                 }
             });
         });
