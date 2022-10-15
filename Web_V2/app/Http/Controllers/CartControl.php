@@ -11,12 +11,15 @@ class CartControl extends Controller
     //
     public function show(Request $request)
     {
-        $user = User::show($request->user, session()->get('user'));
+        $myID = session()->get('user')['id'];
+        $accountType = session()->get('user')['type'];
+
+        $user = User::show($accountType, $myID);
 
         return view('cart', [
             'name' => $user->name,
             'image' => $user->image,
-            'user' => $request->user,
+            'user' => $accountType,
         ]);
     }
 }
