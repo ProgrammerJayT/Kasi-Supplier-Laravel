@@ -18,9 +18,7 @@
                         <div class="alert alert-warning">
                             <h4 class="alert-heading">No items in cart!</h4>
                             <p>Looks like you haven't added any items to your cart yet. Click <a
-                                    href="{{ route('shopping', [
-                                        'user' => $user,
-                                    ]) }}">here</a>
+                                    href="{{ route('shopping') }}">here</a>
                                 to go back to the shop.</p>
                         </div>
                     @else
@@ -79,9 +77,7 @@
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="continue__btn">
                                 <a
-                                    href="{{ route('shopping', [
-                                        'user' => $user,
-                                    ]) }}">Continue
+                                    href="{{ route('shopping') }}">Continue
                                     Shopping</a>
                             </div>
                         </div>
@@ -114,7 +110,6 @@
                             <li>Total <span>R{{ $totalPrice }}</span></li>
                         </ul>
                         <a href="{{ route('checkout', [
-                            'user' => $user,
                             'total' => $totalPrice,
                             'quantity' => $quantity,
                         ]) }}"
@@ -125,4 +120,5 @@
         </div>
     </section>
     <!-- Shopping Cart Section End -->
+    
 </div>
