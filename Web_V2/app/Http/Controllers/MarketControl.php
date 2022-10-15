@@ -12,7 +12,10 @@ class MarketControl extends Controller
 
     public function show()
     {
-        $user = User::show('vendor', session()->get('user'));
+        $myID = session()->get('user')['id'];
+        $accountType = session()->get('user')['type'];
+
+        $user = User::show($accountType, $myID);
 
         return view('vendor-ops.view-items', [
             'items' => Item::where('ven_id', session()->get('user'))->get(),
