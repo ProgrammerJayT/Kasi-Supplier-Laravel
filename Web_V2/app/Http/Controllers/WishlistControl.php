@@ -2,20 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Vendor;
-use App\Models\Customer;
 use Illuminate\Http\Request;
+use App\Http\Controllers\User;
 
 class WishlistControl extends Controller
 {
     //
     public function show(Request $request)
     {
-        return view($request->user . '-ops.view-wishlist', [
-            'name' => $request->user == 'vendor' ?
-                Vendor::where('id', session()->get('user'))->first()->name
-                :
-                Customer::where('id', session()->get('user'))->first()->name,
+        $myID = session()->get('user')['id'];
+        $accountType = session()->get('user')['type'];
+
+        $user = User::show($accountType, $myID);
+
+        return view('wishlist', [
+            'name' => $user->name,
+            'image' => $user->image,
+            'user' => $accountType,
         ]);
     }
 }
