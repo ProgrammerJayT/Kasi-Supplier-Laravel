@@ -33,9 +33,16 @@ class RegistrationControl extends Controller
             $request->type
         );
 
+        dd($attempt);
+
         if ($attempt[1] == true) {
 
-            session()->put('user', $attempt[0]);
+            $user = array(
+                'id' => $attempt[2],
+                'type' => $attempt[3]
+            );
+
+            session()->put('user', $user);
             return redirect('/' . $request->type . '-dashboard');
         } else {
             return back()->with('fail', 'Failed to create your account');
