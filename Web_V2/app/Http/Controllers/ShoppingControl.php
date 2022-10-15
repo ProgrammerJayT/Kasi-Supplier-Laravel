@@ -13,12 +13,17 @@ class ShoppingControl extends Controller
     //
     public function show(Request $request)
     {
-        $user = User::show($request->user, session()->get('user'));
+        //Get user's ID and their account type
+        $myID = session()->get('user')['id'];
+        $accountType = session()->get('user')['type'];
+
+        //Get user's information
+        $user = User::show($accountType, $myID);
 
         return view('shopping', [
             'name' => $user->name,
             'id' => $user->id,
-            'user' => $request->user,
+            'user' => $accountType,
             'image' => $user->image,
         ]);
     }
