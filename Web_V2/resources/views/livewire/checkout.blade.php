@@ -3,15 +3,27 @@
     <section class="checkout spad">
         <div class="container">
             <div class="checkout__form">
-                {{-- <form action="{{ route('checkout-request') }}" role="form" method="POST"> --}}
-                <form wire:submit.prevent="submit">
+                <form action="{{ route('checkout-request') }}" method="POST">
                     @csrf
                     <div class="row">
 
                         <div class="col-lg-8 col-md-6">
                             <h4 class="checkout__title">Billing Details</h4>
-                            <div class="row">
 
+
+                            {{-- Display card validation errors if any --}}
+                            @if (Session::has('error'))
+                                <div class="alert alert-danger" role="alert">
+                                    <p style="color: white; margin-bottom:0px;">
+                                        {{ Session::get('error') }}
+                                    </p>
+                                </div>
+                            @endif
+
+
+
+                            {{-- Display logged in user information --}}
+                            <div class="row">
                                 <div class="col-lg-4">
                                     <div class="checkout__input">
                                         <p>Cardholder Name</p>
@@ -32,13 +44,17 @@
                                 </div>
                             </div>
 
-                            <h4 class="checkout__title"></h4>
 
+
+
+                            {{-- Get user's card details --}}
+                            <h4 class="checkout__title"></h4>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Card number<span>*</span></p>
-                                        <input type="numeric" wire:model="cardNumber">
+                                        <input type="numeric" wire:model="cardNumber" name="cardNumber"
+                                            value="{{ old('cardNumber') }}">
 
                                         @error('cardNumber')
                                             <p><span>{{ $message }}</span></p>
@@ -46,10 +62,11 @@
 
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
+                                <div class="col-lg-3">
                                     <div class="checkout__input">
                                         <p>Expiry ({{ now()->year . '-' . now()->month }})<span>*</span></p>
-                                        <input type="month" wire:model="cardExpiry">
+                                        <input type="month" name="cardExpiry" wire:model="cardExpiry"
+                                            value="{{ old('cardExpiry') }}">
 
                                         @error('cardExpiry')
                                             <p><span>{{ $message }}</span></p>
@@ -57,23 +74,32 @@
                                     </div>
 
                                 </div>
-                                <div class="col-lg-2">
+                                <div class="col-lg-3">
                                     <div class="checkout__input">
                                         <p>CVV<span>*</span></p>
-                                        <input type="number" min=0 wire:model="cardCvv">
+                                        <input type="numeric" name="cardCvv" wire:model="cardCvv"
+                                            value="{{ old('cardCvv') }}">
 
                                         @error('cardCvv')
                                             <p><span>{{ $message }}</span></p>
                                         @enderror
                                     </div>
                                 </div>
+                                <div class="col-lg-3">
+                                    <div class="checkout__input">
+                                        <input type="text" name="user" value="{{ $user }}" hidden>
+                                    </div>
+                                </div>
                             </div>
 
 
+
+                            {{-- Prompt user for delivery address --}}
                             <div class="checkout__input__checkbox">
                                 <label for="acc">
                                     Would you like your order to be delivered?
-                                    <input type="checkbox" id="acc" wire:model="deliveryChoice">
+                                    <input type="checkbox" id="acc" name="deliveryChoice"
+                                        wire:model="deliveryChoice">
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
@@ -85,17 +111,24 @@
                                 <div class="checkout__input">
                                     <p>Address<span>*</span></p>
                                     <input type="text" placeholder="Shipping address" class="checkout__input__add"
-                                        id="location" wire:model="deliveryAddress">
+                                        id="location" name="location">
 
                                     @error('deliveryAddress')
                                         <p><span>{{ $message }}</span></p>
                                     @enderror
                                 </div>
+
+                                {{ 'Choice:' . $deliveryChoice . ' Address:' . $deliveryAddress }}
+
+                                <div class="checkout__input">
+                                    <input type="text" placeholder="Shipping address" class="checkout__input__add"
+                                        id="set-address" hidden name="set-address">
+                                </div>
                             @else
                                 <div class="checkout__input">
                                     <p>Address<span>*</span></p>
                                     <input type="text" placeholder="Shipping address" class="checkout__input__add"
-                                        id="location" wire:model="deliveryAddress" disabled value="">
+                                        id="location" name="deliveryAddress" disabled>
 
                                     @error('deliveryAddress')
                                         <p><span>{{ $message }}</span></p>
@@ -104,18 +137,10 @@
                             @endif
 
                             <div class="checkout__input">
-                                <input type="text" name="latitude" id="lat" wire:model="latitude">
-                            </div>
-
-                            <div class="checkout__input">
-                                <input type="text" name="longitude" id="lng" wire:model="longitude">
-                            </div>
-
-                            <div class="checkout__input">
                                 <p>Order notes</p>
                                 <input type="text"
                                     placeholder="Notes about your order, e.g. special notes for delivery (Optional)."
-                                    name="notes">
+                                    name="deliveryNote">
                             </div>
 
                         </div>
