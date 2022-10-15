@@ -26,8 +26,13 @@ class LoginControl extends Controller
         if ($response[0] == 0) {
             return redirect()->back()->with('fail', $response[1]);
         } else {
-            session()->put('user', $response[2]);
-            return redirect('/' . $response[3] . '-dashboard');
+            $user = array(
+                'id' => $response[2],
+                'type' => $response[3]
+            );
+
+            session()->put('user', $user);
+            return redirect('/dashboard');
         }
     }
 }
