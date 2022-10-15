@@ -8,8 +8,11 @@ use App\Http\Controllers\AuthControl;
 use App\Http\Controllers\CartCheckout;
 use App\Http\Controllers\CartControl;
 use App\Http\Controllers\CustomerControl;
+use App\Http\Controllers\DashboardControl;
 use App\Http\Controllers\MarketControl;
+use App\Http\Controllers\OrdersControl;
 use App\Http\Controllers\ProfileControl;
+use App\Http\Controllers\SalesControl;
 use App\Http\Controllers\ShoppingControl;
 use App\Http\Controllers\VendorControl;
 use App\Http\Controllers\WishlistControl;
@@ -61,14 +64,9 @@ Route::get('/admin-dashboard', [
     AdminControl::class, 'dashboard'
 ]);
 
-Route::get('/vendor-dashboard', [
-    VendorControl::class, 'dashboard'
-]);
-
-Route::get('/customer-dashboard', [
-    CustomerControl::class, 'dashboard'
-]);
-
+Route::get('/dashboard', [
+    DashboardControl::class, 'show'
+])->name('dashboard');
 
 
 //User profiles
@@ -101,9 +99,9 @@ Route::get('/remove-profile-picture', [
 
 
 //Market
-Route::get('/vendor-items', [
+Route::get('/items', [
     MarketControl::class, 'show'
-])->name('vendor-items');
+])->name('items');
 
 Route::post('/add-item', [
     MarketControl::class, 'addItem'
@@ -152,6 +150,15 @@ Route::get('/checkout', [
     CartCheckout::class, 'show'
 ])->name('checkout');
 
-// Route::post('/checkout-request', [
-//     CartCheckout::class, 'checkout'
-// ])->name('checkout-request');
+Route::post('/checkout-request', [
+    CartCheckout::class, 'checkout'
+])->name('checkout-request');
+
+Route::get('orders', [
+    OrdersControl::class, 'show'
+])->name('orders');
+
+
+Route::get('sales', [
+    SalesControl::class, 'show'
+])->name('sales');
