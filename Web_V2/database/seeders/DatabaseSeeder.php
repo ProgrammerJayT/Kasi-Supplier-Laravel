@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Banking;
 use App\Models\Category;
 use Illuminate\Database\Seeder;
 
@@ -23,7 +25,7 @@ class DatabaseSeeder extends Seeder
         // ]);
 
 
-        $data = [
+        $categories = [
             [
                 'name' => 'Baby & Toddler',
                 'value' => 'baby',
@@ -116,6 +118,28 @@ class DatabaseSeeder extends Seeder
             ],
         ];
 
-        Category::insert($data);
+        $accountTypes = [
+            [
+                'name' => 'Savings',
+                'value' => 'savings',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Cheque',
+                'value' => 'cheque',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Current',
+                'value' => 'current',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+        ];
+
+        Banking::insert($accountTypes);
+        Category::insert($categories);
     }
 }
