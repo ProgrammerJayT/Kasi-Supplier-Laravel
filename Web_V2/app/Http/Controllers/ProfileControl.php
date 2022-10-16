@@ -10,6 +10,23 @@ use Illuminate\Http\Request;
 class ProfileControl extends Controller
 {
     //
+
+    public function show() {
+        $myID = session()->get('user')['id'];
+        $accountType = session()->get('user')['type'];
+
+        $userInfo = User::show($accountType, $myID);
+
+        return view('profile', [
+            'name' => $userInfo->name,
+            'surname' => $userInfo->surname,
+            'email' => $userInfo->email,
+            'date' => $userInfo->created_at,
+            'image' => $userInfo->image,
+            'user' => $accountType,
+        ]);
+    }
+
     public function updateProfilePicture(Request $request)
     {
         $request->validate([
