@@ -44,7 +44,7 @@ class CartCheckout extends Controller
         $latLng = json_decode($request->input('set-address'), true);
 
         //Initialize user info
-        $userInfo = User::show('vendor', session()->get('user'));
+        $userInfo = User::show($accountType, $myID);
 
         //Go reverse geocode to get address
         try {
@@ -106,5 +106,10 @@ class CartCheckout extends Controller
         } catch (\Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
         }
+    }
+
+    public function success()
+    {
+        return view('payment-success');
     }
 }
