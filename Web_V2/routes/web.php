@@ -74,14 +74,9 @@ Route::get('/admin-profile', [
     AdminControl::class, 'profile'
 ]);
 
-Route::get('/vendor-profile', [
-    VendorControl::class, 'profile'
-]);
-
-Route::get('/customer-profile', [
-    CustomerControl::class, 'profile'
-]);
-
+Route::get('/profile', [
+    ProfileControl::class, 'show'
+])->name('profile');
 
 
 //Update profile picture
@@ -118,13 +113,9 @@ Route::post('/update-item', [
 
 
 //Wishlist
-Route::get('/vendor-wishlist', [
+Route::get('/wishlist', [
     WishlistControl::class, 'show'
-])->name('vendor-wishlist');
-
-Route::get('/customer-wishlist', [
-    WishlistControl::class, 'show'
-])->name('customer-wishlist');
+])->name('wishlist');
 
 
 //Shopping
@@ -162,3 +153,13 @@ Route::get('orders', [
 Route::get('sales', [
     SalesControl::class, 'show'
 ])->name('sales');
+
+
+Route::get('/success', [
+    CartCheckout::class, 'success'
+])->name('success');
+
+
+
+//Banking details
+
