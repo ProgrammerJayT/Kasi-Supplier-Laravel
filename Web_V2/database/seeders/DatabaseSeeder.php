@@ -4,8 +4,10 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Bank;
 use App\Models\Banking;
 use App\Models\Category;
+use App\Models\BankAccountType;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -25,6 +27,7 @@ class DatabaseSeeder extends Seeder
         // ]);
 
 
+        //Seed item categories
         $categories = [
             [
                 'name' => 'Baby & Toddler',
@@ -118,6 +121,7 @@ class DatabaseSeeder extends Seeder
             ],
         ];
 
+        //Seed bank account types
         $accountTypes = [
             [
                 'name' => 'Savings',
@@ -139,7 +143,61 @@ class DatabaseSeeder extends Seeder
             ],
         ];
 
-        Banking::insert($accountTypes);
+        //Seed banks
+        $banks = [
+            [
+                'name' => 'Standard Bank',
+                'value' => 'standard',
+                'image' => 'images/banks/standard.png',
+                'branch_code' => '051001',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'First National Bank',
+                'value' => 'fnb',
+                'image' => 'images/banks/fnb.jpg',
+                'branch_code' => '250655',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Capitec Bank',
+                'value' => 'capitec',
+                'image' => 'images/banks/capitec.jpg',
+                'branch_code' => '470010',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Nedbank',
+                'value' => 'nedbank',
+                'image' => 'images/banks/nedbank.jpg',
+                'branch_code' => '198765',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Tyme Bank',
+                'value' => 'tyme',
+                'image' => 'images/banks/tyme.jpg',
+                'branch_code' => '198765',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'ABSA Bank',
+                'value' => 'absa',
+                'image' => 'images/banks/absa.jpg',
+                'branch_code' => '632005',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]
+        ];
+
+
+        Bank::insert($banks);
+        BankAccountType::insert($accountTypes);
         Category::insert($categories);
     }
 }
