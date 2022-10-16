@@ -21,39 +21,21 @@ class Checkout extends Component
         $cardCvv,
         $deliveryAddress,
         $deliveryNote,
-        $addressEnabled,
         $latitude,
         $longitude;
 
-    protected $rules = [
-        'cardNumber' => 'required|numeric',
-        'cardExpiry' => 'required',
-        'cardCvv' => 'required|numeric',
-        'deliveryAddress' => 'required_if:deliveryChoice,==,true'
-
-    ];
-
-    public function updated($propertyName)
-    {
-        $this->validateOnly($propertyName);
-    }
-
-    public function submit(Request $request)
-    {
-        $validatedData = $this->validate();
-
-        dd($this->latitude . ' ' . $this->longitude);
-    }
-
     public function mount(Request $request)
     {
-        $this->user = $request->user;
-        $this->userInfo = User::show($this->user, session()->get('user'));
+
+        $myID = session()->get('user')['id'];
+        $accountType = session()->get('user')['type'];
+
+        $this->user = $accountType;
+        $this->userInfo = User::show($this->user, $myID);
+
         $this->cart = session()->has('cartItems') ? session()->get('cartItems') : array();
         $this->total = $request->total;
         $this->items = ShoppingItems::index()->original;
-
-        $this->deliveryChoice ? $this->addressEnabled = 'disabled' : '';
     }
 
     public function render()
