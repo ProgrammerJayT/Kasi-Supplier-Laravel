@@ -78,7 +78,7 @@
                         <a class="nav-link" href="{{ route('dashboard') }}"><b>Dashboard</b></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('vendor-wishlist') }}"><b>Wishlist</b></a>
+                        <a class="nav-link" href="{{ route('wishlist') }}"><b>Wishlist</b></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('shopping') }}"><b>Shop</b></a>
@@ -114,7 +114,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
                         <li>
-                            <a class="dropdown-item" href="vendor-profile">My profile</a>
+                            <a class="dropdown-item" href="{{ route('profile') }}">My profile</a>
                         </li>
 
                         <li>
