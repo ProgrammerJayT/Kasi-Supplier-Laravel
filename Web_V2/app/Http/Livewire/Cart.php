@@ -32,27 +32,21 @@ class Cart extends Component
         session()->pull('itemQuantity');
     }
 
-    public function mount(Request $request)
+    public function mount()
     {
-        $this->user = $request->user;
-
         session()->has('cartItems') ? $this->cartItems = session()->get('cartItems') : $this->cartItems = array();
 
         for ($i = 0; $i < count($this->cartItems); $i++) {
             $this->quantity[$this->cartItems[$i]] = 1;
         }
-
-        // if (session()->has('itemQuantity')) {
-        //     $this->quantity = session()->get('itemQuantity');
-        // } else {
-        //     session()->put('itemQuantity', $this->quantity);
-        // }
-
-        print_r($this->totalPrice);
     }
 
-    public function render(Request $request)
+    public function render()
     {
+        $myID = session()->get('user')['id'];
+        $accountType = session()->get('user')['type'];
+
+        $this->user = User::show($accountType, $myID);
         $items = ShoppingItems::index()->original;
 
         //Get sum of all items in cart
