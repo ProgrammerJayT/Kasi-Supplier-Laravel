@@ -6,14 +6,8 @@
                 <div class="col-lg-8">
                     <div class="checkout__input">
 
-                        <h1 style="color:red;">Debugging mode</h1>
-
                         <input wire:model="search" type="text" placeholder="Search for items here. E.g Tomatoes"
-                            name="surname" value="{{ old('surname') }}">
-
-                        @error('surname')
-                            <p style="color: red;">{{ $results['message'] }}</p>
-                        @enderror
+                            name="search">
 
                     </div>
                     <div class="row">
@@ -85,7 +79,7 @@
                                     </p>
 
                                     <div class="post_button" style="margin-top: 20px;">
-                                        <a href="view-cart?user={{ $user }}"
+                                        <a href="{{route('view-cart')}}"
                                             style="width:100%;color:white;text-align:center;" class="site-btn">View
                                             cart</a>
 
