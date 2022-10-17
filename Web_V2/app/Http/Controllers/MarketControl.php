@@ -42,18 +42,20 @@ class MarketControl extends Controller
         }
 
 
+        $userType = session()->get('user')['type'];
+        $userID = session()->get('user')['id'];
         $item = new Item();
 
         $item->cat_id = substr($request->category, 0, 1);
-        $item->ven_id = session()->get('user');
+        $item->ven_id = $userID;
         $item->desc = $request->description;
         $item->name = $request->name;
         $item->price = $request->price;
 
         $imageName = preg_replace('/\s+/', '', $request->name) . '.' . $request->image->extension();
-        $request->image->move(public_path('images/vendor-stock/items/' . session()->get('user')), $imageName);
+        $request->image->move(public_path('images/vendor-stock/items/' . $userType), $imageName);
 
-        $item->image = 'images/vendor-stock/items/' . session()->get('user') . '/' . $imageName;
+        $item->image = 'images/vendor-stock/items/' . $userType . '/' . $imageName;
 
 
         $item->save() ? [
