@@ -12,6 +12,12 @@ use Illuminate\Support\Facades\Hash;
 class AccountControl extends Controller
 {
     //
+
+    public static function show($email) {
+        $account = Account::where('email', $email)->first();
+        return $account;
+    }
+
     public static function create($name, $surname, $email, $password, $type)
     {
 
