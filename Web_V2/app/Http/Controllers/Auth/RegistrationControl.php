@@ -33,8 +33,6 @@ class RegistrationControl extends Controller
             $request->type
         );
 
-        dd($attempt);
-
         if ($attempt[1] == true) {
 
             $user = array(
@@ -43,7 +41,7 @@ class RegistrationControl extends Controller
             );
 
             session()->put('user', $user);
-            return redirect('/' . $request->type . '-dashboard');
+            return redirect('/dashboard');
         } else {
             return back()->with('fail', 'Failed to create your account');
         }
