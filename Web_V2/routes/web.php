@@ -162,4 +162,10 @@ Route::get('/success', [
 
 
 //Banking details
+Route::get('/remove-banking-details', [
+    ProfileControl::class, 'removeBankingDetails'
+])->name('remove-banking-details');
 
+Route::post('/update-banking-details', [
+    ProfileControl::class, 'updateBankingDetails'
+])->name('update-banking-details');
