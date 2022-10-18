@@ -12,6 +12,7 @@ use App\Http\Controllers\User;
 use App\Http\Controllers\Auth\AccountControl;
 use App\Http\Controllers\Stripe\BankCardControl;
 use App\Models\Bank;
+use App\Models\BankCard;
 use Stripe\StripeClient;
 
 class ProfileControl extends Controller
@@ -28,6 +29,7 @@ class ProfileControl extends Controller
         //Get user account information
         $accountInfo = AccountControl::show($userInfo->email);
         $bankingInfo = BankingControl::show($accountInfo->id);
+        $bankCards = BankCard::all();
 
         //Get bank names and account type for user's banking details creation
         $banks = Bank::all();
@@ -40,9 +42,10 @@ class ProfileControl extends Controller
             'date' => $userInfo->created_at,
             'image' => $userInfo->image,
             'user' => $accountType,
-            'accountInfo' => $accountInfo,
+            'bankingInfo' => $bankingInfo,
             'banks' => $banks,
             'bankAccountTypes' => $bankAccountTypes,
+            'bankCards' => $bankCards,
         ]);
     }
 
