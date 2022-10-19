@@ -126,13 +126,14 @@ Route::get('/shopping', [
 
 
 //Cart
+Route::get('/cart', [
+    CartControl::class, 'show'
+])->name('cart');
+
+
 Route::get('/add-to-cart', [
     CartControl::class, 'add'
 ])->name('add-to-cart');
-
-Route::get('/view-cart', [
-    CartControl::class, 'show'
-])->name('view-cart');
 
 
 
@@ -169,3 +170,7 @@ Route::get('/remove-banking-details', [
 Route::post('/update-banking-details', [
     ProfileControl::class, 'updateBankingDetails'
 ])->name('update-banking-details');
+
+
+//Orders
+Route::post('/create-order', [])->name('create-order');
