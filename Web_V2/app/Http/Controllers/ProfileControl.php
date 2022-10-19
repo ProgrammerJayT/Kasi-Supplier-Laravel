@@ -29,11 +29,17 @@ class ProfileControl extends Controller
         //Get user account information
         $accountInfo = AccountControl::show($userInfo->email);
         $bankingInfo = BankingControl::show($accountInfo->id);
-        $bankCards = BankCard::all();
 
-        //Get bank names and account type for user's banking details creation
-        $banks = Bank::all();
-        $bankAccountTypes = BankAccountType::all();
+        $bankingInfo != null ? [
+            $bankCard = BankCard::where('banking_details_id', $bankingInfo->id)->first(),
+            $bank = Bank::where('id', $bankingInfo->bank_id)->first(),
+            $bankAccountType = BankAccountType::where('id', $bankingInfo->bank_account_type_id)->first(),
+        ] : [
+            $bankCard = null,
+            $bank = Bank::all(),
+            $bankAccountType = BankAccountType::all(),
+        ];
+
 
         return view('profile', [
             'name' => $userInfo->name,
@@ -43,9 +49,9 @@ class ProfileControl extends Controller
             'image' => $userInfo->image,
             'user' => $accountType,
             'bankingInfo' => $bankingInfo,
-            'banks' => $banks,
-            'bankAccountTypes' => $bankAccountTypes,
-            'bankCards' => $bankCards,
+            'banks' => $bank,
+            'bankAccountTypes' => $bankAccountType,
+            'bankCards' => $bankCard,
         ]);
     }
 
