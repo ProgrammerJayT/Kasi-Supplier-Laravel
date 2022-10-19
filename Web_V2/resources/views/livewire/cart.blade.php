@@ -6,11 +6,9 @@
             <div class="row">
                 <div class="col-lg-8">
 
-                    <h1 style="color:red;">Debugging mode</h1>
-
                     @if (Session::has('item-remove') && count($cartItems) > 0)
                         <div class="alert alert-success" role="alert">
-                            {{ Session::get('item-remove') }}
+                            <p style="color:white;margin-bottom:0px">{{ Session::get('item-remove') }}</p>
                         </div>
                     @endif
 
@@ -22,24 +20,20 @@
                                 to go back to the shop.</p>
                         </div>
                     @else
-                        @php
-                            print_r($quantity);
-                        @endphp
-                        @foreach ($items as $key => $item)
-                            @for ($i = 0; $i < count($cartItems); $i++)
-                                @if ($item->id == $cartItems[$i])
-                                    <div class="shopping__cart__table">
-                                        <table>
-                                            <thead>
-                                                <tr>
-                                                    <th>Product</th>
-                                                    <th>Quantity</th>
-                                                    <th>Total</th>
-                                                    <th></th>
-                                                </tr>
-                                            </thead>
+                        <div class="shopping__cart__table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Quantity</th>
+                                        <th>Total</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                @foreach ($items as $key => $item)
+                                    @for ($i = 0; $i < count($cartItems); $i++)
+                                        @if ($item->id == $cartItems[$i])
                                             <tbody>
-
                                                 <tr>
                                                     <td class="product__cart__item">
                                                         <div class="product__cart__item__pic">
@@ -57,7 +51,7 @@
                                                                 style="width:50%;border-radius:10px;border-color:darkgray;"
                                                                 type="number" name="{{ $item->id }}"
                                                                 wire:model="quantity.{{ $item->id }}" id="quantity"
-                                                                min=1 </div>
+                                                                min=1 value="{{ $quantity[$item->id] }}" </div>
                                                     </td>
 
                                                     <td class="cart__price">R{{ $quantity[$item->id] * $item->price }}</td>
@@ -66,18 +60,17 @@
                                                             class="fa fa-close"></i></td>
                                                 </tr>
                                             </tbody>
-                                        </table>
-                                    </div>
-                                @endif
-                            @endfor
-                        @endforeach
-                    @endunless
+                                        @endif
+                                    @endfor
+                                @endforeach
+                            @endunless
+                        </table>
+                    </div>
 
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="continue__btn">
-                                <a
-                                    href="{{ route('shopping') }}">Continue
+                                <a href="{{ route('shopping') }}">Continue
                                     Shopping</a>
                             </div>
                         </div>
@@ -97,13 +90,6 @@
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    {{-- <div class="cart__discount">
-                        <h6>Discount codes</h6>
-                        <form action="#">
-                            <input type="text" placeholder="Coupon code">
-                            <button type="submit">Apply</button>
-                        </form>
-                    </div> --}}
                     <div class="cart__total">
                         <h6>Cart total</h6>
                         <ul>
@@ -113,12 +99,12 @@
                             'total' => $totalPrice,
                             'quantity' => $quantity,
                         ]) }}"
-                            class="primary-btn">Proceed to checkout</a>
+                            class="primary-btn">Create order</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <!-- Shopping Cart Section End -->
-    
+
 </div>
