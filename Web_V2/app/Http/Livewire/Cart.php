@@ -15,6 +15,7 @@ class Cart extends Component
     {
         $newCart = array_diff($this->cartItems, [$id]);
         session()->put('cartItems', array_values($newCart));
+        
         $this->cartItems = session()->get('cartItems');
 
         //Set session message
@@ -29,7 +30,6 @@ class Cart extends Component
         $this->enterQty = null;
 
         session()->pull('cartItems');
-        session()->pull('itemQuantity');
     }
 
     public function mount()
@@ -37,7 +37,7 @@ class Cart extends Component
         session()->has('cartItems') ? $this->cartItems = session()->get('cartItems') : $this->cartItems = array();
 
         for ($i = 0; $i < count($this->cartItems); $i++) {
-            $this->quantity[$this->cartItems[$i]] = 1;
+            $this->quantity[(int)$this->cartItems[$i]] = 1;
         }
     }
 
@@ -61,6 +61,8 @@ class Cart extends Component
             }
         }
 
+        // print_r(session()->get('itemQuantity'));
+
         return view('livewire.cart', [
             'items' => $items,
             'cartItems' => $this->cartItems,
@@ -69,5 +71,14 @@ class Cart extends Component
             'totalPrice' => $this->totalPrice,
 
         ]);
+    }
+
+    public function updateQty($id, $qty)
+    {
+        //Update session with quantity
+        session()->put('itemQuantity.' . $id, (int)$qty);
+        dd(session()->get('itemQuantity'));
+
+        in_array($id, array_keys($this->quantity)) ? dd('found ' . $id, $this->quantity) : dd('not found ' . $id, $this->quantity);
     }
 }
