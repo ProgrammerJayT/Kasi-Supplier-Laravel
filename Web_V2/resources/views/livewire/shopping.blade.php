@@ -71,16 +71,14 @@
                                     <h5 class="card-title">You have
                                         @if (Session::has('cartItems'))
                                             {{ count(Session::get('cartItems')) }}
-                                        @else
-                                            0
                                         @endif
                                     </h5>
                                     <p style="margin-bottom: 0px;" class="card-text">items added in your cart.
                                     </p>
 
                                     <div class="post_button" style="margin-top: 20px;">
-                                        <a href="{{route('view-cart')}}"
-                                            style="width:100%;color:white;text-align:center;" class="site-btn">View
+                                        <a href="{{ route('cart') }}" style="width:100%;color:white;text-align:center;"
+                                            class="site-btn">View
                                             cart</a>
 
                                     </div>
