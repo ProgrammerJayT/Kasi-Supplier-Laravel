@@ -95,9 +95,9 @@
                         <ul>
                             <li>Total <span>R{{ $totalPrice }}</span></li>
                         </ul>
-                        <a href="{{ route('checkout', [
+                        <a href="{{ route('create-order', [
+                            'qty' => $quantity,
                             'total' => $totalPrice,
-                            'quantity' => $quantity,
                         ]) }}"
                             class="primary-btn">Create order</a>
                     </div>
