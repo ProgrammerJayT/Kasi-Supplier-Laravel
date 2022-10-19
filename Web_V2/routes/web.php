@@ -173,4 +173,10 @@ Route::post('/update-banking-details', [
 
 
 //Orders
-Route::post('/create-order', [])->name('create-order');
+Route::get('/create-order', [
+    OrdersControl::class, 'create'
+])->name('create-order');
+
+Route::get('/order-confirmation', [
+    OrdersControl::class, 'confirm'
+])->name('order-confirmation');
