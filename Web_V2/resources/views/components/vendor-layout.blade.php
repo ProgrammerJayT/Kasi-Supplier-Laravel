@@ -99,7 +99,7 @@
             <!-- Right elements -->
             <div class="d-flex align-items-center">
                 <!-- Icon -->
-                <a class="link-secondary me-3" href="{{ route('view-cart') }}">
+                <a class="link-secondary me-3" href="{{ route('cart') }}">
                     <i class="fas fa-shopping-cart"></i>
                 </a>
 
