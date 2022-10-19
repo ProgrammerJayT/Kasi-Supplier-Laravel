@@ -28,6 +28,7 @@ class Shopping extends Component
             $this->results['type'] = 'danger';
             $this->results['message'] = 'You already have this item added in your cart';
         } else {
+            session()->has('cartItems') ? $this->cartItems = session()->get('cartItems') : $this->cartItems = array();
             $this->cartItems[] = $id;
             session()->put('cartItems', $this->cartItems);
 
@@ -38,28 +39,27 @@ class Shopping extends Component
 
     public function clearCart()
     {
-        if (count($this->cartItems) > 0) {
+        session()->has('cartItems') ? [
+            $this->results['type'] = 'success',
+            $this->results['message'] = 'Cart cleared successfully',
+            session()->pull('cartItems'),
+        ] : [
+            $this->results['type'] = 'danger',
+            $this->results['message'] = 'Cart is already empty'
+        ];
 
-            $this->results['type'] = 'success';
-            $this->results['message'] = 'Cart cleared successfully';
-        } else {
-
-            $this->results['type'] = 'danger';
-            $this->results['message'] = 'No items to clear';
-        }
-
-        session()->pull('cartItems');
         $this->cartItems = array();
     }
 
-    public function mount(Request $request){
+    public function mount(Request $request)
+    {
         $this->user = $request->user;
     }
 
     public function render(Request $request)
     {
         $categories = ShoppingCategories::index()->original;
-        
+
 
         return view('livewire.shopping', [
             'items' => Item::where('name', 'like', '%' . $this->search . '%')
