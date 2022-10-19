@@ -20,4 +20,8 @@ class OrdersControl extends Controller
             'user' => $accountType,
         ]);
     }
+
+    public function create() {
+        
+    }
 }
