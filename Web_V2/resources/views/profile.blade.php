@@ -37,7 +37,7 @@
                                         </div>
                                         <div class="col-6 mb-3">
                                             <h6>Join date</h6>
-                                            <p class="text-muted">{{ $date }}</p>
+                                            <p class="text-muted">{{ $date->toDateString() }}</p>
                                         </div>
                                     </div>
                                     <div class="container">
@@ -72,10 +72,6 @@
                     </div>
                 </div>
 
-
-
-
-
                 {{-- Show user's banking details --}}
                 <div class="col-lg-6">
                     <div class="card mb-3" style="border-radius: .5rem;">
@@ -95,46 +91,49 @@
                                 </div>
                             @endif
 
-                            @unless($accountInfo->exists == true)
+                            @unless($bankingInfo == null)
+
+                                <div
+                                    style="width:100%;justify-content:center;align-items:center;padding-left:20px;padding-right:20px;padding-top:15px;">
+                                    <h5>Banking Details</h5>
+                                    <hr style="background-color: gray;">
+                                </div>
+
                                 <div class="col-md-4 gradient-custom text-center text-white"
                                     style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-                                    <img src="{{ $image }}" alt="Avatar" class="img-fluid my-5"
+                                    <img src="{{ $banks->image }}" alt="Avatar" class="img-fluid my-5"
                                         style="width:100px;height:100px;border-radius:1000px;object-fit:contain;" />
-                                    <h5 style="color: gray">{{ $name }}</h5>
-                                    <p style="color: gray">{{ $surname }}</p>
+                                    <h5 style="color: gray">{{ $banks->name }}</h5>
+                                    <p style="color: gray">{{ $banks->branch_code }}</p>
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body p-4">
-                                        <h6>Banking Details</h6>
-                                        <hr>
                                         <div class="row pt-1">
                                             <div class="col-6 mb-3">
-                                                <h6>Email</h6>
-                                                <p class="text-muted">{{ $email }}</p>
+                                                <h6>Account Number</h6>
+                                                <p class="text-muted">{{ $bankingInfo->account_number }}</p>
                                             </div>
                                             <div class="col-6 mb-3">
-                                                <h6>Join date</h6>
-                                                <p class="text-muted">{{ $date }}</p>
+                                                <h6>Account Type</h6>
+                                                <p class="text-muted">{{ $bankAccountTypes->name }}</p>
                                             </div>
                                         </div>
-                                        <div class="container">
-                                            <form method="post" action="{{ route('update-banking-details') }}"
-                                                enctype="multipart/form-data">
-                                                @csrf
-                                                <hr style="background-color: grey">
-                                                <p class="text-muted" style="text-align: right;">Update profile picture
-                                                </p>
-
-                                                <div class="post_button" style="margin-top: 20px;">
-                                                    <button style="width:100%;" type="submit" class="site-btn">Update
-                                                        Image</button>
-                                                </div>
-                                            </form>
-
-                                            <div class="post_button" style="margin-top: 20px;width:100%;">
-                                                <a style="color: grey;text-align:right;width:100%;"
-                                                    href="{{ route('remove-banking-details') }}">Remove banking details</a>
+                                        <div class="row pt-1">
+                                            <div class="col-12 mb-3">
+                                                <h6>Card Number</h6>
+                                                <p class="text-muted">{{ $bankCards->card_number }}</p>
                                             </div>
+                                            <div class="col-12 mb-3">
+                                                <h6>Updated date</h6>
+                                                <p class="text-muted">
+                                                    {{ $bankingInfo->updated_at->toDateString() }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <a style="color: red;text-align:right;width:100%;"
+                                                href="{{ route('remove-banking-details') }}">Remove banking
+                                                details</a>
                                         </div>
                                     </div>
                                 </div>
