@@ -112,7 +112,7 @@
                         </div>
                     </a>
                 </div>
-                
+
             </div>
         </div>
         <div style="padding-bottom: 0px;margin-bottom: -35px;margin-top: 10px;">
@@ -281,7 +281,7 @@
                 </div>
                 <div class="modal-body" style="padding-top: 40px;padding-bottom: 40px;">
 
-                    <form class="justify-content-center align-items-center align-content-center" style="margin-left: 1px;padding-left: 50px;padding-right: 50px;">
+                    <form class="justify-content-center align-items-center align-content-center" style="margin-left: 1px;padding-left: 50px;padding-right: 50px;" method="POST">
                         @csrf
                         <div class="input-group" style="padding-bottom: 20px;padding-right: 0px;margin-right: 150px;height: 60px;"><span class="input-group-text"><i class="far fa-user text-muted"></i></span><input class="form-control" type="text" style="padding-left: 10px;padding-right: 10px;padding-bottom: 0px;padding-top: 0px;" placeholder="Name" name="name"></div>
                         <div class="input-group" style="padding-bottom: 20px;height: 60px;"><span class="input-group-text"><i class="fa fa-user-circle-o text-muted"></i></span><input class="form-control" type="text" style="padding-left: 10px;padding-right: 10px;padding-bottom: 0px;padding-top: 0px;" placeholder="Surname" name="surname"></div>
@@ -294,7 +294,8 @@
                                 </optgroup>
                             </select></div>
                         <div class="input-group" style="padding-bottom: 20px;height: 60px;"><span class="input-group-text"><i class="icon-lock text-muted"></i></span><input class="form-control" type="password" placeholder="Password" name="password"></div>
-                        <div class="input-group" style="padding-bottom: 20px;height: 60px;"><span class="input-group-text"><i class="icon-lock text-muted"></i></span><input class="form-control" type="password" placeholder="Retype Password" name="password_confirmation"></div><button class="btn btn-outline-primary border rounded border-primary shadow-sm" type="submit" style="width: 150px;padding-right: 20px;margin-right: 69px;margin-left: 108px;">Register</button>
+                        <div class="input-group" style="padding-bottom: 20px;height: 60px;"><span class="input-group-text"><i class="icon-lock text-muted"></i></span><input class="form-control" type="password" placeholder="Retype Password" name="password_confirmation"></div>
+                        <button class="btn btn-outline-primary border rounded border-primary shadow-sm" type="submit" style="width: 150px;padding-right: 20px;margin-right: 69px;margin-left: 108px;">Register</button>
                     </form>
 
                 </div>
@@ -310,7 +311,7 @@
                 </div>
                 <div class="modal-body">
 
-                    <form class="justify-content-center align-items-center align-content-center" style="margin-left: 1px;padding-left: 50px;padding-right: 50px;">
+                    <form class="justify-content-center align-items-center align-content-center" style="margin-left: 1px;padding-left: 50px;padding-right: 50px;" method="POST">
                         @csrf
                         <div class="input-group" style="padding-bottom: 20px;padding-right: 0px;margin-right: 150px;height: 60px;"><span class="input-group-text"><i class="fa fa-sticky-note text-muted"></i></span><input class="form-control" type="text" style="padding-left: 10px;padding-right: 10px;padding-bottom: 0px;padding-top: 0px;" placeholder="Product Name" name="product_name"></div>
                         <div class="input-group" style="padding-bottom: 20px;height: 60px;"><span class="input-group-text"><i class="la la-info text-muted"></i></span><input class="form-control" type="text" style="padding-left: 10px;padding-right: 10px;padding-bottom: 0px;padding-top: 0px;" placeholder="Product Description" name="product_description"></div>
