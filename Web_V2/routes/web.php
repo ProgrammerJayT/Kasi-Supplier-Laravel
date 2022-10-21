@@ -169,3 +169,9 @@ Route::get('/remove-banking-details', [
 Route::post('/update-banking-details', [
     ProfileControl::class, 'updateBankingDetails'
 ])->name('update-banking-details');
+
+//Admin Site
+Route::get('/admin-dashboard', function () {
+    return view('admin.admin-dashboard');
+})->name('admin-dashboard');
+

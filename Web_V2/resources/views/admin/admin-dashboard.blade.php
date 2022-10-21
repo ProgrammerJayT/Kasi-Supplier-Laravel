@@ -43,7 +43,9 @@
         </div>
         <div style="margin-top: 50px;">
             <div class="row">
-                <div class="col-md-6 col-xl-3 mb-4"><a href="www.google.com" style="color: var(--bs-black);text-decoration:none">
+                <div class="col-md-6 col-xl-3 mb-4">
+
+                    <a href="www.google.com" style="color: var(--bs-black);text-decoration:none">
                         <div class="card text-center shadow border-start-primary py-2" data-bss-hover-animate="pulse">
                             <div class="card-body">
                                 <div class="row align-items-center no-gutters">
@@ -55,8 +57,11 @@
                                 </div>
                             </div>
                         </div>
-                    </a></div>
-                <div class="col-md-6 col-xl-3 mb-4"><a href="Accounts/Remove.html" style="color: var(--bs-black);text-decoration:none">
+                    </a>
+                </div>
+
+                <div class="col-md-6 col-xl-3 mb-4">
+                    <a href="Accounts/Remove.html" style="color: var(--bs-black);text-decoration:none">
                         <div class="card text-center shadow border-start-success py-2" data-bss-hover-animate="pulse">
                             <div class="card-body">
                                 <div class="row align-items-center no-gutters">
@@ -68,13 +73,16 @@
                                 </div>
                             </div>
                         </div>
-                    </a></div>
-                <div class="col-md-6 col-xl-3 mb-4"><a href="Accounts/Pending.html" style="color: var(--bs-black);text-decoration:none">
+                    </a>
+                </div>
+                <div class="col-md-6 col-xl-3 mb-4">
+
+                    <a href="Accounts/Pending.html" style="color: var(--bs-black);text-decoration:none">
                         <div class="card text-center shadow border-start-warning py-2" data-bss-hover-animate="pulse">
                             <div class="card-body">
                                 <div class="row align-items-center no-gutters">
                                     <div class="col me-2">
-                                        <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span class="text-dark">PenDing Accounts</span></div>
+                                        <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span class="text-dark">Pending Accounts</span></div>
                                         <div class="text-dark fw-bold h5 mb-0"><span>18</span></div>
                                     </div>
                                     <div class="col-auto"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-hourglass-split fa-2x text-gray-300">
@@ -83,8 +91,11 @@
                                 </div>
                             </div>
                         </div>
-                    </a></div>
-                <div class="col-md-6 col-xl-3 mb-4"><a href="Accounts/All%20Accounts-1.html" style="color: var(--bs-black);text-decoration:none">
+                    </a>
+                </div>
+
+                <div class="col-md-6 col-xl-3 mb-4">
+                    <a href="Accounts/All%20Accounts-1.html" style="color: var(--bs-black);text-decoration:none">
                         <div class="card text-center shadow border-start-warning py-2" data-bss-hover-animate="pulse">
                             <div class="card-body">
                                 <div class="row align-items-center no-gutters">
@@ -99,7 +110,9 @@
                                 </div>
                             </div>
                         </div>
-                    </a></div>
+                    </a>
+                </div>
+                
             </div>
         </div>
         <div style="padding-bottom: 0px;margin-bottom: -35px;margin-top: 10px;">
@@ -267,20 +280,23 @@
                     <h4 class="modal-title fw-light text-muted">Create Account</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" style="padding-top: 40px;padding-bottom: 40px;">
+
                     <form class="justify-content-center align-items-center align-content-center" style="margin-left: 1px;padding-left: 50px;padding-right: 50px;">
+                        @csrf
                         <div class="input-group" style="padding-bottom: 20px;padding-right: 0px;margin-right: 150px;height: 60px;"><span class="input-group-text"><i class="far fa-user text-muted"></i></span><input class="form-control" type="text" style="padding-left: 10px;padding-right: 10px;padding-bottom: 0px;padding-top: 0px;" placeholder="Name" name="name"></div>
                         <div class="input-group" style="padding-bottom: 20px;height: 60px;"><span class="input-group-text"><i class="fa fa-user-circle-o text-muted"></i></span><input class="form-control" type="text" style="padding-left: 10px;padding-right: 10px;padding-bottom: 0px;padding-top: 0px;" placeholder="Surname" name="surname"></div>
                         <div class="input-group" style="padding-bottom: 20px;height: 60px;"><span class="input-group-text"><i class="icon-envelope text-muted"></i></span><input class="form-control" type="email" placeholder="User@email.com" name="email"></div>
                         <div class="input-group" style="padding-bottom: 20px;height: 60px;"><span class="input-group-text"><i class="icon-question text-muted"></i></span><select class="form-select">
                                 <optgroup label="This is a group">
-                                    <option value="12" selected="">This is item 1</option>
-                                    <option value="13">This is item 2</option>
-                                    <option value="14">This is item 3</option>
+
+                                    <option value="" selected="">This is item 1</option>
+
                                 </optgroup>
                             </select></div>
                         <div class="input-group" style="padding-bottom: 20px;height: 60px;"><span class="input-group-text"><i class="icon-lock text-muted"></i></span><input class="form-control" type="password" placeholder="Password" name="password"></div>
                         <div class="input-group" style="padding-bottom: 20px;height: 60px;"><span class="input-group-text"><i class="icon-lock text-muted"></i></span><input class="form-control" type="password" placeholder="Retype Password" name="password_confirmation"></div><button class="btn btn-outline-primary border rounded border-primary shadow-sm" type="submit" style="width: 150px;padding-right: 20px;margin-right: 69px;margin-left: 108px;">Register</button>
                     </form>
+
                 </div>
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Cancel</button></div>
             </div>
@@ -293,12 +309,15 @@
                     <h4 class="modal-title fw-light text-muted">Create Product</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+
                     <form class="justify-content-center align-items-center align-content-center" style="margin-left: 1px;padding-left: 50px;padding-right: 50px;">
-                        <div class="input-group" style="padding-bottom: 20px;padding-right: 0px;margin-right: 150px;height: 60px;"><span class="input-group-text"><i class="fa fa-sticky-note text-muted"></i></span><input class="form-control" type="text" style="padding-left: 10px;padding-right: 10px;padding-bottom: 0px;padding-top: 0px;" placeholder="Product Name" name="name"></div>
-                        <div class="input-group" style="padding-bottom: 20px;height: 60px;"><span class="input-group-text"><i class="la la-info text-muted"></i></span><input class="form-control" type="text" style="padding-left: 10px;padding-right: 10px;padding-bottom: 0px;padding-top: 0px;" placeholder="Product Description" name="surname"></div>
-                        <div class="input-group" style="padding-bottom: 20px;height: 60px;"><span class="input-group-text"><i class="la la-money text-muted"></i></span><input class="form-control" type="text" placeholder="Product Price" name="price"></div>
+                        @csrf
+                        <div class="input-group" style="padding-bottom: 20px;padding-right: 0px;margin-right: 150px;height: 60px;"><span class="input-group-text"><i class="fa fa-sticky-note text-muted"></i></span><input class="form-control" type="text" style="padding-left: 10px;padding-right: 10px;padding-bottom: 0px;padding-top: 0px;" placeholder="Product Name" name="product_name"></div>
+                        <div class="input-group" style="padding-bottom: 20px;height: 60px;"><span class="input-group-text"><i class="la la-info text-muted"></i></span><input class="form-control" type="text" style="padding-left: 10px;padding-right: 10px;padding-bottom: 0px;padding-top: 0px;" placeholder="Product Description" name="product_description"></div>
+                        <div class="input-group" style="padding-bottom: 20px;height: 60px;"><span class="input-group-text"><i class="la la-money text-muted"></i></span><input class="form-control" type="text" placeholder="Product Price" name="product_price"></div>
                         <div class="input-group" style="padding-bottom: 20px;height: 60px;"><input class="form-control" type="file" name="product_image" accept="image/*" style="padding-bottom: 3px;margin-bottom: 3px;"></div><button class="btn btn-outline-primary border rounded border-primary shadow-sm" type="submit" style="width: 150px;padding-right: 20px;margin-right: 69px;margin-left: 108px;">Add Product</button>
                     </form>
+
                 </div>
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Cancel</button></div>
             </div>
