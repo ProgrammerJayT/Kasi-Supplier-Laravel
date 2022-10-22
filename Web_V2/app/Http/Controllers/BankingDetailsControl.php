@@ -114,7 +114,10 @@ class BankingDetailsControl extends Controller
             $response = [
                 'status' => 200,
                 'message' => 'Banking details found',
-                'id' => $bankingDetails->id
+                'id' => $bankingDetails->id,
+                'bank_id' => $bankingDetails->bank_id,
+                'bank_account_type_id' => $bankingDetails->bank_account_type_id,
+                'account_number' => $bankingDetails->account_number,
             ];
         }
 
