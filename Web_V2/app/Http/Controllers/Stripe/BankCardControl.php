@@ -34,7 +34,7 @@ class BankCardControl extends Controller
                     'number' => $data['card_number'],
                     'exp_month' => $data['exp_month'],
                     'exp_year' => $data['exp_year'],
-                    'cvc' => $data['card_cvv'],
+                    'cvc' => $data['card_cvc'],
                 ],
             ]);
 
