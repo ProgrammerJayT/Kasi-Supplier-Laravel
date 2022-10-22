@@ -27,73 +27,165 @@
                                 <div class="col-lg-4">
                                     <div class="checkout__input">
                                         <p>Cardholder Name</p>
-                                        <p><span><b>{{ $userInfo->name . ' ' . $userInfo->surname }}</b></span></p>
+                                        <p><b>{{ $userInfo->name . ' ' . $userInfo->surname }}</b></p>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="checkout__input">
                                         <p>Email<span></span></p>
-                                        <p><span><b>{{ $userInfo->email }}</b></span></p>
+                                        <p><b>{{ $userInfo->email }}</b></p>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="checkout__input">
-                                        <p>Account type<span>*</span></p>
-                                        <p><span><b>{{ ucfirst($user) }}</b></span></p>
+                                        <p>User Account<span>*</span></p>
+                                        <p><b>{{ ucfirst($user) }}</b></p>
                                     </div>
                                 </div>
                             </div>
-
-
-
-
-                            {{-- Get user's card details --}}
                             <h4 class="checkout__title"></h4>
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="checkout__input">
-                                        <p>Card number<span>*</span></p>
-                                        <input type="numeric" wire:model="cardNumber" name="cardNumber"
-                                            value="{{ old('cardNumber') }}">
 
-                                        @error('cardNumber')
-                                            <p><span>{{ $message }}</span></p>
-                                        @enderror
 
+                            @if ($hasBankDetails == true)
+                                {{-- Display logged in user banking information --}}
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="checkout__input">
+                                            <p>Bank Name</p>
+                                            <p><b>{{ $bankingInformation['id'] . ' ' . $userInfo->surname }}</b></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="checkout__input">
+                                            <p>Card Number<span></span></p>
+                                            <p><b>{{ $userInfo->name . ' ' . $userInfo->surname }}</b></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="checkout__input">
+                                            <p>Account type<span>*</span></p>
+                                            <p><b>{{ $userInfo->name . ' ' . $userInfo->surname }}</b></p>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-3">
-                                    <div class="checkout__input">
-                                        <p>Expiry ({{ now()->year . '-' . now()->month }})<span>*</span></p>
-                                        <input type="month" name="cardExpiry" wire:model="cardExpiry"
-                                            value="{{ old('cardExpiry') }}">
 
-                                        @error('cardExpiry')
-                                            <p><span>{{ $message }}</span></p>
-                                        @enderror
-                                    </div>
-
+                                <h4 class="checkout__title"></h4>
+                                {{-- Prompt user for alternative payment card --}}
+                                <div class="checkout__input__checkbox">
+                                    <label for="alternativePayment">
+                                        Would you like to use a different bank card?
+                                        <input type="checkbox" id="alternativePayment" name="alternativePayment"
+                                            wire:model="alternativePayment">
+                                        <span class="checkmark"></span>
+                                    </label>
                                 </div>
-                                <div class="col-lg-3">
-                                    <div class="checkout__input">
-                                        <p>CVV<span>*</span></p>
-                                        <input type="numeric" name="cardCvv" wire:model="cardCvv"
-                                            value="{{ old('cardCvv') }}">
 
-                                        @error('cardCvv')
-                                            <p><span>{{ $message }}</span></p>
-                                        @enderror
+                                @if ($alternativePayment)
+                                    {{-- Get user's card details --}}
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="checkout__input">
+                                                <p>Card number<span>*</span></p>
+                                                <input type="numeric" wire:model="cardNumber" name="cardNumber"
+                                                    value="{{ old('cardNumber') }}">
+
+                                                @error('cardNumber')
+                                                    <p><span>{{ $message }}</span></p>
+                                                @enderror
+
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <div class="checkout__input">
+                                                <p>Expiry ({{ now()->year . '-' . now()->month }})<span>*</span></p>
+                                                <input type="month" name="cardExpiry" wire:model="cardExpiry"
+                                                    value="{{ old('cardExpiry') }}">
+
+                                                @error('cardExpiry')
+                                                    <p><span>{{ $message }}</span></p>
+                                                @enderror
+                                            </div>
+
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <div class="checkout__input">
+                                                <p>CVV<span>*</span></p>
+                                                <input type="numeric" name="cardCvv" wire:model="cardCvv"
+                                                    value="{{ old('cardCvv') }}">
+
+                                                @error('cardCvv')
+                                                    <p><span>{{ $message }}</span></p>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                @else
+                                    {{-- Get user's card details --}}
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="checkout__input">
+                                                <p>Card number<span>*</span></p>
+                                                <input type="numeric" disabled>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-3">
+                                            <div class="checkout__input">
+                                                <p>Expiry ({{ now()->year . '-' . now()->month }})<span>*</span></p>
+                                                <input type="month" disabled>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-3">
+                                            <div class="checkout__input">
+                                                <p>CVV<span>*</span></p>
+                                                <input type="numeric" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                            @else
+                                {{-- Get user's card details --}}
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="checkout__input">
+                                            <p>Card number<span>*</span></p>
+                                            <input type="numeric" wire:model="cardNumber" name="cardNumber"
+                                                value="{{ old('cardNumber') }}">
+
+                                            @error('cardNumber')
+                                                <p><span>{{ $message }}</span></p>
+                                            @enderror
+
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="checkout__input">
+                                            <p>Expiry ({{ now()->year . '-' . now()->month }})<span>*</span></p>
+                                            <input type="month" name="cardExpiry" wire:model="cardExpiry"
+                                                value="{{ old('cardExpiry') }}">
+
+                                            @error('cardExpiry')
+                                                <p><span>{{ $message }}</span></p>
+                                            @enderror
+                                        </div>
+
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="checkout__input">
+                                            <p>CVC<span>*</span></p>
+                                            <input type="numeric" name="cardCvc" wire:model="cardCvc"
+                                                value="{{ old('cardCvc') }}">
+
+                                            @error('cardCvc')
+                                                <p><span>{{ $message }}</span></p>
+                                            @enderror
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-3">
-                                    <div class="checkout__input">
-                                        <input type="text" name="user" value="{{ $user }}" hidden>
-                                    </div>
-                                </div>
-                            </div>
+                            @endif
 
-
-
+                            <h4 class="checkout__title"></h4>
                             {{-- Prompt user for delivery address --}}
                             <div class="checkout__input__checkbox">
                                 <label for="acc">
@@ -103,8 +195,6 @@
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
-
-                            <h4 class="checkout__title"></h4>
 
                             @if ($deliveryChoice)
                                 <p>Please provide your shipping address</p>
@@ -118,8 +208,6 @@
                                     @enderror
                                 </div>
 
-                                {{ 'Choice:' . $deliveryChoice . ' Address:' . $deliveryAddress }}
-
                                 <div class="checkout__input">
                                     <input type="text" placeholder="Shipping address" class="checkout__input__add"
                                         id="set-address" hidden name="set-address">
@@ -129,19 +217,8 @@
                                     <p>Address<span>*</span></p>
                                     <input type="text" placeholder="Shipping address" class="checkout__input__add"
                                         id="location" name="deliveryAddress" disabled>
-
-                                    @error('deliveryAddress')
-                                        <p><span>{{ $message }}</span></p>
-                                    @enderror
                                 </div>
                             @endif
-
-                            <div class="checkout__input">
-                                <p>Order notes</p>
-                                <input type="text"
-                                    placeholder="Notes about your order, e.g. special notes for delivery (Optional)."
-                                    name="deliveryNote">
-                            </div>
 
                         </div>
 
