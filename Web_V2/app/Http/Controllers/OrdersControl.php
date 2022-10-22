@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Account;
 use App\Models\Order;
-use App\Models\orderDelivery;
 use App\Models\OrderItems;
 use Illuminate\Http\Request;
 
@@ -58,14 +56,28 @@ class OrdersControl extends Controller
                 $createOrderItems::insert($orderItems[$i]);
             }
 
+            $newOrder = [
+                'id' => $createOrder->id,
+                'total' => $request->total,
+            ];
+
+            session()->put('new-order', $newOrder);
+
             return redirect('/order-confirmation')->with('order-created', 'Your order was successfully created');
         } else {
             return back()->with('order-fail', 'Your order was unsuccessful');
         }
     }
 
-    public function confirm()
+    public function confirm(Request $request)
     {
-        return "Confirmation page";
+        $myId = session()->get('user')['id'];
+        $accountType = session()->get('user')['type'];
+
+        return view('order-confirmation', [
+            'user' => $accountType,
+            'orderId' => session()->get('new-order')['id'],
+            'total' => session()->get('new-order')['total'],
+        ]);
     }
 }
