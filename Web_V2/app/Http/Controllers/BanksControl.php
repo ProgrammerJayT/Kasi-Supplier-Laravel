@@ -22,7 +22,8 @@ class BanksControl extends Controller
         ] : $response = [
             'status' => 200,
             'message' => $bankDetails->name . ' was identified',
-            'id' => $bankDetails->id
+            'id' => $bankDetails->id,
+            'name' => $bankDetails->name
         ];
 
         return $response;
