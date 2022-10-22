@@ -15,7 +15,7 @@ class DashboardControl extends Controller
 
         $user = User::show($accountType, $myID);
 
-        $accountType == 'vendor' ? $items = Item::where('ven_id', '==', $myID)->count() : null;
+        $accountType == 'vendor' ? $items = Item::where('ven_id', '==', $myID)->count() : $items = null;
 
         return view('dashboard.' . $accountType . '-dashboard', [
             'name' => $user->name,
