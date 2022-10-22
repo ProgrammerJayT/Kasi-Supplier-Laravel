@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BankingCard;
+use App\Models\BankCard;
 use Illuminate\Http\Request;
 
 class BankingCardsControl extends Controller
 {
     //
-    public function show($bankingDetailsID) {
+    public static function show($bankingDetailsID) {
 
-        $bankingCard = BankingCard::where('banking_details_id', $bankingDetailsID)->first();
+        $bankingCard = BankCard::where('banking_details_id', $bankingDetailsID)->first();
 
         return $bankingCard;
     }
