@@ -38,7 +38,7 @@
     @livewireStyles
 </head>
 
-<body>
+<body style="background-color: #f3f2ee;">
 
     <!-- Page Preloder -->
     <div id="preloder">
@@ -47,7 +47,7 @@
 
 
     <!-- Header Section Begin -->
-    <header class="header">
+    <header class="header" style="background-color: #f3f2ee;">
         <div class="header__top">
         </div>
         <div class="container">
@@ -75,21 +75,15 @@
                 <!-- Left links -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="customer-dashboard">Dashboard</a>
+                        <a class="nav-link" href="dashboard">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link"
-                            href="{{ route('customer-wishlist', [
-                                'user' => 'customer',
-                            ]) }}">My
+                        <a class="nav-link" href="{{ route('wishlist') }}">My
                             wishlist</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link"
-                            href="{{ route('shopping', [
-                                'user' => 'customer',
-                            ]) }}">Shop</a>
+                        <a class="nav-link" href="{{ route('shopping') }}">Shop</a>
                     </li>
                 </ul>
                 <!-- Left links -->
@@ -99,10 +93,7 @@
             <!-- Right elements -->
             <div class="d-flex align-items-center">
                 <!-- Icon -->
-                <a class="link-secondary me-3"
-                    href="{{ route('customer-cart', [
-                        'user' => 'customer',
-                    ]) }}">
+                <a class="link-secondary me-3" href="{{ route('cart') }}">
                     <i class="fas fa-shopping-cart"></i>
                 </a>
 
@@ -177,8 +168,46 @@
             var id = 'location';
 
             autocomplete = new google.maps.places.Autocomplete((document.getElementById(id)), {
-                types: ['geocode'],
-            })
+                types: [
+                    'geocode',
+                ],
+                componentRestrictions: {
+                    country: "ZA"
+                },
+                fields: [
+                    'place_id',
+                    'geometry',
+                    'name',
+                ]
+            });
+
+            autocomplete.addListener('place_changed', function() {
+                var place = autocomplete.getPlace();
+
+                if (!place.geometry) {
+                    window.alert("Autocomplete's returned place contains no geometry");
+                    document.getElementById(id).value = '';
+                    return;
+                } else {
+
+                    console.log(JSON.stringify(place.address_components));
+
+                    var lat = place.geometry.location.lat();
+                    var lng = place.geometry.location.lng();
+                    var location = {
+                        lat: lat,
+                        lng: lng,
+                    };
+
+                    console.log(JSON.stringify(location));
+                    document.getElementById('set-address').value = JSON.stringify(location);
+                }
+            });
+        });
+    </script>
+    <script>
+        $('#acc').change(function() {
+            $('#location').attr('disabled', !this.checked)
         });
     </script>
 
