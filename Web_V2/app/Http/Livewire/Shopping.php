@@ -51,19 +51,26 @@ class Shopping extends Component
         $this->cartItems = array();
     }
 
-    public function mount(Request $request)
+    public function mount()
     {
-        $this->user = $request->user;
     }
 
-    public function render(Request $request)
+    public function render()
     {
+        $myId = session()->get('user')['id'];
+        $accountType = session()->get('user')['type'];
+
         $categories = ShoppingCategories::index()->original;
 
+        $accountType == 'vendor' ? [
+            $items = Item::where('name', 'like', '%' . $this->search . '%')
+                ->where('ven_id', '!=', session()->get('user'))->get()
+        ] : [
+            $items = Item::where('name', 'like', '%' . $this->search . '%')->get()
+        ];
 
         return view('livewire.shopping', [
-            'items' => Item::where('name', 'like', '%' . $this->search . '%')
-                ->where('ven_id', '!=', session()->get('user'))->get(),
+            'items' => $items,
             'categories' => $categories,
             'user' => $this->user,
             'cartItems' => $this->cartItems,
