@@ -71,14 +71,14 @@ class CartCheckout extends Controller
             $cardToken = $bankCardResponse['data']['id'];
 
             $createChargeData = [
-                'amount' => session()->get('new-order')['total'],
+                'amount' => ((int)session()->get('new-order')['total']) * 100,
                 'email' => $userInfo->email,
                 'token' => $cardToken,
                 'address' => $rawAddress,
                 'name' => $userInfo->name . ' ' . $userInfo->surname,
             ];
 
-            ChargeControl::create($createChargeData);
+            dd(ChargeControl::create($createChargeData));
         } else {
             return back()->with('error', BankCardControl::create($createCardTokenData)->original['message']);
         }
