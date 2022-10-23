@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('order_payment', function (Blueprint $table) {
             $table->id();
+            $table->integer('order_id');
             $table->string('stripe_charge_token');
             $table->string('method');
             $table->timestamps();
