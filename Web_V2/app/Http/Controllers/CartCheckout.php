@@ -6,6 +6,7 @@ use App\Http\Controllers\Stripe\BankCardControl;
 use App\Http\Controllers\Stripe\ChargeControl;
 use App\Models\Order;
 use App\Models\OrderDelivery;
+use App\Models\OrderPayment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Stripe\StripeClient;
@@ -101,9 +102,26 @@ class CartCheckout extends Controller
                 'name' => $userInfo->name . ' ' . $userInfo->surname,
             ];
 
-            if (ChargeControl::create($createChargeData)->getStatusCode() == 201) {
+            $createChargeAttempt = ChargeControl::create($createChargeData);
 
-                return redirect()->route('success');
+            if ($createChargeAttempt->getStatusCode() == 201) {
+
+                //Update order status to paid
+                $updateOrder->status = 'paid';
+
+                if ($updateOrder->save()) {
+
+                    $orderPayment = new OrderPayment;
+                    $orderPayment->order_id = session()->get('new-order')['id'];
+                    $orderPayment->stripe_charge_token = $createChargeAttempt->content();
+                    $orderPayment->method = 'card';
+
+                    $orderPayment->save();
+
+                    return redirect()->route('success');
+                } else {
+                    return redirect()->back()->with('error', 'Failed tp update order status');
+                }
             } else {
                 return redirect()->back()->with('error', 'Failed to charge card. ' . ChargeControl::create($createChargeData)->content());
             }
