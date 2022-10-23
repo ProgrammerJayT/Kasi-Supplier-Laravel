@@ -34,7 +34,6 @@
                                             <h6 style="color: blue;"><b>{{ $item->name }}</b></h6>
                                             <a href="{{ route('edit-item', [
                                                 'id' => $item->id,
-                                                'user' => 'vendor',
                                             ]) }}"
                                                 class="add-cart">+ Edit item</a>
                                             <h5>R{{ $item->price }}</h5>
