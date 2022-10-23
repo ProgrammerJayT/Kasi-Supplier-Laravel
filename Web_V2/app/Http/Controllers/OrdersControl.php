@@ -28,21 +28,14 @@ class OrdersControl extends Controller
         $createOrder = new Order;
         $createOrderItems = new OrderItems;
         $orderItems = array();
-        $testAddress = '226 West Street, Pretoria North';
-        $testDistance = 596;
 
         $createOrder->buyer_id = session()->get('user')['id'];
+        $createOrder->buyer_type = session()->get('user')['type'];
         $createOrder->date = now()->toDateString();
         $createOrder->amount = $request->total;
         $createOrder->num_items = count(session()->get('cartItems'));
 
         if ($createOrder->save()) {
-
-            $createOrder->is_delivery ? OrderDeliveryControl::create(
-                $createOrder->id,
-                $testAddress,
-                $testDistance
-            ) : null;
 
             for ($i = 0; $i < count(session()->get('cartItems')); $i++) {
 
