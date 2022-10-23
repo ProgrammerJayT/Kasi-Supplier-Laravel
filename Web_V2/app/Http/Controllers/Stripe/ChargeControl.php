@@ -43,7 +43,7 @@ class ChargeControl extends Controller
                 ],
             ]);
 
-            return response($charge, 201);
+            return response($charge->id, 201);
 
 
             //Display error for failed charge
