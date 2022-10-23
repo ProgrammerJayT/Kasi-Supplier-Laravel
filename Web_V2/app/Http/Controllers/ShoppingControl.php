@@ -28,7 +28,7 @@ class ShoppingControl extends Controller
         ]);
     }
 
-    public function editItem(Request $request)
+    public function editItem()
     {
         $myID = session()->get('user')['id'];
         $accountType = session()->get('user')['type'];
