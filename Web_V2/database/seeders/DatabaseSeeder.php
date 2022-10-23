@@ -8,6 +8,7 @@ use App\Models\Bank;
 use App\Models\Banking;
 use App\Models\Category;
 use App\Models\BankAccountType;
+use App\Models\Warehouse;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -195,7 +196,15 @@ class DatabaseSeeder extends Seeder
             ]
         ];
 
+        $warehouse = [
+            'address' => 'Magwa &, Lone Creek Cres, Waterval City, Midrand, 1686',
+            'latlng' => '-26.0148388,28.1049169',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ];
 
+
+        Warehouse::insert($warehouse);
         Bank::insert($banks);
         BankAccountType::insert($accountTypes);
         Category::insert($categories);
