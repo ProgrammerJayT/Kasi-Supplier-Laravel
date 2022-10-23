@@ -1,5 +1,7 @@
 @extends('components.' . $user . '-layout')
 @section('title', 'Order confirmation')
+@section('username', $name)
+@section('image-path', $image)
 
 @section('body')
 
@@ -25,8 +27,8 @@
                                         </h6>
                                         <div class="post_button" style="margin-top: 20px;">
                                             <a href="{{ route('checkout') }}"
-                                                style="width:100%;color:white;text-align:center;" class="site-btn">Pay Now
-                                                ({{ $total }})</a>
+                                                style="width:100%;color:white;text-align:center;" class="site-btn">Pay Now 
+                                                ({{ 'R'.$total }})</a>
                                         </div>
                                         <div class="post_button" style="margin-top: 20px;">
                                             <button wire:click="clearCart" style="width:100%;color:white;" type="button"
