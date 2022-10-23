@@ -30,11 +30,13 @@ class ShoppingControl extends Controller
 
     public function editItem(Request $request)
     {
-        $user = User::show($request->user, session()->get('user'));
+        $myID = session()->get('user')['id'];
+        $accountType = session()->get('user')['type'];
+        $userInfo = User::show($accountType, $myID);
 
         return view('vendor-ops.edit-item', [
-            'name' => $user->name,
-            'image' => $user->image,
+            'name' => $userInfo->name,
+            'image' => $userInfo->image,
         ]);
     }
 }
