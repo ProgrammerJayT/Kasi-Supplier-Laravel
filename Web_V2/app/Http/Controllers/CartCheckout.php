@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Stripe\BankCardControl;
 use App\Http\Controllers\Stripe\ChargeControl;
+use App\Models\Order;
+use App\Models\OrderDelivery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Stripe\StripeClient;
@@ -36,6 +38,8 @@ class CartCheckout extends Controller
         $myID = session()->get('user')['id'];
         $accountType = session()->get('user')['type'];
         $userInfo = User::show($accountType, $myID);
+        $rawAddress = '';
+        $latLng = '';
 
         $request->validate([
             'cardNumber' => 'required|size:16',
@@ -45,18 +49,37 @@ class CartCheckout extends Controller
         ]);
 
         if ($request->deliveryChoice == 'on') {
+
+            $rawCoords = json_decode($request->input('set-address'), true);
+
+            session()->put('isDelivery', true);
+
+            //Update delivery status to true
+            $updateOrder = Order::find(session()->get('new-order')['id']);
+
+            $updateOrder->is_delivery = true;
+
+            if ($updateOrder->save()) {
+                $createDelivery = OrderDeliveryControl::create(
+                    session()->get('new-order')['id'],
+                    $request->location,
+                    $rawCoords['lat'] . ',' . $rawCoords['lng'],
+                    100
+                );
+            }
+
             $latLng = json_decode($request->input('set-address'), true);
-        }
 
-        //Go reverse geocode to get address
-        try {
-            $response = Http::get(
-                'https://maps.googleapis.com/maps/api/geocode/json?latlng=' . $latLng['lat'] . ',' . $latLng['lng'] . '&location_type=ROOFTOP&result_type=street_address&key=AIzaSyColBQqGsiDgBrMtcp3GSVbVQWOW9TNe_0'
-            );
+            //Go reverse geocode to get address
+            try {
+                $response = Http::get(
+                    'https://maps.googleapis.com/maps/api/geocode/json?latlng=' . $latLng['lat'] . ',' . $latLng['lng'] . '&location_type=ROOFTOP&result_type=street_address&key=AIzaSyColBQqGsiDgBrMtcp3GSVbVQWOW9TNe_0'
+                );
 
-            $rawAddress = $response->json()['results'][0]['address_components'];
-        } catch (\Exception $e) {
-            return redirect()->back()->with('error', $e->getMessage());
+                $rawAddress = $response->json()['results'][0]['address_components'];
+            } catch (\Exception $e) {
+                return redirect()->back()->with('error', $e->getMessage());
+            }
         }
 
         $createCardTokenData = [
@@ -78,14 +101,35 @@ class CartCheckout extends Controller
                 'name' => $userInfo->name . ' ' . $userInfo->surname,
             ];
 
-            dd(ChargeControl::create($createChargeData));
+            if (ChargeControl::create($createChargeData)->getStatusCode() == 201) {
+
+                return redirect()->route('success');
+            } else {
+                return redirect()->back()->with('error', 'Failed to charge card. ' . ChargeControl::create($createChargeData)->content());
+            }
         } else {
-            return back()->with('error', BankCardControl::create($createCardTokenData)->original['message']);
+            return back()->with('error', BankCardControl::create($createCardTokenData)->getOriginalContent()['message']);
         }
     }
 
     public function success()
     {
-        return view('payment-success');
+        $myID = session()->get('user')['id'];
+        $accountType = session()->get('user')['type'];
+        $userInfo = User::show($accountType, $myID);
+
+        session()->forget('cartItems');
+        session()->forget('new-order');
+
+        session()->has('isDelivery') ? $isDelivery = true : $isDelivery = false;
+        session()->forget('isDelivery');
+
+        return view('payment-success', [
+            'user' => $accountType,
+            'name' => $userInfo->name,
+            'image' => $userInfo->image,
+            'userInfo' => $userInfo,
+            'isDelivery' => $isDelivery
+        ]);
     }
 }
