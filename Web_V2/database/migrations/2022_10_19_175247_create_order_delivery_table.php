@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('order_id');
             $table->string('address');
+            $table->string('latlng');
             $table->string('distance');
             $table->timestamps();
         });
