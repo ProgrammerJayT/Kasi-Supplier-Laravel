@@ -58,7 +58,7 @@
                             <i class="material-icons opacity-10">person</i>
                         </div>
                         <div class="text-end pt-1">
-                            <p class="text-sm mb-0 text-capitalize">Cancelled Orders</p>
+                            <p class="text-sm mb-0 text-capitalize">Wishlist items</p>
                             <h4 class="mb-0">0</h4>
                         </div>
                     </div>
