@@ -29,7 +29,7 @@
         <div class="canvas__open"><i class="fa fa-bars"></i></div>
     </div>
 
-    <div class="row" style="margin-top: 50px; display: flex;align-items: center;justify-content: center;">
+    <div class="row" style="margin-top: 50px;align-items: center;justify-content: center;width:100%;">
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
             <a href="{{ route('orders') }}">
                 <div class="card">
@@ -71,7 +71,7 @@
     </div>
 
     <div class="row"
-        style="margin-top: 50px; display: flex;align-items: center;justify-content: center;margin-bottom:100px;">
+        style="margin-top: 50px;align-items: center;justify-content: center;margin-bottom:100px;width:100%;">
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
 
             <a href="{{ route('items') }}">
