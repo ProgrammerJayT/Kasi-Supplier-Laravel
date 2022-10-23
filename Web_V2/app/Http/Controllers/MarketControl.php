@@ -53,9 +53,9 @@ class MarketControl extends Controller
         $item->price = $request->price;
 
         $imageName = preg_replace('/\s+/', '', $request->name) . '.' . $request->image->extension();
-        $request->image->move(public_path('images/vendor-stock/items/' . $userType), $imageName);
+        $request->image->move(public_path('images/vendor-stock/' . $userID), $imageName);
 
-        $item->image = 'images/vendor-stock/items/' . $userType . '/' . $imageName;
+        $item->image = 'images/vendor-stock/' . $userID . '/' . $imageName;
 
 
         $item->save() ? [
@@ -101,11 +101,13 @@ class MarketControl extends Controller
         $item->name = $request->name;
         $item->price = $request->price;
 
+        $accountType = session()->get('user')['type'];
+
         if ($request->image) {
             $imageName = preg_replace('/\s+/', '', $request->name) . '.' . $request->image->extension();
-            $request->image->move(public_path('images/vendor-stock/items/' . session()->get('user')), $imageName);
+            $request->image->move(public_path('images/vendor-stock/items/' . $accountType), $imageName);
 
-            $item->image = 'images/vendor-stock/items/' . session()->get('user') . '/' . $imageName;
+            $item->image = 'images/vendor-stock/items/' . $accountType . '/' . $imageName;
         }
 
         $item->save() ? [
