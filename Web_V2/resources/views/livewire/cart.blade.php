@@ -63,9 +63,9 @@
                                         @endif
                                     @endfor
                                 @endforeach
-                            @endunless
-                        </table>
-                    </div>
+                            </table>
+                        </div>
+                    @endunless
 
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6">
@@ -89,19 +89,22 @@
 
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="cart__total">
-                        <h6>Cart total</h6>
-                        <ul>
-                            <li>Total <span>R{{ $totalPrice }}</span></li>
-                        </ul>
-                        <a href="{{ route('create-order', [
-                            'qty' => $quantity,
-                            'total' => $totalPrice,
-                        ]) }}"
-                            class="primary-btn">Create order</a>
+
+                @unless(count($cartItems) == 0)
+                    <div class="col-lg-4">
+                        <div class="cart__total">
+                            <h6>Cart total</h6>
+                            <ul>
+                                <li>Total <span>R{{ $totalPrice }}</span></li>
+                            </ul>
+                            <a href="{{ route('create-order', [
+                                'qty' => $quantity,
+                                'total' => $totalPrice,
+                            ]) }}"
+                                class="primary-btn">Create order</a>
+                        </div>
                     </div>
-                </div>
+                @endunless
             </div>
         </div>
     </section>
