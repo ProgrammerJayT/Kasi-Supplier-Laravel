@@ -2,12 +2,14 @@
 
 namespace App\Http\Livewire;
 
+use App\Http\Controllers\Auth\AccountControl;
 use App\Http\Controllers\ShoppingCategories;
 use App\Http\Controllers\ShoppingItems;
 use App\Http\Controllers\User;
 use App\Models\Customer;
 use App\Models\Item;
 use App\Models\Vendor;
+use App\Models\Wishlist;
 use Illuminate\Http\Request;
 use Livewire\Component;
 
@@ -34,6 +36,37 @@ class Shopping extends Component
 
             $this->results['type'] = 'success';
             $this->results['message'] = 'Item added to cart successfully';
+        }
+    }
+
+    public function addToWishlist($id)
+    {
+
+        $myId = session()->get('user')['id'];
+        $accountType = session()->get('user')['type'];
+
+        $user = User::show($accountType, $myId);
+        $account = AccountControl::show($user->email);
+
+        $checkItem = Wishlist::where('item_id', $id)
+            ->where('account_id', $account->id)->first();
+
+        if ($checkItem == null) {
+            $createWishlistItem = new Wishlist;
+
+            $createWishlistItem->item_id = $id;
+            $createWishlistItem->account_id = $account->id;
+
+            $createWishlistItem->save() ? [
+                $this->results['type'] = 'success',
+                $this->results['message'] = 'Item successfully added to your wishlist'
+            ] : [
+                $this->results['type'] = 'danger',
+                $this->results['message'] = 'Something went wrong'
+            ];
+        } else {
+            $this->results['type'] = 'danger';
+            $this->results['message'] = 'You already have this item in your wishlist';
         }
     }
 
