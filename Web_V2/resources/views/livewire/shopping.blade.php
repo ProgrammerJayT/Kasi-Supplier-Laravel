@@ -25,7 +25,7 @@
                                         <img class="product__item__pic set-bg" src="{{ $item->image }}">
                                         <ul class="product__hover">
                                             <li>
-                                                <a href="add-to-wishlist">
+                                                <a wire:click="addToWishlist({{$item->id}})">
                                                     <img src="assets/img/icon/heart.png" alt="">
                                                 </a>
                                             </li>
