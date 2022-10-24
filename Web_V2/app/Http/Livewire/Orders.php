@@ -15,7 +15,7 @@ class Orders extends Component
 
     public $orderStatus = '';
 
-    public $search = '';
+    public $search;
 
     public function render()
     {
@@ -26,6 +26,7 @@ class Orders extends Component
 
         return view('livewire.orders', [
             'orders' => Order::where('account_id', $account->id)
+                ->where('id', 'like', '%' . $this->search . '%')
                 ->get(),
             'user' => $user,
         ]);
