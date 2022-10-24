@@ -31,8 +31,8 @@
                                                 ({{ 'R'.$total }})</a>
                                         </div>
                                         <div class="post_button" style="margin-top: 20px;">
-                                            <button wire:click="clearCart" style="width:100%;color:white;" type="button"
-                                                class="site-btn">Pay Later</button>
+                                            <a href="{{route('orders')}}" style="width:100%;color:white;" type="button"
+                                                class="site-btn">Pay Later</a>
                                         </div>
                                     </div>
                                 </div>
