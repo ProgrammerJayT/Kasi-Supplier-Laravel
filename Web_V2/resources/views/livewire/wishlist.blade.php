@@ -6,9 +6,14 @@
             <div class="row">
                 <div class="col-lg-8">
 
-                    @if (Session::has('item-remove') && count($cartItems) > 0)
+                    @if (Session::has('item-remove-success') && count($wishlist) > 0)
                         <div class="alert alert-success" role="alert">
-                            <p style="color:white;margin-bottom:0px">{{ Session::get('item-remove') }}</p>
+                            <p style="color:white;margin-bottom:0px">{{ Session::get('item-remove-success') }}</p>
+                        </div>
+                    @endif
+                    @if (Session::has('item-remove-fail') && count($wishlist) > 0)
+                        <div class="alert alert-danger" role="alert">
+                            <p style="color:white;margin-bottom:0px">{{ Session::get('item-remove-fail') }}</p>
                         </div>
                     @endif
 
@@ -25,15 +30,14 @@
                                 <thead>
                                     <tr>
                                         <th>Product</th>
-                                        <th>Quantity</th>
                                         <th>Total</th>
                                         <th></th>
                                     </tr>
                                 </thead>
-                                @foreach ($items as $key => $item)
-                                    @for ($i = 0; $i < count($cartItems); $i++)
-                                        @if ($item->id == $cartItems[$i])
-                                            <tbody>
+                                <tbody>
+                                    @foreach ($wishlist as $wishItem)
+                                        @foreach ($items as $item)
+                                            @if ($item->id == $wishItem->item_id)
                                                 <tr>
                                                     <td class="product__cart__item">
                                                         <div class="product__cart__item__pic">
@@ -41,28 +45,22 @@
                                                                 style="width:100px;">
                                                         </div>
                                                         <div class="product__cart__item__text">
-                                                            <h6>{{ $item->name }} with ID {{ $item->id }}</h6>
-                                                            <h5>R{{ $item->price }}</h5>
+                                                            <h6>{{ $item->name }}</h6>
                                                         </div>
                                                     </td>
-                                                    <td class="quantity__item">
-                                                        <div class="quantity" style="width:50%;">
-                                                            <input
-                                                                style="width:50%;border-radius:10px;border-color:darkgray;"
-                                                                type="number" name="{{ $item->id }}"
-                                                                wire:model="quantity.{{ $item->id }}" id="quantity"
-                                                                min=1 value="{{ $quantity[$item->id] }}" </div>
-                                                    </td>
 
-                                                    <td class="cart__price">R{{ $quantity[$item->id] * $item->price }}</td>
+                                                    <td class="cart__price">R{{ $item->price }}</td>
                                                     </td>
-                                                    <td class="cart__close"><i wire:click="removeItem({{ $item->id }})"
-                                                            class="fa fa-close"></i></td>
+                                                    <td class="cart__close">
+                                                        <i wire:click="removeItem({{ $wishItem->id }})"
+                                                            class="fa fa-close">
+                                                        </i>
+                                                    </td>
                                                 </tr>
-                                            </tbody>
-                                        @endif
-                                    @endfor
-                                @endforeach
+                                            @endif
+                                        @endforeach
+                                    @endforeach
+                                </tbody>
                             </table>
                         </div>
                     @endunless
@@ -73,34 +71,19 @@
                                 <a href="{{ route('shopping') }}">Go Shopping</a>
                             </div>
                         </div>
-
-                        @if (count($wishlist) > 0)
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <div class="continue__btn update__btn">
-                                    <button
-                                        style="background-color:rgb(255, 255, 255);border-radius:10px;padding:5px;border-color:red;"
-                                        wire:click="clear()">
-                                        <i style="color:rgb(255, 0, 0);" class="fa fa-trash"></i> Clear cart
-                                    </button>
-                                </div>
-                            </div>
-                        @endif
-
                     </div>
                 </div>
 
                 @unless(count($wishlist) == 0)
                     <div class="col-lg-4">
                         <div class="cart__total">
-                            <h6>Cart total</h6>
+                            <h6>My wishlist</h6>
                             <ul>
-                                <li>Total <span>R{{ $totalPrice }}</span></li>
+                                <li>Number of items <span>{{ $wishlist->count() }}</span></li>
                             </ul>
-                            <a href="{{ route('create-order', [
-                                'qty' => $quantity,
-                                'total' => $totalPrice,
-                            ]) }}"
-                                class="primary-btn">Create order</a>
+                            <a class="primary-btn">
+                                <p style="margin-bottom: 0px; color:white;">Clear wishlist</p>
+                            </a>
                         </div>
                     </div>
                 @endunless
