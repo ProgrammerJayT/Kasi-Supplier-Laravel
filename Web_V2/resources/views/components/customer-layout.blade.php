@@ -75,15 +75,16 @@
                 <!-- Left links -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="dashboard">Dashboard</a>
+                        <a class="nav-link" href="{{ route('dashboard') }}"><b>Dashboard</b></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('wishlist') }}">My
-                            wishlist</a>
+                        <a class="nav-link" href="{{ route('wishlist') }}"><b>Wishlist</b></a>
                     </li>
-
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('shopping') }}">Shop</a>
+                        <a class="nav-link" href="{{ route('shopping') }}"><b>Shop</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('orders') }}"><b>Orders</b></a>
                     </li>
                 </ul>
                 <!-- Left links -->
