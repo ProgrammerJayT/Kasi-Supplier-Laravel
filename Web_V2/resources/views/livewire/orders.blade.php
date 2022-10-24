@@ -4,31 +4,28 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
-                    <div class="checkout__input">
+                    {{-- <div class="checkout__input">
                         <div class="row">
 
-                            @unless($orders->count() == 0)
-                                <div class="col-lg-9">
-                                    <input wire:model="search" type="text" placeholder="Search for order id" name="search">
-                                </div>
+                            <div class="col-lg-9">
+                                <input wire:model="search" type="number" placeholder="Search for order id" name="search">
+                            </div>
 
-                                <div class="col-lg-3">
-                                    <select wire:model="orderStatus" name="orderStatus" id="orderStatus">
-                                        <option value="">All orders</option>
-                                        <option value="canceled">Canceled orders</option>
-                                        <option value="unpaid">Unpaid orders</option>
-                                        <option value="paid">Paid orders</option>
-                                    </select>
-                                </div>
-                            @endunless
+                            <div class="col-lg-3">
+                                <select name="orderStatus" id="orderStatus">
+                                    <option value="">All orders</option>
+                                    <option value="canceled">Canceled orders</option>
+                                    <option value="unpaid">Unpaid orders</option>
+                                    <option value="paid">Paid orders</option>
+                                </select>
+                            </div>
                         </div>
-                    </div>
+                    </div> --}}
 
                     @unless($orders->count() > 0)
                         <div>
                             <h4 class="alert-heading">No orders</h4>
-                            <p>Looks like you haven't placed any orders yet. Click <a
-                                    href="{{ route('shopping') }}">here</a>
+                            <p>Looks like you haven't placed any orders yet. Click <a href="{{ route('shopping') }}">here</a>
                                 to go back to the shop.</p>
                         </div>
                     @else
@@ -78,7 +75,9 @@
                                             @elseif($order->status == 'unpaid')
                                                 <td class="cart__price">
                                                     <div class="product__cart__item__pic">
-                                                        <h6 class="text-danger">Unpaid</h6>
+                                                        <a href="{{ route('checkout') }}">
+                                                            <h6 class="text-danger">Unpaid</h6>
+                                                        </a>
                                                     </div>
                                                 </td>
                                             @elseif($order->status == 'paid')
@@ -119,9 +118,9 @@
                             <h2>Orders</h2>
                             <h4>Your orders - {{ $orders->count() }} in total</h4>
                             <ul>
-                                <li>Successful <span>13</span></li>
-                                <li>Pending <span>9</span></li>
-                                <li>Canceled <span>10</span></li>
+                                <li>Successful <span>0</span></li>
+                                <li>Pending <span>0</span></li>
+                                <li>Canceled <span>0</span></li>
                             </ul>
                             {{-- <h4>Customer orders - 15 in total</h4>
                             <ul>
